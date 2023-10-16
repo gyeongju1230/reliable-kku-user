@@ -1,15 +1,14 @@
 import React from 'react';
 import {SafeAreaView, StyleSheet, Text} from 'react-native';
 import Margin from '@components/common/Margin';
-import Logo from '../app/assets/images/LandingPage.svg';
 
 function App() {
   return (
     <SafeAreaView style={styles.sectionContainer}>
       <Text>HOME</Text>
+      <Text>HOME121212</Text>
       <Margin height={100} width={50} />
       <Text>CONTENT</Text>
-      <Logo width={100} height={100} fill={'#FFF'} />
     </SafeAreaView>
   );
 }
