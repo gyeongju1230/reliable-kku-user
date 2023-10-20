@@ -12,9 +12,11 @@
   "dependencies": {
     "@react-native-community/checkbox": "^0.5.16",
     "@react-native-community/cli-doctor": "^11.3.8",
-    "@react-navigation/native": "^6.1.8",
+    "@react-navigation/native": "^6.1.9",
+    "@react-navigation/stack": "^6.3.19",
+    "link": "^2.1.0",
     "react": "18.2.0",
-    "react-native": "0.72.5",
+    "react-native": "^0.72.6",
     "react-native-mmkv-storage": "^0.9.1",
     "react-native-svg": "^13.14.0",
     "react-native-svg-transformer": "^1.1.0",
