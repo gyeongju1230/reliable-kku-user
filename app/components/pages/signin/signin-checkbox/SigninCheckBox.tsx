@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import * as styles from '@components/pages/signin/signin-checkbox/SigninCheckBox.style';
-import Check from '@assets/images/signin/CheckBox.svg';
-import UnCheck from '@assets/images/signin/UnCheckBox.svg';
+import Check from '@assets/icons/common/CheckBox.svg';
+import UnCheck from '@assets/icons/common/UnCheckBox.svg';
 import {TouchableOpacity} from 'react-native';
 
 const SigninCheckBox = () => {

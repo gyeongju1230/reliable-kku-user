@@ -2,11 +2,8 @@ import styled from 'styled-components/native';
 import {Font} from '@assets/fonts/Font';
 
 export const InputBox = styled.View`
-  position: relative;
-  display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 38%;
 `;
 
 export const Input = styled.TextInput.attrs({

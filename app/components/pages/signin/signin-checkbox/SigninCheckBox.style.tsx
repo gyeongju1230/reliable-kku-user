@@ -2,8 +2,6 @@ import styled from 'styled-components/native';
 import {Font} from '@assets/fonts/Font';
 
 export const Box = styled.View`
-  position: relative;
-  display: flex;
   align-items: center;
 `;
 export const CheckContainer = styled.View`
@@ -14,5 +12,5 @@ export const CheckBox = styled.Text`
   color: #000;
   font-size: ${Font.Size.L};
   font-weight: 500;
-  margin-left: 10px;
+  margin-left: 8px;
 `;
