@@ -1,5 +1,5 @@
 import * as styles from '@components/pages/signin/find-link-box /FindLinkBox.style';
-import {Text, TouchableOpacity} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import {
   NavigationProp,
   ParamListBase,
@@ -12,11 +12,11 @@ const FindLinkBox = () => {
   return (
     <styles.Box>
       <styles.FindLinkContainer>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={() => navigation.navigate('FindPassword')}>
           <styles.FindText>비밀번호 찾기</styles.FindText>
         </TouchableOpacity>
-        <Text>|</Text>
-        <TouchableOpacity onPress={() => navigation.navigate('Terms')}>
+        <styles.Line>|</styles.Line>
+        <TouchableOpacity onPress={() => navigation.navigate('SignupTerms')}>
           <styles.SignupText>회원가입</styles.SignupText>
         </TouchableOpacity>
       </styles.FindLinkContainer>

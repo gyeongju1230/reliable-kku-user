@@ -11,6 +11,8 @@ export const FindLinkContainer = styled.View`
   justify-content: space-between;
 `;
 
+export const Line = styled.Text``;
+
 export const FindText = styled.Text`
   width: 88px;
 `;
