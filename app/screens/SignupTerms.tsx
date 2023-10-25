@@ -1,7 +1,7 @@
 import SignupTermsLayout from '@components/pages/signup/signup-terms/signup-terms-layout/SignupTermsLayout';
 
-const Terms = () => {
+const SignupTerms = () => {
   return <SignupTermsLayout />;
 };
 
-export default Terms;
+export default SignupTerms;

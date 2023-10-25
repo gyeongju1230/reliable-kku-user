@@ -1,6 +1,8 @@
 import styled from 'styled-components/native';
 import {Font} from '@assets/fonts/Font';
 
+export const Box = styled.View``;
+
 export const ButtonContainer = styled.View`
   width: 330px;
   height: 44px;

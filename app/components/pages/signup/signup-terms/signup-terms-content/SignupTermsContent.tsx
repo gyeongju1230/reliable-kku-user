@@ -78,7 +78,7 @@ const SignupTermsContent = () => {
             )}
           </TouchableOpacity>
           <styles.TermsContent>(필수) 이용약관 동의</styles.TermsContent>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('Terms')}>
             <MoreButton width={20} height={20} />
           </TouchableOpacity>
         </styles.TermsContentBox>
@@ -91,7 +91,7 @@ const SignupTermsContent = () => {
             )}
           </TouchableOpacity>
           <styles.TermsContent>(필수) 정보 알림 수신 동의</styles.TermsContent>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={() => navigation.navigate('TermsAlarm')}>
             <MoreButton width={20} height={20} />
           </TouchableOpacity>
         </styles.TermsContentBox>

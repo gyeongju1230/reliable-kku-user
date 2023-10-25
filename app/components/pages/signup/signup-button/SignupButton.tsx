@@ -20,7 +20,7 @@ const SignupButton = () => {
   };
 
   return (
-    <View>
+    <styles.Box>
       <TouchableOpacity onPress={toggleModal}>
         <styles.ButtonContainer>
           <styles.ButtonContent>회원가입 완료</styles.ButtonContent>
@@ -46,7 +46,7 @@ const SignupButton = () => {
           </styles.ModalLayout>
         </styles.ModalContainer>
       </Modal>
-    </View>
+    </styles.Box>
   );
 };
 
