@@ -12,10 +12,6 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
-		6204CB102AE1A0CB001EAD14 /* Pretendard-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6204CB0F2AE1A0CA001EAD14 /* Pretendard-Bold.otf */; };
-		6204CB122AE1A0D4001EAD14 /* Pretendard-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6204CB112AE1A0D4001EAD14 /* Pretendard-SemiBold.otf */; };
-		6204CB142AE1A0E3001EAD14 /* Pretendard-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6204CB132AE1A0E3001EAD14 /* Pretendard-Medium.otf */; };
-		6204CB162AE1A0E8001EAD14 /* Pretendard-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 6204CB152AE1A0E8001EAD14 /* Pretendard-Regular.otf */; };
 		7699B88040F8A987B510C191 /* libPods-ReliableKkuFront-ReliableKkuFrontTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-ReliableKkuFront-ReliableKkuFrontTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -45,10 +41,6 @@
 		5709B34CF0A7D63546082F79 /* Pods-ReliableKkuFront.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReliableKkuFront.release.xcconfig"; path = "Target Support Files/Pods-ReliableKkuFront/Pods-ReliableKkuFront.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-ReliableKkuFront-ReliableKkuFrontTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReliableKkuFront-ReliableKkuFrontTests.debug.xcconfig"; path = "Target Support Files/Pods-ReliableKkuFront-ReliableKkuFrontTests/Pods-ReliableKkuFront-ReliableKkuFrontTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-ReliableKkuFront.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ReliableKkuFront.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		6204CB0F2AE1A0CA001EAD14 /* Pretendard-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Bold.otf"; sourceTree = "<group>"; };
-		6204CB112AE1A0D4001EAD14 /* Pretendard-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-SemiBold.otf"; sourceTree = "<group>"; };
-		6204CB132AE1A0E3001EAD14 /* Pretendard-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Medium.otf"; sourceTree = "<group>"; };
-		6204CB152AE1A0E8001EAD14 /* Pretendard-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Pretendard-Regular.otf"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ReliableKkuFront/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-ReliableKkuFront-ReliableKkuFrontTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReliableKkuFront-ReliableKkuFrontTests.release.xcconfig"; path = "Target Support Files/Pods-ReliableKkuFront-ReliableKkuFrontTests/Pods-ReliableKkuFront-ReliableKkuFrontTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -124,10 +116,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				6204CB152AE1A0E8001EAD14 /* Pretendard-Regular.otf */,
-				6204CB132AE1A0E3001EAD14 /* Pretendard-Medium.otf */,
-				6204CB112AE1A0D4001EAD14 /* Pretendard-SemiBold.otf */,
-				6204CB0F2AE1A0CA001EAD14 /* Pretendard-Bold.otf */,
 				13B07FAE1A68108700A75B9A /* ReliableKkuFront */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* ReliableKkuFrontTests */,
@@ -254,12 +242,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6204CB142AE1A0E3001EAD14 /* Pretendard-Medium.otf in Resources */,
 				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
-				6204CB122AE1A0D4001EAD14 /* Pretendard-SemiBold.otf in Resources */,
-				6204CB162AE1A0E8001EAD14 /* Pretendard-Regular.otf in Resources */,
-				6204CB102AE1A0CB001EAD14 /* Pretendard-Bold.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -620,8 +604,8 @@
 					"$(inherited)",
 					"-Wl",
 					"-ld_classic",
-					"-Wl",
-					"-ld_classic",
+					" ",
+					"-Wl -ld_classic ",
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
@@ -696,8 +680,8 @@
 					"$(inherited)",
 					"-Wl",
 					"-ld_classic",
-					"-Wl",
-					"-ld_classic",
+					" ",
+					"-Wl -ld_classic ",
 				);
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
