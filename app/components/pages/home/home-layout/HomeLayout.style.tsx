@@ -16,11 +16,12 @@ export const Top = styled.View`
 export const TimeBox = styled.View`
   position: absolute;
   width: 98px;
-  height: 124px;
-  top: 14.50234741%;
-  left: 239px;
+  height: 130px;
+  top: 30px;
+  left: 59.87277353%;
   border-radius: 12px;
-  background: #fff;
+  background: red;
+  //background: #fff;
   box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.25);
 `;
 
