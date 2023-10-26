@@ -1,11 +1,7 @@
-import {Text, View} from 'react-native';
+import HomeLayout from '@components/pages/home/home-layout/HomeLayout';
 
 const Home = () => {
-  return (
-    <View>
-      <Text>주문내역 구현 예정, 파일네임 변경 필요</Text>
-    </View>
-  );
+  return <HomeLayout />;
 };
 
 export default Home;

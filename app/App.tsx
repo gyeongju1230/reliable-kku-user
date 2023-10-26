@@ -64,6 +64,12 @@ function BottomTabs() {
         headerShown: false,
         tabBarActiveTintColor: '#E0B225',
         tabBarIcon: ({focused}) => getTabBarIcon(route.name, focused),
+        tabBarStyle: {
+          borderTopLeftRadius: 6,
+          borderTopRightRadius: 6,
+          shadowOpacity: 0.78,
+          shadowRadius: 20.0,
+        },
       })}>
       <Tab.Screen name="홈" component={Home} />
       <Tab.Screen name="주문" component={Order} />
