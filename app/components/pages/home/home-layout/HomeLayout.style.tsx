@@ -35,7 +35,7 @@ export const TimeBoxContent = styled.Text`
 `;
 
 export const TimeBoxTime = styled.Text`
-  top: 29%;
+  margin-top: 33px;
   left: 11%;
   color: #000;
   font-size: ${Font.Size.XXXL};
