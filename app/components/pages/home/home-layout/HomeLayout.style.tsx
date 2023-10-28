@@ -20,8 +20,7 @@ export const TimeBox = styled.View`
   top: 30px;
   left: 59.87277353%;
   border-radius: 12px;
-  background: red;
-  //background: #fff;
+  background: #fff;
   box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.25);
 `;
 
