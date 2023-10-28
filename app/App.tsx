@@ -13,6 +13,7 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Order from '@screens/Order';
 import OrderList from '@screens/OrderList';
 import Mypage from '@screens/Mypage';
+import OrderPayment from '@screens/Order-Payment ';
 import HomeImage from '@assets/icons/bottom-navigation/Home.svg';
 import OrderUnClickImage from '@assets/icons/bottom-navigation/OrderUnClick.svg';
 import OrderClickImage from '@assets/icons/bottom-navigation/OrderClick.svg';
@@ -67,8 +68,6 @@ function BottomTabs() {
         tabBarStyle: {
           borderTopLeftRadius: 6,
           borderTopRightRadius: 6,
-          shadowOpacity: 0.78,
-          shadowRadius: 20.0,
         },
       })}>
       <Tab.Screen name="홈" component={Home} />
@@ -91,6 +90,7 @@ function App() {
           <Stack.Screen name="Signup" component={Signup} />
           <Stack.Screen name="FindPassword" component={FindPassword} />
           <Stack.Screen name="BottomTabs" component={BottomTabs} />
+          <Stack.Screen name="OrderPayment" component={OrderPayment} />
         </Stack.Navigator>
       </NavigationContainer>
     </SafeAreaView>
