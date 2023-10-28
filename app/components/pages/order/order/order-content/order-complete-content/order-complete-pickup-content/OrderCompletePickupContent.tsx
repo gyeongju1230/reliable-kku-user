@@ -1,0 +1,83 @@
+import * as styles from '@components/pages/order/order/order-content/order-complete-content/order-complete-pickup-content/OrderCompletePickupContent.style';
+import {TouchableOpacity} from 'react-native';
+import RefreshButton from '@assets/images/order/Refresh.svg';
+import OrderIcon from '@assets/images/order/OrderIcon.svg';
+import CompletePickupContentImage from '@assets/images/order/CompletePickupContentImage.svg';
+import CompletePickupBar from '@assets/images/order/CompletePickupBar.svg';
+import {useEffect, useState} from 'react';
+
+const OrderCompletePickupContent = () => {
+  const [moveLeftRight, setMoveLeftRight] = useState('-15deg');
+
+  const move = () => {
+    moveLeftRight === '15deg'
+      ? setMoveLeftRight('-15deg')
+      : setMoveLeftRight('15deg');
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      move();
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [moveLeftRight]);
+
+  return (
+    <styles.Box>
+      <styles.ContentContainer>
+        <styles.ContentBox>
+          <styles.ContentTitle>픽업 완료</styles.ContentTitle>
+          <styles.Content>
+            따끈따끈한 붕어빵{'\n'}
+            맛있게 드세요!
+          </styles.Content>
+        </styles.ContentBox>
+        <styles.ButtonBox>
+          <TouchableOpacity>
+            <styles.Button>
+              <styles.ButtonContent>픽업</styles.ButtonContent>
+            </styles.Button>
+            <RefreshButton
+              width={39}
+              height={39}
+              style={{
+                position: 'absolute',
+                top: '58.6956522%',
+                left: '57%',
+              }}
+            />
+          </TouchableOpacity>
+        </styles.ButtonBox>
+      </styles.ContentContainer>
+
+      <CompletePickupContentImage
+        width="47.6351351%"
+        height="65.3007145%"
+        style={{
+          top: '-15%',
+          left: '27.3648649%',
+        }}
+      />
+      <styles.BarContainer>
+        <CompletePickupBar width="100%" height="30%" style={{top: '28%'}} />
+        <OrderIcon
+          width={50}
+          height={50}
+          style={{
+            position: 'absolute',
+            left: '90.1621622%',
+            transform: [{rotate: moveLeftRight}],
+          }}
+        />
+        <styles.BarContentBox>
+          <styles.BarContent>접수</styles.BarContent>
+          <styles.BarContent>조리완료</styles.BarContent>
+          <styles.BarContent>픽업완료</styles.BarContent>
+        </styles.BarContentBox>
+      </styles.BarContainer>
+    </styles.Box>
+  );
+};
+
+export default OrderCompletePickupContent;

@@ -1,7 +1,7 @@
-import {Text} from 'react-native';
+import OrderListLayout from '@components/pages/order-list/order-list-layout/OrderListLayout';
 
 const OrderList = () => {
-  return <Text>주문내역 페이지</Text>;
+  return <OrderListLayout />;
 };
 
 export default OrderList;

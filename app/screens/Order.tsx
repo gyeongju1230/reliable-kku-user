@@ -1,7 +1,6 @@
-import {Text} from 'react-native';
+import OrderLayout from '@components/pages/order/order/order-layout/OrderLayout';
 
 const Order = () => {
-  return <Text>주문 페이지</Text>;
+  return <OrderLayout />;
 };
-
 export default Order;
