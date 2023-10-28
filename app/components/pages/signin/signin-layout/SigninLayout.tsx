@@ -5,19 +5,26 @@ import SigninCheckBox from '@components/pages/signin/signin-checkbox/SigninCheck
 import SigninButton from '@components/pages/signin/signin-button/SigninButton';
 import FindLinkBox from '@components/pages/signin/find-link-box /FindLinkBox';
 import MarginTop from '@components/common/MarginTop';
+import {View} from 'react-native';
+import {
+  FindLinkBoxTop,
+  SigninButtonTop,
+  SigninCheckBoxTop,
+  SigninInputTop,
+} from '@components/pages/signin/signin-layout/SigninLayout.style';
 
 const SigninLayout = () => {
   return (
     <styles.Box>
-      <MarginTop height={170} />
+      <styles.SigninLogoTop />
       <SigninLogo />
-      <MarginTop height={10} />
+      <styles.SigninInputTop />
       <SigninInput />
-      <MarginTop height={8} />
+      <styles.SigninCheckBoxTop />
       <SigninCheckBox />
-      <MarginTop height={46} />
+      <styles.SigninButtonTop />
       <SigninButton />
-      <MarginTop height={16} />
+      <styles.FindLinkBoxTop />
       <FindLinkBox />
     </styles.Box>
   );
