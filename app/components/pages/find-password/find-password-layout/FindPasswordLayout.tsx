@@ -1,7 +1,6 @@
 import * as styles from '@components/pages/find-password/find-password-layout/FindPasswordLayout.style';
 import {
   ScrollView,
-  Text,
   TouchableOpacity,
   TouchableWithoutFeedback,
 } from 'react-native';
@@ -27,13 +26,13 @@ const FindPasswordLayout = () => {
         <ScrollView
           contentContainerStyle={{paddingBottom: bottomSpace}}
           showsVerticalScrollIndicator={false}>
-          <MarginTop height={62} />
+          <styles.CloseButtonBoxTop />
           <TouchableOpacity onPress={() => navigation.navigate('Signin')}>
             <styles.CloseButtonBox>
               <CloseButton width={30} height={30} />
             </styles.CloseButtonBox>
           </TouchableOpacity>
-          <MarginTop height={25} />
+          <styles.TitleBoxTop />
           <styles.TitleBox>
             <styles.TitleContent>비밀번호 찾기</styles.TitleContent>
           </styles.TitleBox>

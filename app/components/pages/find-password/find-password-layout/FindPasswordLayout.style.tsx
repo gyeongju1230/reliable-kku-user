@@ -28,3 +28,11 @@ export const TitleContent = styled.Text`
   font-weight: 600;
   letter-spacing: 0.02px;
 `;
+
+export const CloseButtonBoxTop = styled.View`
+  height: 7.2769953%;
+`;
+
+export const TitleBoxTop = styled.View`
+  height: 2.9342723%;
+`;
