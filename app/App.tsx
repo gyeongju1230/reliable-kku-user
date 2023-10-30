@@ -13,7 +13,10 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Order from '@screens/Order';
 import OrderList from '@screens/OrderList';
 import Mypage from '@screens/Mypage';
-import OrderPayment from '@screens/Order-Payment ';
+import OrderPayment from '@screens/Order-Payment';
+import TermsMypage from '@screens/terms/TermsMypage';
+import ChangePassword from '@screens/ChangePassword';
+
 import HomeImage from '@assets/icons/bottom-navigation/Home.svg';
 import OrderUnClickImage from '@assets/icons/bottom-navigation/OrderUnClick.svg';
 import OrderClickImage from '@assets/icons/bottom-navigation/OrderClick.svg';
@@ -87,8 +90,10 @@ function App() {
           <Stack.Screen name="SignupTerms" component={SignupTerms} />
           <Stack.Screen name="Terms" component={Terms} />
           <Stack.Screen name="TermsAlarm" component={TermsAlarm} />
+          <Stack.Screen name="TermsMypage" component={TermsMypage} />
           <Stack.Screen name="Signup" component={Signup} />
           <Stack.Screen name="FindPassword" component={FindPassword} />
+          <Stack.Screen name="ChangePassword" component={ChangePassword} />
           <Stack.Screen name="BottomTabs" component={BottomTabs} />
           <Stack.Screen name="OrderPayment" component={OrderPayment} />
         </Stack.Navigator>
