@@ -1,7 +1,7 @@
-import {Text} from 'react-native';
+import MypageLayout from '@components/pages/mypage/mypage-layout/MypageLayout';
 
 const Mypage = () => {
-  return <Text>마이페이지</Text>;
+  return <MypageLayout />;
 };
 
 export default Mypage;
