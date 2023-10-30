@@ -13,14 +13,6 @@ export const SigninInputTop = styled.View`
   height: 1.1737089%;
 `;
 
-export const SigninCheckBoxTop = styled.View`
-  height: 0.9389671%;
-`;
-
-export const SigninButtonTop = styled.View`
-  height: 5.399061%;
-`;
-
 export const FindLinkBoxTop = styled.View`
   height: 1.8779342%;
 `;

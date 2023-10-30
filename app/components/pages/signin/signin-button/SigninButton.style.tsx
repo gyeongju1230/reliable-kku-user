@@ -19,3 +19,27 @@ export const SigninButton = styled.Text`
   font-weight: 600;
   line-height: 14px;
 `;
+
+export const CheckContainer = styled.View`
+  width: 352px;
+  flex-direction: row;
+`;
+export const CheckBox = styled.Text`
+  color: #000;
+  font-size: ${Font.Size.L};
+  font-weight: 500;
+  margin-left: 8px;
+`;
+
+export const ErrorMessage = styled.Text`
+  position: absolute;
+  right: 0;
+  color: #f00;
+  font-size: ${Font.Size.S};
+  font-weight: 500;
+  line-height: 14px;
+`;
+
+export const SigninButtonTop = styled.View`
+  height: 45px;
+`;

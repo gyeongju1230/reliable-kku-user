@@ -24,6 +24,7 @@ import OrderUnClickListImage from '@assets/icons/bottom-navigation/OrderListUnCl
 import OrderListClickImage from '@assets/icons/bottom-navigation/OrderListClick.svg';
 import MypageUnClickImage from '@assets/icons/bottom-navigation/MypageUnClick.svg';
 import MypageClickImage from '@assets/icons/bottom-navigation/MypageClick.svg';
+import {RecoilRoot} from 'recoil';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -83,22 +84,24 @@ function BottomTabs() {
 
 function App() {
   return (
-    <SafeAreaView style={styles.container}>
-      <NavigationContainer>
-        <Stack.Navigator screenOptions={{headerShown: false}}>
-          <Stack.Screen name="Signin" component={Signin} />
-          <Stack.Screen name="SignupTerms" component={SignupTerms} />
-          <Stack.Screen name="Terms" component={Terms} />
-          <Stack.Screen name="TermsAlarm" component={TermsAlarm} />
-          <Stack.Screen name="TermsMypage" component={TermsMypage} />
-          <Stack.Screen name="Signup" component={Signup} />
-          <Stack.Screen name="FindPassword" component={FindPassword} />
-          <Stack.Screen name="ChangePassword" component={ChangePassword} />
-          <Stack.Screen name="BottomTabs" component={BottomTabs} />
-          <Stack.Screen name="OrderPayment" component={OrderPayment} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </SafeAreaView>
+    <RecoilRoot>
+      <SafeAreaView style={styles.container}>
+        <NavigationContainer>
+          <Stack.Navigator screenOptions={{headerShown: false}}>
+            <Stack.Screen name="Signin" component={Signin} />
+            <Stack.Screen name="SignupTerms" component={SignupTerms} />
+            <Stack.Screen name="Terms" component={Terms} />
+            <Stack.Screen name="TermsAlarm" component={TermsAlarm} />
+            <Stack.Screen name="TermsMypage" component={TermsMypage} />
+            <Stack.Screen name="Signup" component={Signup} />
+            <Stack.Screen name="FindPassword" component={FindPassword} />
+            <Stack.Screen name="ChangePassword" component={ChangePassword} />
+            <Stack.Screen name="BottomTabs" component={BottomTabs} />
+            <Stack.Screen name="OrderPayment" component={OrderPayment} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </SafeAreaView>
+    </RecoilRoot>
   );
 }
 
