@@ -17,7 +17,7 @@ export const TimeBox = styled.View`
   position: absolute;
   width: 98px;
   height: 130px;
-  top: 30px;
+  top: 14%;
   left: 59.87277353%;
   border-radius: 12px;
   background: #fff;
