@@ -15,10 +15,16 @@ import {
 import FindPasswordPhoneInput from '@components/pages/find-password/find-password-phone-input/FindPasswordPhoneInput';
 import FindPasswordCertificationInput from '@components/pages/find-password/find-password-certification-input/FindPasswordCertificationInput';
 import FindPasswordButton from '@components/pages/find-password/find-password-button/FindPasswordButton';
+import {useState} from 'react';
 
 const bottomSpace = getBottomSpace();
 const FindPasswordLayout = () => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
+  const [isPhoneNumber, setIsPhoneNumber] = useState('');
+  const [isCertificationNumber, setIsCertificationNumber] = useState('');
+  const [isFindPasswordSuccess, setIsFindPasswordSuccess] = useState(false);
+  const [isCertificationSuccess, setIsCertificationSuccess] = useState(false);
+  const [timer, setTimer] = useState(180);
 
   return (
     <styles.Box>
@@ -37,11 +43,28 @@ const FindPasswordLayout = () => {
             <styles.TitleContent>비밀번호 찾기</styles.TitleContent>
           </styles.TitleBox>
           <MarginTop height={40} />
-          <FindPasswordPhoneInput />
+          <FindPasswordPhoneInput
+            isPhoneNumber={isPhoneNumber}
+            setIsFindPasswordSuccess={setIsFindPasswordSuccess}
+            setIsPhoneNumber={setIsPhoneNumber}
+            setTimer={setTimer}
+          />
           <MarginTop height={30} />
-          <FindPasswordCertificationInput />
+          <FindPasswordCertificationInput
+            isPhoneNumber={isPhoneNumber}
+            isCertificationNumber={isCertificationNumber}
+            setIsCertificationNumber={setIsCertificationNumber}
+            isFindPasswordSuccess={isFindPasswordSuccess}
+            setIsCertificationSuccess={setIsCertificationSuccess}
+            timer={timer}
+            setTimer={setTimer}
+          />
           <MarginTop height={280} />
-          <FindPasswordButton />
+          <FindPasswordButton
+            isPhoneNumber={isPhoneNumber}
+            isCertificationNumber={isCertificationNumber}
+            isCertificationSuccess={isCertificationSuccess}
+          />
           <MarginTop height={62} />
         </ScrollView>
       </TouchableWithoutFeedback>

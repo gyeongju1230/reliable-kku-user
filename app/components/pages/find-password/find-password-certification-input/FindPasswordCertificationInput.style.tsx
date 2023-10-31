@@ -27,12 +27,27 @@ export const CertificationContent = styled.Text`
   letter-spacing: 0.016px;
 `;
 
-export const CertificationInput = styled.TextInput`
+export const CertificationInputBox = styled.View`
   width: 195px;
   height: 32px;
   margin-left: 10px;
+  flex-direction: row;
   border-bottom-width: 1px;
   border-bottom-color: rgba(0, 0, 0, 0.3);
+`;
+export const CertificationInput = styled.TextInput`
+  width: 152px;
+  height: 32px;
+`;
+
+export const Timer = styled.Text`
+  width: 44px;
+  height: 19px;
+  align-self: center;
+  color: #f00;
+  font-size: ${Font.Size.XL};
+  font-weight: 400;
+  letter-spacing: 0.016px;
 `;
 
 export const Button = styled.View`
@@ -43,7 +58,6 @@ export const Button = styled.View`
   align-items: center;
   border-radius: 6px;
   background: #e0e0e0;
-  //background: #ffca42;
 `;
 
 export const ButtonContent = styled.Text`
@@ -51,4 +65,24 @@ export const ButtonContent = styled.Text`
   font-size: ${Font.Size.S};
   font-weight: 400;
   text-align: center;
+`;
+
+export const SuccessMessageText = styled.Text`
+  width: 195px;
+  margin-top: 7px;
+  margin-left: 67px;
+  color: #2f57e5;
+  font-size: ${Font.Size.S};
+  font-weight: 400;
+  letter-spacing: -0.68px;
+`;
+
+export const ErrorMessageText = styled.Text`
+  width: 195px;
+  margin-top: 7px;
+  margin-left: 67px;
+  color: #f00;
+  font-size: ${Font.Size.S};
+  font-weight: 400;
+  letter-spacing: -0.68px;
 `;
