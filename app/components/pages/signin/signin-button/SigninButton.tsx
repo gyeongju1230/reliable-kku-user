@@ -10,18 +10,11 @@ import {
   useNavigation,
 } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import axios from 'axios';
 
 interface SigninButtonProps {
   isPhoneNumber: string;
   isPassword: string;
 }
-
-const axiosInstance = axios.create({
-  baseURL: 'http://43.202.168.192:8080',
-  withCredentials: true,
-});
-
 const SigninButton = ({isPhoneNumber, isPassword}: SigninButtonProps) => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 

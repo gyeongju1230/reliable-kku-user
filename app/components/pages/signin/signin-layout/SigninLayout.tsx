@@ -13,7 +13,7 @@ import {
 } from '@react-navigation/native';
 
 const axiosInstance = axios.create({
-  baseURL: 'http://43.202.168.192:8080',
+  baseURL: 'https://dev.deunku.com',
   withCredentials: true,
 });
 const SigninLayout = () => {
