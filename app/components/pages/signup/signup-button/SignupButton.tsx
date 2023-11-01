@@ -1,6 +1,6 @@
 import * as styles from '@components/pages/signup/signup-button/SignupButton.style';
 import {Modal, Text, TouchableOpacity, View} from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import CloseButton from '@assets/icons/common/CloseButton.svg';
 import SignupSuccessLogo from '@assets/images/signup/SignupSuccessLogo.svg';
 import MarginTop from '@components/common/MarginTop';
@@ -9,11 +9,60 @@ import {
   ParamListBase,
   useNavigation,
 } from '@react-navigation/native';
+import {IsSignup} from '@/apis/auth/signup/Signup';
 
-const SignupButton = () => {
+interface SignupButtonProps {
+  isName: string;
+  isPhoneNumber: string;
+  password: string;
+  passwordSuccess: boolean;
+  passwordVerifySuccess: boolean;
+  isCertificationSuccess: boolean;
+  isCertificationCheckSuccess: boolean;
+}
+
+const SignupButton = ({
+  isName,
+  isPhoneNumber,
+  password,
+  passwordSuccess,
+  passwordVerifySuccess,
+  isCertificationSuccess,
+  isCertificationCheckSuccess,
+}: SignupButtonProps) => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    setIsActive(
+      !!isName &&
+        !!isPhoneNumber &&
+        !!password &&
+        passwordSuccess &&
+        passwordVerifySuccess &&
+        isCertificationSuccess &&
+        isCertificationCheckSuccess,
+    );
+  }, [
+    isName,
+    isPhoneNumber,
+    password,
+    passwordSuccess,
+    passwordVerifySuccess,
+    isCertificationSuccess,
+    isCertificationCheckSuccess,
+  ]);
+
+  const handleSignup = async () => {
+    try {
+      await IsSignup(isName, isPhoneNumber, password);
+      toggleModal();
+    } catch (error) {
+      console.error('임시 비밀번호 발급 실패', error);
+    }
+  };
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
@@ -21,8 +70,9 @@ const SignupButton = () => {
 
   return (
     <styles.Box>
-      <TouchableOpacity onPress={toggleModal}>
-        <styles.ButtonContainer>
+      <TouchableOpacity onPress={handleSignup} disabled={!isActive}>
+        <styles.ButtonContainer
+          style={{backgroundColor: isActive ? '#FFCA42' : '#d9d9d9'}}>
           <styles.ButtonContent>회원가입 완료</styles.ButtonContent>
         </styles.ButtonContainer>
       </TouchableOpacity>

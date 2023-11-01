@@ -53,7 +53,6 @@ export const Button = styled.View`
   align-items: center;
   border-radius: 6px;
   background: #e0e0e0;
-  //background: #ffca42;
 `;
 
 export const ButtonContent = styled.Text`
@@ -61,4 +60,20 @@ export const ButtonContent = styled.Text`
   font-size: ${Font.Size.S};
   font-weight: 400;
   text-align: center;
+`;
+
+export const SuccessMessageText = styled.Text`
+  margin-top: 6px;
+  color: #2f57e5;
+  font-size: ${Font.Size.S};
+  font-weight: 400;
+  letter-spacing: -0.68px;
+`;
+
+export const ErrorMessageText = styled.Text`
+  margin-top: 6px;
+  color: #f00;
+  font-size: ${Font.Size.S};
+  font-weight: 400;
+  letter-spacing: -0.68px;
 `;

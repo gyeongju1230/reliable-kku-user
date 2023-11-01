@@ -17,11 +17,21 @@ import {
   ParamListBase,
   useNavigation,
 } from '@react-navigation/native';
+import {useState} from 'react';
 
 const bottomSpace = getBottomSpace();
 
 const SignupLayout = () => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
+  const [isName, setIsName] = useState('');
+  const [isPhoneNumber, setIsPhoneNumber] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordSuccess, setPasswordSuccess] = useState(false);
+  const [passwordVerifySuccess, setPasswordVerifySuccess] = useState(false);
+  const [isCertificationSuccess, setIsCertificationSuccess] = useState(false);
+  const [isCertificationCheckSuccess, setIsCertificationCheckSuccess] =
+    useState(false);
+  const [timer, setTimer] = useState(180);
 
   return (
     <styles.Box>
@@ -40,15 +50,39 @@ const SignupLayout = () => {
             <styles.TitleContent>회원가입</styles.TitleContent>
           </styles.TitleBox>
           <MarginTop height={40} />
-          <SignupNameInput />
+          <SignupNameInput isName={isName} setIsName={setIsName} />
           <MarginTop height={40} />
-          <SignupPhoneInput />
+          <SignupPhoneInput
+            isPhoneNumber={isPhoneNumber}
+            setIsPhoneNumber={setIsPhoneNumber}
+            setIsCertificationSuccess={setIsCertificationSuccess}
+            setTimer={setTimer}
+          />
           <MarginTop height={30} />
-          <SignupCertificationInput />
+          <SignupCertificationInput
+            isPhoneNumber={isPhoneNumber}
+            isCertificationSuccess={isCertificationSuccess}
+            setIsCertificationCheckSuccess={setIsCertificationCheckSuccess}
+            timer={timer}
+            setTimer={setTimer}
+          />
           <MarginTop height={40} />
-          <SignupPasswordInput />
+          <SignupPasswordInput
+            password={password}
+            setPassword={setPassword}
+            setPasswordSuccess={setPasswordSuccess}
+            setPasswordVerifySuccess={setPasswordVerifySuccess}
+          />
           <MarginTop height={100} />
-          <SignupButton />
+          <SignupButton
+            isName={isName}
+            isPhoneNumber={isPhoneNumber}
+            password={password}
+            passwordSuccess={passwordSuccess}
+            passwordVerifySuccess={passwordVerifySuccess}
+            isCertificationSuccess={isCertificationSuccess}
+            isCertificationCheckSuccess={isCertificationCheckSuccess}
+          />
           <MarginTop height={62} />
         </ScrollView>
       </TouchableWithoutFeedback>
