@@ -49,8 +49,7 @@ export const Timer = styled.Text`
   font-size: ${Font.Size.XL};
   font-weight: 400;
   letter-spacing: 0.016px;
-  background: burlywood;
-`;
+경`;
 
 export const Button = styled.View`
   width: 58px;
