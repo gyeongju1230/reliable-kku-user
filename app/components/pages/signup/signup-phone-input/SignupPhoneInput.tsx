@@ -46,8 +46,8 @@ const SignupPhoneInput = ({
     if (isPhoneNumberUnique) {
       try {
         await CertificationSend(isPhoneNumber);
-        setIsRequested(true);
         setIsCertificationSuccess(true);
+        setIsRequested(true);
         setTimer(180);
         setCertificationSendSuccess('인증번호가 발송되었습니다.');
         setPhoneNumberDuplicateSuccess('');
