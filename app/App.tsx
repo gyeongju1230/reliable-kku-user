@@ -16,6 +16,7 @@ import Mypage from '@screens/Mypage';
 import OrderPayment from '@screens/Order-Payment';
 import TermsMypage from '@screens/terms/TermsMypage';
 import ChangePassword from '@screens/ChangePassword';
+import Webview from '@screens/WebView';
 
 import HomeImage from '@assets/icons/bottom-navigation/Home.svg';
 import OrderUnClickImage from '@assets/icons/bottom-navigation/OrderUnClick.svg';
@@ -75,7 +76,7 @@ function BottomTabs() {
         },
       })}>
       <Tab.Screen name="홈" component={Home} />
-      <Tab.Screen name="주문" component={Order} />
+      <Tab.Screen name="주문" component={OrderPayment} />
       <Tab.Screen name="주문내역" component={OrderList} />
       <Tab.Screen name="My붕" component={Mypage} />
     </Tab.Navigator>
@@ -98,6 +99,7 @@ function App() {
             <Stack.Screen name="ChangePassword" component={ChangePassword} />
             <Stack.Screen name="BottomTabs" component={BottomTabs} />
             <Stack.Screen name="OrderPayment" component={OrderPayment} />
+            <Stack.Screen name="Webview" component={Webview} />
           </Stack.Navigator>
         </NavigationContainer>
       </SafeAreaView>
