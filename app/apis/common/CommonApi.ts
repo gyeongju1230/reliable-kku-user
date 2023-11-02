@@ -1,3 +1,5 @@
+// FIXME. API interceptors 수정
+
 import axios from 'axios';
 import {Alert} from 'react-native';
 import {
@@ -6,7 +8,14 @@ import {
   useNavigation,
 } from '@react-navigation/native';
 
+export const BASE_API = axios.create({
+  baseURL: 'https://dev.deunku.com',
+  responseType: 'json',
+  withCredentials: true,
+});
+
 export const API = axios.create({
+  baseURL: 'https://dev.deunku.com',
   responseType: 'json',
   withCredentials: true,
 });
@@ -25,17 +34,15 @@ export const handleTokenExpirationError = () => {
   ]);
 };
 
-API.interceptors.request.use(config => {
-  config.baseURL = 'http://43.202.168.192:8080';
-
-  axios.get('/api/v1/token/valid', {}).catch(() => {
-    axios
-      .get('/api/v1/token/update')
-      .then(res => {})
-      .catch(err => {
-        handleTokenExpirationError();
-      });
-  });
-
-  return config;
-});
+// API.interceptors.request.use(config => {
+//   axios.get('https://dev.deunku.com/api/v1/token/valid', {}).catch(() => {
+//     axios
+//       .get('https://dev.deunku.com/api/v1/token/update')
+//       .then(res => {})
+//       .catch(err => {
+//         handleTokenExpirationError();
+//       });
+//   });
+//
+//   return config;
+// });
