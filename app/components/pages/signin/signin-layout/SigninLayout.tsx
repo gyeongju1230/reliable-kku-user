@@ -24,17 +24,17 @@ const SigninLayout = () => {
         const savedState = await AsyncStorage.getItem('isChecked');
         if (savedState !== null) {
           if (savedState === 'true') {
-            BASE_API.get('/api/v1/token/valid')
-              .then(res => {
-                navigation.navigate('BottomTabs');
-              })
-              .catch(err => {
-                BASE_API.get('/api/v1/token/update')
-                  .then(res => {
-                    navigation.navigate('BottomTabs');
-                  })
-                  .catch(errs => {});
-              });
+            // BASE_API.get('/api/v1/token/valid')
+            //   .then(res => {
+            //     navigation.navigate('BottomTabs');
+            //   })
+            //   .catch(err => {
+            //     BASE_API.get('/api/v1/token/update')
+            //       .then(res => {
+            //         navigation.navigate('BottomTabs');
+            //       })
+            //       .catch(errs => {});
+            //   });
           }
         }
       } catch (error) {
