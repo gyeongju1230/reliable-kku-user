@@ -4,7 +4,11 @@ import GuideIcon from '@assets/images/mypage/GuideIcon.svg';
 import {Modal, Pressable, SafeAreaView, TouchableOpacity} from 'react-native';
 import {useState} from 'react';
 
-const MypageLevel = () => {
+interface MypageLevelProps {
+  level: string;
+}
+
+const MypageLevel = ({level}: MypageLevelProps) => {
   const [isModal, setIsModal] = useState(false);
 
   const openModal = () => {
@@ -14,7 +18,7 @@ const MypageLevel = () => {
   return (
     <styles.LevelBox>
       <Level width={17} height={17} />
-      <styles.Level>현재 나의 붕레벨 Lv.1</styles.Level>
+      <styles.Level>현재 나의 붕레벨 Lv.{level}</styles.Level>
       <TouchableOpacity
         onPress={openModal}
         style={{position: 'absolute', bottom: '0%', right: '0%'}}>

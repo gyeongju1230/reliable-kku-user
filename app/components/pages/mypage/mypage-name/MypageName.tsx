@@ -1,14 +1,7 @@
 import * as styles from '@components/pages/mypage/mypage-name/MypageName.style';
 import MoreButton from '@assets/images/mypage/MoreButton.svg';
-import {
-  Modal,
-  Pressable,
-  SafeAreaView,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import {Modal, Pressable, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
-import MarginTop from '@components/common/MarginTop';
 import {
   NavigationProp,
   ParamListBase,
@@ -16,7 +9,11 @@ import {
 } from '@react-navigation/native';
 import CloseButton from '@assets/icons/common/CloseButton.svg';
 
-const MypageName = () => {
+interface MypageNameProps {
+  realName: string;
+}
+
+const MypageName = ({realName}: MypageNameProps) => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
   const [isModal, setIsModal] = useState(false);
   const [isPasswordModal, setIsPasswordModal] = useState(false);
@@ -52,7 +49,7 @@ const MypageName = () => {
   return (
     <styles.NameContainer>
       <styles.NameBox>
-        <styles.Name>든붕이님,</styles.Name>
+        <styles.Name>{realName}님,</styles.Name>
         <styles.NameContent>안녕하세요!</styles.NameContent>
       </styles.NameBox>
       <TouchableOpacity onPress={openModal}>
