@@ -3,17 +3,44 @@ import {Modal, TouchableOpacity} from 'react-native';
 import MarginTop from '@components/common/MarginTop';
 import CloseButton from '@assets/icons/common/CloseButton.svg';
 import SignupSuccessLogo from '@assets/images/signup/SignupSuccessLogo.svg';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   NavigationProp,
   ParamListBase,
   useNavigation,
 } from '@react-navigation/native';
+import {PasswordChange} from '@/apis/Mypage/Mypage';
 
-const MypageChangePasswordButton = () => {
+interface MypageChangePasswordButtonProps {
+  password: string;
+  currentSuccess: boolean;
+  passSuccess: boolean;
+  verifySuccess: boolean;
+}
+
+const MypageChangePasswordButton = ({
+  password,
+  currentSuccess,
+  passSuccess,
+  verifySuccess,
+}: MypageChangePasswordButtonProps) => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 
   const [isModalVisible, setIsModalVisible] = useState(false);
+  const [isActive, setIsActive] = useState(false);
+
+  useEffect(() => {
+    setIsActive(currentSuccess && passSuccess && verifySuccess);
+  }, [currentSuccess, passSuccess, verifySuccess]);
+
+  const handlePasswordChange = async () => {
+    try {
+      await PasswordChange(password);
+      toggleModal();
+    } catch (error) {
+      console.error('비밀번호 변경 실패', error);
+    }
+  };
 
   const toggleModal = () => {
     setIsModalVisible(!isModalVisible);
@@ -21,12 +48,13 @@ const MypageChangePasswordButton = () => {
 
   return (
     <styles.Box>
-      <TouchableOpacity onPress={toggleModal}>
-        <styles.ButtonContainer>
+      <TouchableOpacity onPress={handlePasswordChange} disabled={!isActive}>
+        <styles.ButtonContainer
+          style={{backgroundColor: isActive ? '#FFCA42' : '#d9d9d9'}}>
           <styles.ButtonContent>변경하기</styles.ButtonContent>
         </styles.ButtonContainer>
       </TouchableOpacity>
-      <Modal visible={isModalVisible} transparent={true} animationType="slide">
+      <Modal visible={isModalVisible} transparent={true} animationType="none">
         <styles.ModalContainer>
           <styles.ModalLayout>
             <MarginTop height={6} />

@@ -14,11 +14,17 @@ import CloseButton from '@assets/icons/common/CloseButton.svg';
 import MarginTop from '@components/common/MarginTop';
 import MypageChangePasswordInput from '@components/pages/mypage/mypage-change-password/mypage-change-password-input/MypageChangePasswordInput';
 import MypageChangePasswordButton from '@components/pages/mypage/mypage-change-password/mypage-change-password-button/MypageChangePasswordButton';
+import {MypageChangePasswordButtonTop} from '@components/pages/mypage/mypage-change-password/mypage-change-password-layout/MypageChangePasswordLayout.style';
+import {useState} from 'react';
 
 const bottomSpace = getBottomSpace();
 
 const MypageChangePasswordLayout = () => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
+  const [password, setPassword] = useState('');
+  const [currentSuccess, setCurrentSuccess] = useState(false);
+  const [passSuccess, setPassSuccess] = useState(false);
+  const [verifySuccess, setVerifySuccess] = useState(false);
 
   return (
     <styles.Box>
@@ -37,9 +43,20 @@ const MypageChangePasswordLayout = () => {
             <styles.TitleContent>비밀번호 변경</styles.TitleContent>
           </styles.TitleBox>
           <MarginTop height={40} />
-          <MypageChangePasswordInput />
-          <MarginTop height={260} />
-          <MypageChangePasswordButton />
+          <MypageChangePasswordInput
+            password={password}
+            setPassword={setPassword}
+            setCurrentSuccess={setCurrentSuccess}
+            setPassSuccess={setPassSuccess}
+            setVerifySuccess={setVerifySuccess}
+          />
+          <styles.MypageChangePasswordButtonTop />
+          <MypageChangePasswordButton
+            password={password}
+            currentSuccess={currentSuccess}
+            passSuccess={passSuccess}
+            verifySuccess={verifySuccess}
+          />
         </ScrollView>
       </TouchableWithoutFeedback>
     </styles.Box>

@@ -36,3 +36,7 @@ export const CloseButtonBoxTop = styled.View`
 export const TitleBoxTop = styled.View`
   height: 2.9342723%;
 `;
+
+export const MypageChangePasswordButtonTop = styled.View`
+  height: 26%;
+`;

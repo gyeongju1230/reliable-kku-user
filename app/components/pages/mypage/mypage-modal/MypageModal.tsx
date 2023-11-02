@@ -47,7 +47,7 @@ const MypageModal = () => {
           <styles.Content>이용약관</styles.Content>
         </styles.TermsBox>
       </TouchableOpacity>
-      <Modal visible={isInquiryModal} transparent={true} animationType="slide">
+      <Modal visible={isInquiryModal} transparent={true} animationType="none">
         <styles.InquiryModalContainer>
           <styles.InquiryModalLayout>
             <MarginTop height={6} />

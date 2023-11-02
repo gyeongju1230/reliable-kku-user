@@ -80,7 +80,7 @@ const MypageName = ({realName}: MypageNameProps) => {
         visible={isModal}
         onRequestClose={() => setIsModal(false)}
         transparent={true}
-        animationType="slide">
+        animationType="none">
         <Pressable style={{flex: 1}} onPress={() => setIsModal(false)}>
           <styles.ModalContainer>
             <TouchableOpacity onPress={closeModal}>
@@ -101,7 +101,7 @@ const MypageName = ({realName}: MypageNameProps) => {
           </styles.ModalContainer>
         </Pressable>
       </Modal>
-      <Modal visible={isPasswordModal} transparent={true} animationType="slide">
+      <Modal visible={isPasswordModal} transparent={true} animationType="none">
         <Pressable
           style={{
             flex: 1,
@@ -131,10 +131,7 @@ const MypageName = ({realName}: MypageNameProps) => {
         </Pressable>
       </Modal>
 
-      <Modal
-        visible={isSecessionModal}
-        transparent={true}
-        animationType="slide">
+      <Modal visible={isSecessionModal} transparent={true} animationType="none">
         <Pressable
           style={{
             flex: 1,

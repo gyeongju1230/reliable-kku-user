@@ -31,7 +31,7 @@ const MypageLevel = ({level}: MypageLevelProps) => {
         visible={isModal}
         onRequestClose={() => setIsModal(false)}
         transparent={true}
-        animationType="slide"
+        animationType="none"
         style={{margin: 0}}>
         <SafeAreaView style={{flex: 1, top: '29%', left: '62.3%'}}>
           <Pressable onPress={() => setIsModal(false)} style={{flex: 1}}>
