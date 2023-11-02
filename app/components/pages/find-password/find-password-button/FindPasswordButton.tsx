@@ -56,7 +56,7 @@ const FindPasswordButton = ({
           <styles.ButtonContent>임시 비밀번호 전송</styles.ButtonContent>
         </styles.ButtonContainer>
       </TouchableOpacity>
-      <Modal visible={isModalVisible} transparent={true} animationType="slide">
+      <Modal visible={isModalVisible} transparent={true} animationType="none">
         <styles.ModalContainer>
           <styles.ModalLayout>
             <MarginTop height={6} />

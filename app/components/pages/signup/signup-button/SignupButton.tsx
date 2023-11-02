@@ -76,7 +76,7 @@ const SignupButton = ({
           <styles.ButtonContent>회원가입 완료</styles.ButtonContent>
         </styles.ButtonContainer>
       </TouchableOpacity>
-      <Modal visible={isModalVisible} transparent={true} animationType="slide">
+      <Modal visible={isModalVisible} transparent={true} animationType="none">
         <styles.ModalContainer>
           <styles.ModalLayout>
             <MarginTop height={6} />
