@@ -40,7 +40,7 @@ export const ModalContainer = styled.View`
   position: absolute;
   width: 70.68px;
   height: 64.791px;
-  top: 15.5%;
+  top: 16.8%;
   left: 74%;
   border-radius: 6px;
   background: rgba(0, 0, 0, 0.6);

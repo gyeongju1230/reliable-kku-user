@@ -8,6 +8,7 @@ import {
   useNavigation,
 } from '@react-navigation/native';
 import CloseButton from '@assets/icons/common/CloseButton.svg';
+import {Logout, Withdraw} from '@/apis/Mypage/Mypage';
 
 interface MypageNameProps {
   realName: string;
@@ -44,6 +45,26 @@ const MypageName = ({realName}: MypageNameProps) => {
 
   const closeSecessionModal = () => {
     setIsSecessionModal(false);
+  };
+
+  const handleLogout = async () => {
+    try {
+      await Logout();
+      navigation.navigate('Signin');
+      console.log('로그아웃 성공');
+    } catch (error) {
+      console.error('로그아웃 실패 여기', error);
+    }
+  };
+
+  const handleWithdraw = async () => {
+    try {
+      await Withdraw();
+      navigation.navigate('Signin');
+      console.log('탈퇴 성공');
+    } catch (error) {
+      console.error('탈퇴 실패 여기', error);
+    }
   };
 
   return (
@@ -95,7 +116,7 @@ const MypageName = ({realName}: MypageNameProps) => {
             </TouchableOpacity>
             <styles.ModalText>정말 로그아웃 하시겠습니까?</styles.ModalText>
             <styles.ModalButtonBox>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={handleLogout}>
                 <styles.ModalYesButton>
                   <styles.ModalButtonText>예</styles.ModalButtonText>
                 </styles.ModalYesButton>
@@ -128,7 +149,7 @@ const MypageName = ({realName}: MypageNameProps) => {
             </TouchableOpacity>
             <styles.ModalText>정말 탈퇴하시겠습니까?</styles.ModalText>
             <styles.ModalButtonBox>
-              <TouchableOpacity>
+              <TouchableOpacity onPress={handleWithdraw}>
                 <styles.ModalYesButton>
                   <styles.ModalButtonText>예</styles.ModalButtonText>
                 </styles.ModalYesButton>

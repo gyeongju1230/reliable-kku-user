@@ -35,7 +35,6 @@ export const ModalContainer = styled.View`
   width: 115px;
   height: 43.166px;
   justify-content: center;
-  //top: 26.056338028169014%;
   border-radius: 6px;
   background: #00000099;
   backdrop-filter: blur(3.5px);
