@@ -5,17 +5,13 @@ import SigninButton from '@components/pages/signin/signin-button/SigninButton';
 import FindLinkBox from '@components/pages/signin/find-link-box /FindLinkBox';
 import {useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import axios from 'axios';
 import {
   NavigationProp,
   ParamListBase,
   useNavigation,
 } from '@react-navigation/native';
+import {BASE_API} from '@/apis/common/CommonApi';
 
-const axiosInstance = axios.create({
-  baseURL: 'https://dev.deunku.com',
-  withCredentials: true,
-});
 const SigninLayout = () => {
   const [isPhoneNumber, setIsPhoneNumber] = useState('');
   const [isPassword, setIsPassword] = useState('');
@@ -28,14 +24,12 @@ const SigninLayout = () => {
         const savedState = await AsyncStorage.getItem('isChecked');
         if (savedState !== null) {
           if (savedState === 'true') {
-            axiosInstance
-              .get('/api/v1/token/valid')
+            BASE_API.get('/api/v1/token/valid')
               .then(res => {
                 navigation.navigate('BottomTabs');
               })
               .catch(err => {
-                axiosInstance
-                  .get('/api/v1/token/update')
+                BASE_API.get('/api/v1/token/update')
                   .then(res => {
                     navigation.navigate('BottomTabs');
                   })

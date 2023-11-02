@@ -1,25 +1,18 @@
-import axios from 'axios';
-
-const axiosInstance = axios.create({
-  baseURL: 'https://dev.deunku.com',
-  withCredentials: true,
-});
+import {BASE_API} from '@/apis/common/CommonApi';
 
 /* 인증번호 전송 */
 export const FindPassword = async (phoneNumber: string) => {
   try {
-    const response = await axiosInstance
-      .post(
-        '/api/v1/register/phone-number/certification-number',
-        {
-          phoneNumber: phoneNumber,
-        },
-        {},
-      )
-      .then(response => {
-        console.log('인증번호 전송 성공', response.data);
-        return response;
-      });
+    const response = await BASE_API.post(
+      '/api/v1/register/phone-number/certification-number',
+      {
+        phoneNumber: phoneNumber,
+      },
+      {},
+    ).then(response => {
+      console.log('인증번호 전송 성공', response.data);
+      return response;
+    });
   } catch (error) {
     throw error;
   }
@@ -31,10 +24,9 @@ export const Certification = async (
   certificationNumber: Number,
 ) => {
   try {
-    return axiosInstance
-      .get(
-        `/api/v1/find-password/phone-number/certification-number?phoneNumber=${phoneNumber}&certificationNumber=${certificationNumber}`,
-      )
+    return BASE_API.get(
+      `/api/v1/find-password/phone-number/certification-number?phoneNumber=${phoneNumber}&certificationNumber=${certificationNumber}`,
+    )
       .then(response => {
         console.log('인증번호 확인 성공', response.data);
         return response;
@@ -54,19 +46,17 @@ export const PasswordIssue = async (
   certificationNumber: Number,
 ) => {
   try {
-    const response = await axiosInstance
-      .post(
-        '/api/v1/find-password',
-        {
-          phoneNumber: phoneNumber,
-          certificationNumber: certificationNumber,
-        },
-        {},
-      )
-      .then(response => {
-        console.log('임시 비밀번호 발급 성공', response.data);
-        return response;
-      });
+    const response = await BASE_API.post(
+      '/api/v1/find-password',
+      {
+        phoneNumber: phoneNumber,
+        certificationNumber: certificationNumber,
+      },
+      {},
+    ).then(response => {
+      console.log('임시 비밀번호 발급 성공', response.data);
+      return response;
+    });
   } catch (error) {
     throw error;
   }

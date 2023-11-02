@@ -1,15 +1,11 @@
-import axios from 'axios';
-
-const axiosInstance = axios.create({
-  baseURL: 'https://dev.deunku.com',
-  withCredentials: true,
-});
+import {BASE_API} from '@/apis/common/CommonApi';
 
 /* 전화번호 중복확인 */
 export const PhoneNumberDuplicate = async (phoneNumber: string) => {
   try {
-    return axiosInstance
-      .get(`/api/v1/register/phone-number/duplicate?phoneNumber=${phoneNumber}`)
+    return BASE_API.get(
+      `/api/v1/register/phone-number/duplicate?phoneNumber=${phoneNumber}`,
+    )
       .then(response => {
         console.log('전화번호 중복 확인 성공', response.data);
         return response;
@@ -26,18 +22,16 @@ export const PhoneNumberDuplicate = async (phoneNumber: string) => {
 /* 인증번호 전송 */
 export const CertificationSend = async (phoneNumber: string) => {
   try {
-    const response = await axiosInstance
-      .post(
-        '/api/v1/register/phone-number/certification-number',
-        {
-          phoneNumber: phoneNumber,
-        },
-        {},
-      )
-      .then(response => {
-        console.log('인증번호 전송 성공', response.data);
-        return response;
-      });
+    const response = await BASE_API.post(
+      '/api/v1/register/phone-number/certification-number',
+      {
+        phoneNumber: phoneNumber,
+      },
+      {},
+    ).then(response => {
+      console.log('인증번호 전송 성공', response.data);
+      return response;
+    });
   } catch (error) {
     throw error;
   }
@@ -49,10 +43,9 @@ export const Certification = async (
   certificationNumber: Number,
 ) => {
   try {
-    return axiosInstance
-      .get(
-        `/api/v1/register/phone-number/certification-number?phoneNumber=${phoneNumber}&certificationNumber=${certificationNumber}`,
-      )
+    return BASE_API.get(
+      `/api/v1/register/phone-number/certification-number?phoneNumber=${phoneNumber}&certificationNumber=${certificationNumber}`,
+    )
       .then(response => {
         console.log('인증번호 확인 성공', response.data);
         return response;
@@ -73,20 +66,18 @@ export const IsSignup = async (
   password: string,
 ) => {
   try {
-    const response = await axiosInstance
-      .post(
-        '/api/v1/register',
-        {
-          realName: realName,
-          phoneNumber: phoneNumber,
-          password: password,
-        },
-        {},
-      )
-      .then(response => {
-        console.log('회원가입 성공', response.data);
-        return response;
-      });
+    const response = await BASE_API.post(
+      '/api/v1/register',
+      {
+        realName: realName,
+        phoneNumber: phoneNumber,
+        password: password,
+      },
+      {},
+    ).then(response => {
+      console.log('회원가입 성공', response.data);
+      return response;
+    });
   } catch (error) {
     throw error;
   }
