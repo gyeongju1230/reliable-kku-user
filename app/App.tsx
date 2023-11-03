@@ -1,6 +1,12 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
-import {NavigationContainer, useRoute} from '@react-navigation/native';
+import {
+  NavigationContainer,
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+  useRoute,
+} from '@react-navigation/native';
 import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
 import Signin from '@screens/Signin';
 import SignupTerms from '@screens/SignupTerms';
@@ -26,6 +32,7 @@ import OrderListClickImage from '@assets/icons/bottom-navigation/OrderListClick.
 import MypageUnClickImage from '@assets/icons/bottom-navigation/MypageUnClick.svg';
 import MypageClickImage from '@assets/icons/bottom-navigation/MypageClick.svg';
 import {RecoilRoot} from 'recoil';
+import {OrderDuplicate} from '@/apis/main/Main';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -63,6 +70,20 @@ function getTabBarIcon(routeName: string, focused: boolean) {
 
 function BottomTabs() {
   const route = useRoute();
+  const [hasActiveOrder, setHasActiveOrder] = useState(false);
+
+  useEffect(() => {
+    const handleOrderDuplicate = async () => {
+      try {
+        const result = await OrderDuplicate();
+        setHasActiveOrder(true);
+      } catch (error) {
+        console.error('현재 진행중인 주문이 없음', error);
+        setHasActiveOrder(false);
+      }
+    };
+    handleOrderDuplicate();
+  }, []);
 
   return (
     <Tab.Navigator
@@ -76,7 +97,15 @@ function BottomTabs() {
         },
       })}>
       <Tab.Screen name="홈" component={Home} />
-      <Tab.Screen name="주문" component={OrderPayment} />
+      {hasActiveOrder ? (
+        <Tab.Screen
+          name="주문"
+          component={OrderPayment}
+          options={{tabBarStyle: {display: 'none'}}}
+        />
+      ) : (
+        <Tab.Screen name="주문" component={Order} />
+      )}
       <Tab.Screen name="주문내역" component={OrderList} />
       <Tab.Screen name="My붕" component={Mypage} />
     </Tab.Navigator>
