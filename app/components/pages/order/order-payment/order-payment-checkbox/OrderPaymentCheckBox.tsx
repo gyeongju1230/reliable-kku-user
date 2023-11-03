@@ -1,8 +1,21 @@
+import React, {Dispatch, SetStateAction, useState} from 'react';
 import * as styles from '@components/pages/order/order-payment/order-payment-checkbox/OrderPaymentCheckBox.style';
 import CheckBoxImage from '@assets/images/order/CheckBox.svg';
+import UnCheckBoxImage from '@assets/images/order/UnCheckBox.svg';
 import {TouchableOpacity} from 'react-native';
 
-const OrderPaymentCheckBox = () => {
+interface OrderPaymentCheckBoxProps {
+  setCheck: Dispatch<SetStateAction<boolean>>;
+}
+const OrderPaymentCheckBox = ({setCheck}: OrderPaymentCheckBoxProps) => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const toggleCheckBox = () => {
+    const newValue = !isChecked;
+    setIsChecked(newValue);
+    setCheck(newValue);
+  };
+
   return (
     <styles.Box>
       <styles.CheckContainer>
@@ -13,9 +26,13 @@ const OrderPaymentCheckBox = () => {
             음식을 수령할 수 없습니다.
           </styles.CheckContentLine>
         </styles.CheckContent>
-        <TouchableOpacity>
+        <TouchableOpacity onPress={toggleCheckBox}>
           <styles.CheckBox>
-            <CheckBoxImage width={20} height={20} />
+            {isChecked ? (
+              <CheckBoxImage width={20} height={20} />
+            ) : (
+              <UnCheckBoxImage width={20} height={20} />
+            )}
           </styles.CheckBox>
         </TouchableOpacity>
       </styles.CheckContainer>

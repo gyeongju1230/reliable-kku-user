@@ -1,97 +1,130 @@
 import * as styles from '@components/pages/order/order-payment/order-payment-menu/OrderPaymentMenu.style';
-import {ScrollView, TouchableWithoutFeedback} from 'react-native';
-import {getBottomSpace} from 'react-native-iphone-x-helper';
+import {
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from 'react-native';
 import MinusImage from '@assets/images/order/MinusButton.svg';
 import PlusImage from '@assets/images/order/PlusButton.svg';
+import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 
-const bottomSpace = getBottomSpace();
-const OrderPaymentMenu = () => {
+interface Menu {
+  menuId: number;
+  imageUrl: string;
+  menuName: string;
+  description: string;
+  pricePerOne: number;
+  pricePerThree: number;
+}
+
+interface OrderPaymentMenuProps {
+  menuList: Menu[];
+  setOrderPrice: Dispatch<SetStateAction<string>>;
+  setOrderCount: Dispatch<SetStateAction<string>>;
+}
+
+const OrderPaymentMenu = ({
+  menuList,
+  setOrderPrice,
+  setOrderCount,
+}: OrderPaymentMenuProps) => {
+  const [quantity, setQuantity] = useState<{[key: number]: number}>({});
+
+  // 총 금액/총 수량
+  useEffect(() => {
+    let total = 0;
+    let count = 0;
+
+    quantity[1] = quantity[1] ? quantity[1] : 0;
+    quantity[2] = quantity[2] ? quantity[2] : 0;
+
+    let menuId1And2Price = 0;
+    menuId1And2Price =
+      Math.floor((quantity[1] + quantity[2]) / 3) * 2000 +
+      ((quantity[1] + quantity[2]) % 3) * 700;
+
+    menuList.forEach(menu => {
+      if ([1, 2].includes(menu.menuId)) {
+        return;
+      }
+
+      const orderedQuantity = quantity[menu.menuId] || 0;
+      const pricePerOne = menu.pricePerOne;
+      const pricePerThree = menu.pricePerThree;
+      let price = 0;
+
+      price =
+        Math.floor(orderedQuantity / 3) * pricePerThree +
+        (orderedQuantity % 3) * pricePerOne;
+
+      total += price;
+      count += orderedQuantity;
+    });
+
+    total += menuId1And2Price;
+    setOrderPrice(total.toString());
+    setOrderCount(count.toString());
+  }, [quantity, menuList, setOrderPrice, setOrderCount]);
+
+  // 붕어 카운트
+  const increaseQuantity = (menuId: number) => {
+    setQuantity(prev => ({
+      ...prev,
+      [menuId]: (prev[menuId] || 0) + 1,
+    }));
+  };
+
+  const decreaseQuantity = (menuId: number) => {
+    if (quantity[menuId] > 0) {
+      setQuantity(prev => ({
+        ...prev,
+        [menuId]: (prev[menuId] || 1) - 1,
+      }));
+    }
+  };
+
   return (
     <styles.Box>
       <TouchableWithoutFeedback>
         <ScrollView style={{flexGrow: 0}} showsVerticalScrollIndicator={false}>
-          <styles.MenuContainer>
-            <styles.ImageBox />
-            <styles.ContentContainer>
-              <styles.ContentBox>
-                <styles.Title>팥 붕어빵</styles.Title>
-                <styles.Content>
-                  머리부터 꼬리까지 꽉 찬 ‘.. 진짜 팥’
-                </styles.Content>
-              </styles.ContentBox>
-              <styles.PriceContainer>
-                <styles.PriceBox>
-                  <styles.Price>700</styles.Price>
-                  <styles.PriceContent>냥</styles.PriceContent>
-                </styles.PriceBox>
-                <styles.CountContainer>
-                  <styles.CountBox>
-                    <styles.CountMinusImageBox>
-                      <MinusImage width={7} height={19} />
-                    </styles.CountMinusImageBox>
-                    <styles.Count>1</styles.Count>
-                    <styles.CountPlusImageBox>
-                      <PlusImage width={11} height={19} />
-                    </styles.CountPlusImageBox>
-                  </styles.CountBox>
-                </styles.CountContainer>
-              </styles.PriceContainer>
-            </styles.ContentContainer>
-          </styles.MenuContainer>
-          <styles.MenuContainer>
-            <styles.ImageBox />
-            <styles.ContentContainer>
-              <styles.ContentBox>
-                <styles.Title>슈크림 붕어빵</styles.Title>
-                <styles.Content>붕어가 되고싶은 델리만쥬의 일탈</styles.Content>
-              </styles.ContentBox>
-              <styles.PriceContainer>
-                <styles.PriceBox>
-                  <styles.Price>700</styles.Price>
-                  <styles.PriceContent>냥</styles.PriceContent>
-                </styles.PriceBox>
-                <styles.CountContainer>
-                  <styles.CountBox>
-                    <styles.CountMinusImageBox>
-                      <MinusImage width={7} height={19} />
-                    </styles.CountMinusImageBox>
-                    <styles.Count>1</styles.Count>
-                    <styles.CountPlusImageBox>
-                      <PlusImage width={11} height={19} />
-                    </styles.CountPlusImageBox>
-                  </styles.CountBox>
-                </styles.CountContainer>
-              </styles.PriceContainer>
-            </styles.ContentContainer>
-          </styles.MenuContainer>
-          <styles.MenuContainer>
-            <styles.ImageBox />
-            <styles.ContentContainer>
-              <styles.ContentBox>
-                <styles.Title>누텔라 붕어빵</styles.Title>
-                <styles.Content>
-                  악마의 잼에 잡아먹혀 흑화된 붕어빵
-                </styles.Content>
-              </styles.ContentBox>
-              <styles.PriceContainer>
-                <styles.PriceBox>
-                  <styles.Price>1,000</styles.Price>
-                  <styles.PriceContent>냥</styles.PriceContent>
-                </styles.PriceBox>
-                <styles.CountContainer>
-                  <styles.CountBox>
-                    <styles.CountMinusImageBox>
-                      <MinusImage width={7} height={19} />
-                    </styles.CountMinusImageBox>
-                    <styles.Count>1</styles.Count>
-                    <styles.CountPlusImageBox>
-                      <PlusImage width={11} height={19} />
-                    </styles.CountPlusImageBox>
-                  </styles.CountBox>
-                </styles.CountContainer>
-              </styles.PriceContainer>
-            </styles.ContentContainer>
-          </styles.MenuContainer>
+          {menuList.map(menu => (
+            <styles.MenuContainer key={menu.menuId}>
+              <styles.ImageBox>
+                <Image source={{uri: menu.imageUrl}} alt="menuImage" />
+              </styles.ImageBox>
+              <styles.ContentContainer>
+                <styles.ContentBox>
+                  <styles.Title>{menu.menuName}</styles.Title>
+                  <styles.Content>{menu.description}</styles.Content>
+                </styles.ContentBox>
+                <styles.PriceContainer>
+                  <styles.PriceBox>
+                    <styles.Price>{menu.pricePerOne}</styles.Price>
+                    <styles.PriceContent>냥</styles.PriceContent>
+                  </styles.PriceBox>
+                  <styles.CountContainer>
+                    <styles.CountBox>
+                      <TouchableOpacity
+                        onPress={() => decreaseQuantity(menu.menuId)}>
+                        <styles.CountMinusImageBox>
+                          <MinusImage width={7} height={19} />
+                        </styles.CountMinusImageBox>
+                      </TouchableOpacity>
+                      <styles.Count>{quantity[menu.menuId] || 0}</styles.Count>
+                      <TouchableOpacity
+                        onPress={() => increaseQuantity(menu.menuId)}
+                        disabled={quantity[menu.menuId] === 30}>
+                        <styles.CountPlusImageBox>
+                          <PlusImage width={11} height={19} />
+                        </styles.CountPlusImageBox>
+                      </TouchableOpacity>
+                    </styles.CountBox>
+                  </styles.CountContainer>
+                </styles.PriceContainer>
+              </styles.ContentContainer>
+            </styles.MenuContainer>
+          ))}
         </ScrollView>
       </TouchableWithoutFeedback>
     </styles.Box>

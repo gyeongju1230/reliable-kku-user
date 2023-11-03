@@ -1,23 +1,44 @@
 import * as styles from '@components/pages/order/order-payment/order-payment-layout/OrderPaymentLayout.style';
 import BackButtonImage from '@assets/images/order/BackButton.svg';
-import {TouchableOpacity, View} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import {
   NavigationProp,
   ParamListBase,
   useNavigation,
 } from '@react-navigation/native';
-import MarginTop from '@components/common/MarginTop';
 import OrderPaymentMenu from '@components/pages/order/order-payment/order-payment-menu/OrderPaymentMenu';
 import OrderPaymentPriceButtonLayout from '@components/pages/order/order-payment/order-payment-price-button/order-payment-price-button-layout/OrderPaymentPriceButtonLayout';
-import {
-  OrderPaymentCheckBoxTop,
-  OrderPaymentMenuTop,
-  PaymentPriceButtonLayoutTop,
-} from '@components/pages/order/order-payment/order-payment-layout/OrderPaymentLayout.style';
 import OrderPaymentCheckBox from '@components/pages/order/order-payment/order-payment-checkbox/OrderPaymentCheckBox';
+import {useEffect, useState} from 'react';
+import {OrderMenuList} from '@/apis/order/Order';
+import {Certification} from '@/apis/auth/find-password/FindPassword';
+
+interface Menu {
+  menuId: number;
+  imageUrl: string;
+  menuName: string;
+  description: string;
+  pricePerOne: number;
+  pricePerThree: number;
+}
+
 const OrderPaymentLayout = () => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
+  const [check, setCheck] = useState(false);
+  const [menuList, setMenuList] = useState<Menu[]>([]);
+  const [orderPrice, setOrderPrice] = useState('');
+  const [orderCount, setOrderCount] = useState('');
 
+  useEffect(() => {
+    const fetchMenuList = async () => {
+      try {
+        const response = await OrderMenuList();
+        setMenuList(response);
+      } catch (error) {}
+    };
+
+    fetchMenuList();
+  }, []);
   return (
     <styles.Box>
       <styles.TitleContainer>
@@ -33,11 +54,19 @@ const OrderPaymentLayout = () => {
         </styles.TitleBox>
       </styles.TitleContainer>
       <styles.OrderPaymentMenuTop />
-      <OrderPaymentMenu />
+      <OrderPaymentMenu
+        menuList={menuList}
+        setOrderPrice={setOrderPrice}
+        setOrderCount={setOrderCount}
+      />
       <styles.OrderPaymentCheckBoxTop />
-      <OrderPaymentCheckBox />
+      <OrderPaymentCheckBox setCheck={setCheck} />
       <styles.PaymentPriceButtonLayoutTop />
-      <OrderPaymentPriceButtonLayout />
+      <OrderPaymentPriceButtonLayout
+        check={check}
+        orderPrice={orderPrice}
+        orderCount={orderCount}
+      />
     </styles.Box>
   );
 };

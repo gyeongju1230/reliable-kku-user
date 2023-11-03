@@ -4,13 +4,22 @@ import OrderPaymentButton from '@components/pages/order/order-payment/order-paym
 import {View} from 'react-native';
 import {OrderPaymentButtonTop} from '@components/pages/order/order-payment/order-payment-price-button/order-payment-price-button-layout/OrderPaymentPriceButtonLayout.style';
 
-const OrderPaymentPriceButtonLayout = () => {
+interface OrderPaymentPriceButtonLayoutProps {
+  check: boolean;
+  orderPrice: string;
+  orderCount: string;
+}
+const OrderPaymentPriceButtonLayout = ({
+  check,
+  orderPrice,
+  orderCount,
+}: OrderPaymentPriceButtonLayoutProps) => {
   return (
     <styles.Box>
       <styles.OrderPaymentPriceTop />
-      <OrderPaymentPrice />
+      <OrderPaymentPrice orderPrice={orderPrice} orderCount={orderCount} />
       <styles.OrderPaymentButtonTop />
-      <OrderPaymentButton />
+      <OrderPaymentButton check={check} />
     </styles.Box>
   );
 };

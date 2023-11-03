@@ -17,7 +17,7 @@ export const MenuContainer = styled.View`
   border-bottom-color: rgba(0, 0, 0, 0.3);
 `;
 
-export const ImageBox = styled.View`
+export const ImageBox = styled.Text`
   width: 112px;
   height: 110px;
   border-radius: 12px;
@@ -100,11 +100,13 @@ export const CountBox = styled.View`
 export const CountMinusImageBox = styled.View`
   width: 7px;
   height: 19px;
+  background: violet;
 `;
 
 export const CountPlusImageBox = styled.View`
   width: 11px;
   height: 19px;
+  background: violet;
 `;
 
 export const Count = styled.Text`

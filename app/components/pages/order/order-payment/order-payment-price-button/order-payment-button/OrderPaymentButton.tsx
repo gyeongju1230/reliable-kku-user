@@ -6,11 +6,21 @@ import {
   useNavigation,
 } from '@react-navigation/native';
 
-const OrderPaymentButton = () => {
+interface OrderPaymentButton {
+  check: boolean;
+}
+
+const OrderPaymentButton = ({check}: OrderPaymentButton) => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 
+  const handlePress = () => {
+    if (check) {
+      navigation.navigate('Webview');
+    }
+  };
+
   return (
-    <TouchableOpacity onPress={() => navigation.navigate('Webview')}>
+    <TouchableOpacity onPress={handlePress} disabled={!check}>
       <styles.Box>
         <styles.Content>주문하기</styles.Content>
       </styles.Box>
