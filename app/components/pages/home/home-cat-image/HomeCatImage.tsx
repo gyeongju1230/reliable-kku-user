@@ -3,9 +3,13 @@ import Cheese1 from '@assets/images/home/CheeseCat1.svg';
 import Chocolate1 from '@assets/images/home/ChocolateCat1.svg';
 import Redbean1 from '@assets/images/home/RedbeanCat1.svg';
 import {useEffect, useState} from 'react';
+import {TouchableOpacity} from 'react-native';
+import RefreshImage from '@assets/images/home/Refresh.svg';
+import {LeftTime} from '@/apis/main/Main';
 
 const HomeCatImage = () => {
   const [moveLeftRight, setMoveLeftRight] = useState('-15deg');
+  const [time, setTime] = useState<number>(0);
 
   const move = () => {
     moveLeftRight === '15deg'
@@ -20,6 +24,17 @@ const HomeCatImage = () => {
 
     return () => clearTimeout(timer);
   }, [moveLeftRight]);
+
+  const handleRefresh = async () => {
+    try {
+      const response = await LeftTime();
+      setTime(response.leftMinutes);
+    } catch (error) {}
+  };
+
+  useEffect(() => {
+    handleRefresh();
+  }, []);
 
   return (
     <styles.Box>
@@ -54,6 +69,23 @@ const HomeCatImage = () => {
           transform: [{rotate: moveLeftRight}],
         }}
       />
+      <styles.TimeBox>
+        <TouchableOpacity
+          onPress={handleRefresh}
+          style={{
+            position: 'absolute',
+            marginTop: '9%',
+            left: '11%',
+            zIndex: 2000,
+            transform: [{rotate: '360deg'}],
+          }}>
+          <RefreshImage width={16} height={16} />
+        </TouchableOpacity>
+        <styles.TimeBoxContent numberOfLines={2}>
+          지금 붕어빵{'\n'}주문하면?
+        </styles.TimeBoxContent>
+        <styles.TimeBoxTime>{time}분</styles.TimeBoxTime>
+      </styles.TimeBox>
     </styles.Box>
   );
 };
