@@ -58,6 +58,7 @@ export const OrderDate = styled.View`
 export const OrderDateContentBold = styled.Text`
   width: 26px;
   height: 24px;
+  text-align: center;
   color: #7c6026;
   font-size: ${Font.Size.XXL};
   font-weight: 600;
@@ -94,6 +95,7 @@ export const OrderPrice = styled.Text`
 export const OrderTime = styled.Text`
   width: 58px;
   height: 12px;
+  right: 15px;
   text-align: right;
   color: rgba(0, 0, 0, 0.3);
   font-size: ${Font.Size.S};
