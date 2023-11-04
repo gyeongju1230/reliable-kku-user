@@ -78,7 +78,6 @@ function BottomTabs() {
         const result = await OrderDuplicate();
         setHasActiveOrder(true);
       } catch (error) {
-        console.error('현재 진행중인 주문이 없음', error);
         setHasActiveOrder(false);
       }
     };
