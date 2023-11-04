@@ -8,6 +8,7 @@ import {
 import MinusImage from '@assets/images/order/MinusButton.svg';
 import PlusImage from '@assets/images/order/PlusButton.svg';
 import {Dispatch, SetStateAction, useEffect, useState} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 interface Menu {
   menuId: number;
@@ -75,6 +76,7 @@ const OrderPaymentMenu = ({
       ...prev,
       [menuId]: (prev[menuId] || 0) + 1,
     }));
+    saveMenuDataToStorage(menuId, quantity[menuId] + 1);
   };
 
   const decreaseQuantity = (menuId: number) => {
@@ -83,6 +85,32 @@ const OrderPaymentMenu = ({
         ...prev,
         [menuId]: (prev[menuId] || 1) - 1,
       }));
+      saveMenuDataToStorage(menuId, quantity[menuId] - 1);
+    }
+  };
+
+  const saveMenuDataToStorage = async (menuId: number, count: number) => {
+    try {
+      const storedData = await AsyncStorage.getItem('registeredMenus');
+      let registeredMenus = storedData ? JSON.parse(storedData) : [];
+
+      const index = registeredMenus.findIndex(
+        (item: {menuId: number}) => item.menuId === menuId,
+      );
+
+      if (index !== -1) {
+        registeredMenus[index].count = count;
+      } else {
+        registeredMenus.push({menuId, count});
+      }
+
+      await AsyncStorage.setItem(
+        'registeredMenus',
+        JSON.stringify(registeredMenus),
+      );
+      console.log('각 메뉴 ID와 개수를 저장: ', registeredMenus);
+    } catch (error) {
+      console.error('Error:', error);
     }
   };
 

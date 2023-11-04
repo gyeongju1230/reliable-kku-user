@@ -1,5 +1,6 @@
 import * as styles from '@components/pages/order/order-payment/order-payment-price-button/order-payment-price/OrderPaymentPrice.style';
 import {Dispatch, SetStateAction, useEffect} from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const NumberWithComma = (data: string) => {
   return String(data).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
@@ -23,6 +24,15 @@ const OrderPaymentPrice = ({
     } else {
       setCountCheck(false);
     }
+
+    // 총 가격 AsyncStorage 에 저장
+    AsyncStorage.setItem('orderPrice', orderPrice)
+      .then(() => {
+        console.log('orderPrice save: ', orderPrice);
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
   }, [orderCount, setCountCheck]);
 
   return (
