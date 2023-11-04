@@ -39,6 +39,8 @@ const OrderPaymentMenu = ({
     quantity[1] = quantity[1] ? quantity[1] : 0;
     quantity[2] = quantity[2] ? quantity[2] : 0;
 
+    count += quantity[1] + quantity[2];
+
     let menuId1And2Price = 0;
     menuId1And2Price =
       Math.floor((quantity[1] + quantity[2]) / 3) * 2000 +

@@ -100,13 +100,11 @@ export const CountBox = styled.View`
 export const CountMinusImageBox = styled.View`
   width: 7px;
   height: 19px;
-  background: violet;
 `;
 
 export const CountPlusImageBox = styled.View`
   width: 11px;
   height: 19px;
-  background: violet;
 `;
 
 export const Count = styled.Text`

@@ -1,4 +1,5 @@
 import * as styles from '@components/pages/order/order-payment/order-payment-price-button/order-payment-price/OrderPaymentPrice.style';
+import {Dispatch, SetStateAction, useEffect} from 'react';
 
 const NumberWithComma = (data: string) => {
   return String(data).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
@@ -7,9 +8,22 @@ const NumberWithComma = (data: string) => {
 interface OrderPaymentProps {
   orderPrice: string;
   orderCount: string;
+  setCountCheck: Dispatch<SetStateAction<boolean>>;
 }
-const OrderPaymentPrice = ({orderPrice, orderCount}: OrderPaymentProps) => {
+const OrderPaymentPrice = ({
+  orderPrice,
+  orderCount,
+  setCountCheck,
+}: OrderPaymentProps) => {
   const formattedPrice = NumberWithComma(orderPrice);
+
+  useEffect(() => {
+    if (parseInt(orderCount) >= 1 && parseInt(orderCount) <= 30) {
+      setCountCheck(true);
+    } else {
+      setCountCheck(false);
+    }
+  }, [orderCount, setCountCheck]);
 
   return (
     <styles.Box>

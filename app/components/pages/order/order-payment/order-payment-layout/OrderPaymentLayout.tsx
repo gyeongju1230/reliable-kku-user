@@ -11,7 +11,6 @@ import OrderPaymentPriceButtonLayout from '@components/pages/order/order-payment
 import OrderPaymentCheckBox from '@components/pages/order/order-payment/order-payment-checkbox/OrderPaymentCheckBox';
 import {useEffect, useState} from 'react';
 import {OrderMenuList} from '@/apis/order/Order';
-import {Certification} from '@/apis/auth/find-password/FindPassword';
 
 interface Menu {
   menuId: number;
@@ -39,6 +38,7 @@ const OrderPaymentLayout = () => {
 
     fetchMenuList();
   }, []);
+
   return (
     <styles.Box>
       <styles.TitleContainer>

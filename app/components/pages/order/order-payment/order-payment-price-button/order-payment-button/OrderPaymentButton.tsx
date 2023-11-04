@@ -8,10 +8,12 @@ import {
 
 interface OrderPaymentButton {
   check: boolean;
+  countCheck: boolean;
 }
 
-const OrderPaymentButton = ({check}: OrderPaymentButton) => {
+const OrderPaymentButton = ({check, countCheck}: OrderPaymentButton) => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
+  const isDisabled = !check || !countCheck;
 
   const handlePress = () => {
     if (check) {
@@ -20,7 +22,7 @@ const OrderPaymentButton = ({check}: OrderPaymentButton) => {
   };
 
   return (
-    <TouchableOpacity onPress={handlePress} disabled={!check}>
+    <TouchableOpacity onPress={handlePress} disabled={isDisabled}>
       <styles.Box>
         <styles.Content>주문하기</styles.Content>
       </styles.Box>
