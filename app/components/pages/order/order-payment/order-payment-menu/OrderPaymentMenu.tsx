@@ -9,6 +9,7 @@ import MinusImage from '@assets/images/order/MinusButton.svg';
 import PlusImage from '@assets/images/order/PlusButton.svg';
 import {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Soldout from '@assets/images/order/SoldOut.svg';
 
 interface Menu {
   menuId: number;
@@ -17,6 +18,7 @@ interface Menu {
   description: string;
   pricePerOne: number;
   pricePerThree: number;
+  isSale: boolean;
 }
 
 interface OrderPaymentMenuProps {
@@ -35,7 +37,7 @@ const OrderPaymentMenu = ({
   const clearAsyncStorage = async () => {
     try {
       await AsyncStorage.removeItem('registeredMenus');
-      console.log('AsyncStorage의 값을 지운당: ');
+      console.log('AsyncStorage의 registeredMenus 값을 지움');
     } catch (error) {}
   };
   useEffect(() => {
@@ -123,6 +125,7 @@ const OrderPaymentMenu = ({
             <styles.MenuContainer key={menu.menuId}>
               <styles.ImageBox>
                 <Image source={{uri: menu.imageUrl}} alt="menuImage" />
+                {menu.isSale && <Soldout width={60} height={68} />}
               </styles.ImageBox>
               <styles.ContentContainer>
                 <styles.ContentBox>

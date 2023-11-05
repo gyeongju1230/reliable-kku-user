@@ -19,6 +19,7 @@ interface Menu {
   description: string;
   pricePerOne: number;
   pricePerThree: number;
+  isSale: boolean;
 }
 
 const OrderPaymentLayout = () => {
