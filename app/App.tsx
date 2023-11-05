@@ -33,6 +33,7 @@ import MypageUnClickImage from '@assets/icons/bottom-navigation/MypageUnClick.sv
 import MypageClickImage from '@assets/icons/bottom-navigation/MypageClick.svg';
 import {RecoilRoot} from 'recoil';
 import {OrderDuplicate} from '@/apis/main/Main';
+import {StoresOpenClosed} from '@/apis/order/Order';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -73,15 +74,15 @@ function BottomTabs() {
   const [hasActiveOrder, setHasActiveOrder] = useState(false);
 
   useEffect(() => {
-    const handleOrderDuplicate = async () => {
-      try {
-        const result = await OrderDuplicate();
+    OrderDuplicate()
+      .then(response => {
         setHasActiveOrder(true);
-      } catch (error) {
+        console.log('>>>>>>>>>현재 진행중인 주문 있음', response);
+      })
+      .catch(error => {
+        console.error('Error', error);
         setHasActiveOrder(false);
-      }
-    };
-    handleOrderDuplicate();
+      });
   }, []);
 
   return (
@@ -95,18 +96,30 @@ function BottomTabs() {
           borderTopRightRadius: 6,
         },
       })}>
-      <Tab.Screen name="홈" component={Home} />
-      {hasActiveOrder ? (
+      <Tab.Screen name="홈" component={Home} options={{unmountOnBlur: true}} />
+      {!hasActiveOrder ? (
         <Tab.Screen
           name="주문"
           component={OrderPayment}
-          options={{tabBarStyle: {display: 'none'}}}
+          options={{tabBarStyle: {display: 'none'}, unmountOnBlur: true}}
         />
       ) : (
-        <Tab.Screen name="주문" component={Order} />
+        <Tab.Screen
+          name="주문"
+          component={Order}
+          options={{unmountOnBlur: true}}
+        />
       )}
-      <Tab.Screen name="주문내역" component={OrderList} />
-      <Tab.Screen name="My붕" component={Mypage} />
+      <Tab.Screen
+        name="주문내역"
+        component={OrderList}
+        options={{unmountOnBlur: true}}
+      />
+      <Tab.Screen
+        name="My붕"
+        component={Mypage}
+        options={{unmountOnBlur: true}}
+      />
     </Tab.Navigator>
   );
 }
