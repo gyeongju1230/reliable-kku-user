@@ -11,6 +11,7 @@ interface OrderPaymentProps {
   orderCount: string;
   setCountCheck: Dispatch<SetStateAction<boolean>>;
 }
+
 const OrderPaymentPrice = ({
   orderPrice,
   orderCount,
@@ -25,15 +26,19 @@ const OrderPaymentPrice = ({
       setCountCheck(false);
     }
 
-    // 총 가격 AsyncStorage 에 저장
-    AsyncStorage.setItem('orderPrice', orderPrice)
-      .then(() => {
-        console.log('orderPrice save: ', orderPrice);
-      })
-      .catch(error => {
-        console.error('Error:', error);
-      });
-  }, [orderCount, setCountCheck]);
+    const storeOrderPrice = async () => {
+      try {
+        if (orderPrice !== null) {
+          await AsyncStorage.setItem('orderPrice', orderPrice);
+          console.log('붕어의 총 가격: ', orderPrice);
+        } else {
+          await AsyncStorage.setItem('orderPrice', ' ');
+        }
+      } catch (error) {}
+    };
+
+    storeOrderPrice();
+  }, [orderCount, setCountCheck, orderPrice]);
 
   return (
     <styles.Box>

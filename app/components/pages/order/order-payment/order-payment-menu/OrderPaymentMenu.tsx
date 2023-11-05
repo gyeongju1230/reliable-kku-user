@@ -32,6 +32,16 @@ const OrderPaymentMenu = ({
 }: OrderPaymentMenuProps) => {
   const [quantity, setQuantity] = useState<{[key: number]: number}>({});
 
+  const clearAsyncStorage = async () => {
+    try {
+      await AsyncStorage.removeItem('registeredMenus');
+      console.log('AsyncStorage의 값을 지운당: ');
+    } catch (error) {}
+  };
+  useEffect(() => {
+    clearAsyncStorage();
+  }, []);
+
   // 총 금액/총 수량
   useEffect(() => {
     let total = 0;
@@ -65,6 +75,24 @@ const OrderPaymentMenu = ({
       count += orderedQuantity;
     });
 
+    const filteredQuantity = Object.entries(quantity)
+      .filter(([key, value]) => value > 0)
+      .reduce<{menuId: number; count: number}[]>((acc, [key, value]) => {
+        acc.push({menuId: parseInt(key), count: value} as {
+          menuId: number;
+          count: number;
+        });
+        return acc;
+      }, []);
+
+    AsyncStorage.setItem('registeredMenus', JSON.stringify(filteredQuantity))
+      .then(() =>
+        console.log('메뉴 별 menuId 와 count 저장: ', filteredQuantity),
+      )
+      .catch(error =>
+        console.error('메뉴 별 menuId 와 count 저장 실패:', error),
+      );
+
     total += menuId1And2Price;
     setOrderPrice(total.toString());
     setOrderCount(count.toString());
@@ -76,7 +104,6 @@ const OrderPaymentMenu = ({
       ...prev,
       [menuId]: (prev[menuId] || 0) + 1,
     }));
-    saveMenuDataToStorage(menuId, quantity[menuId] + 1);
   };
 
   const decreaseQuantity = (menuId: number) => {
@@ -85,32 +112,6 @@ const OrderPaymentMenu = ({
         ...prev,
         [menuId]: (prev[menuId] || 1) - 1,
       }));
-      saveMenuDataToStorage(menuId, quantity[menuId] - 1);
-    }
-  };
-
-  const saveMenuDataToStorage = async (menuId: number, count: number) => {
-    try {
-      const storedData = await AsyncStorage.getItem('registeredMenus');
-      let registeredMenus = storedData ? JSON.parse(storedData) : [];
-
-      const index = registeredMenus.findIndex(
-        (item: {menuId: number}) => item.menuId === menuId,
-      );
-
-      if (index !== -1) {
-        registeredMenus[index].count = count;
-      } else {
-        registeredMenus.push({menuId, count});
-      }
-
-      await AsyncStorage.setItem(
-        'registeredMenus',
-        JSON.stringify(registeredMenus),
-      );
-      console.log('각 메뉴 ID와 개수를 저장: ', registeredMenus);
-    } catch (error) {
-      console.error('Error:', error);
     }
   };
 
