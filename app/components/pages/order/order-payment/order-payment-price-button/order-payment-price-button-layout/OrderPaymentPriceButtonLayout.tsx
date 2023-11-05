@@ -7,11 +7,13 @@ interface OrderPaymentPriceButtonLayoutProps {
   check: boolean;
   orderPrice: string;
   orderCount: string;
+  isopen: boolean;
 }
 const OrderPaymentPriceButtonLayout = ({
   check,
   orderPrice,
   orderCount,
+  isopen,
 }: OrderPaymentPriceButtonLayoutProps) => {
   const [countCheck, setCountCheck] = useState(false);
 
@@ -24,7 +26,11 @@ const OrderPaymentPriceButtonLayout = ({
         setCountCheck={setCountCheck}
       />
       <styles.OrderPaymentButtonTop />
-      <OrderPaymentButton check={check} countCheck={countCheck} />
+      <OrderPaymentButton
+        check={check}
+        countCheck={countCheck}
+        isopen={isopen}
+      />
     </styles.Box>
   );
 };

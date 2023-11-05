@@ -23,12 +23,14 @@ interface Menu {
 
 interface OrderPaymentMenuProps {
   menuList: Menu[];
+  isopen: boolean;
   setOrderPrice: Dispatch<SetStateAction<string>>;
   setOrderCount: Dispatch<SetStateAction<string>>;
 }
 
 const OrderPaymentMenu = ({
   menuList,
+  isopen,
   setOrderPrice,
   setOrderCount,
 }: OrderPaymentMenuProps) => {
@@ -107,7 +109,7 @@ const OrderPaymentMenu = ({
       [menuId]: (prev[menuId] || 0) + 1,
     }));
   };
-
+  console.log('isOpened>>>>>', isopen);
   const decreaseQuantity = (menuId: number) => {
     if (quantity[menuId] > 0) {
       setQuantity(prev => ({
@@ -125,7 +127,8 @@ const OrderPaymentMenu = ({
             <styles.MenuContainer key={menu.menuId}>
               <styles.ImageBox>
                 <Image source={{uri: menu.imageUrl}} alt="menuImage" />
-                {menu.isSale && <Soldout width={60} height={68} />}
+                {!menu.isSale && isopen && <Soldout width={60} height={68} />}
+                {!isopen && <Soldout width={60} height={68} />}
               </styles.ImageBox>
               <styles.ContentContainer>
                 <styles.ContentBox>
@@ -140,7 +143,8 @@ const OrderPaymentMenu = ({
                   <styles.CountContainer>
                     <styles.CountBox>
                       <TouchableOpacity
-                        onPress={() => decreaseQuantity(menu.menuId)}>
+                        onPress={() => decreaseQuantity(menu.menuId)}
+                        disabled={!menu.isSale || !isopen}>
                         <styles.CountMinusImageBox>
                           <MinusImage width={7} height={19} />
                         </styles.CountMinusImageBox>
@@ -148,7 +152,11 @@ const OrderPaymentMenu = ({
                       <styles.Count>{quantity[menu.menuId] || 0}</styles.Count>
                       <TouchableOpacity
                         onPress={() => increaseQuantity(menu.menuId)}
-                        disabled={quantity[menu.menuId] === 30}>
+                        disabled={
+                          !menu.isSale ||
+                          !isopen ||
+                          quantity[menu.menuId] === 30
+                        }>
                         <styles.CountPlusImageBox>
                           <PlusImage width={11} height={19} />
                         </styles.CountPlusImageBox>

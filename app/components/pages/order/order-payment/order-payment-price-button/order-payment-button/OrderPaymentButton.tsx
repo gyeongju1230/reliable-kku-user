@@ -9,11 +9,16 @@ import {
 interface OrderPaymentButton {
   check: boolean;
   countCheck: boolean;
+  isopen: boolean;
 }
 
-const OrderPaymentButton = ({check, countCheck}: OrderPaymentButton) => {
+const OrderPaymentButton = ({
+  check,
+  countCheck,
+  isopen,
+}: OrderPaymentButton) => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
-  const isDisabled = !check || !countCheck;
+  const isDisabled = !check || !countCheck || !isopen;
 
   const handlePress = () => {
     if (check) {

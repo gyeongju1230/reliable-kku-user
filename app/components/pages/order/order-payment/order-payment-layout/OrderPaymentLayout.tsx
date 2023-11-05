@@ -10,7 +10,8 @@ import OrderPaymentMenu from '@components/pages/order/order-payment/order-paymen
 import OrderPaymentPriceButtonLayout from '@components/pages/order/order-payment/order-payment-price-button/order-payment-price-button-layout/OrderPaymentPriceButtonLayout';
 import OrderPaymentCheckBox from '@components/pages/order/order-payment/order-payment-checkbox/OrderPaymentCheckBox';
 import {useEffect, useState} from 'react';
-import {OrderMenuList} from '@/apis/order/Order';
+import {OrderMenuList, StoresOpenClosed} from '@/apis/order/Order';
+import {MypageMember} from '@/apis/Mypage/Mypage';
 
 interface Menu {
   menuId: number;
@@ -26,6 +27,7 @@ const OrderPaymentLayout = () => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
   const [check, setCheck] = useState(false);
   const [menuList, setMenuList] = useState<Menu[]>([]);
+  const [isopen, setIsopen] = useState(false);
   const [orderPrice, setOrderPrice] = useState('');
   const [orderCount, setOrderCount] = useState('');
 
@@ -36,6 +38,14 @@ const OrderPaymentLayout = () => {
         setMenuList(response);
       } catch (error) {}
     };
+
+    StoresOpenClosed()
+      .then(response => {
+        setIsopen(response.isOpened);
+      })
+      .catch(error => {
+        console.error('Error', error);
+      });
 
     fetchMenuList();
   }, []);
@@ -57,6 +67,7 @@ const OrderPaymentLayout = () => {
       <styles.OrderPaymentMenuTop />
       <OrderPaymentMenu
         menuList={menuList}
+        isopen={isopen}
         setOrderPrice={setOrderPrice}
         setOrderCount={setOrderCount}
       />
@@ -67,6 +78,7 @@ const OrderPaymentLayout = () => {
         check={check}
         orderPrice={orderPrice}
         orderCount={orderCount}
+        isopen={isopen}
       />
     </styles.Box>
   );
