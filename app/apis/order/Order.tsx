@@ -1,5 +1,7 @@
 import {BASE_API} from '@/apis/common/CommonApi';
 import {err} from 'react-native-svg/lib/typescript/xml';
+import {useNavigation} from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 /* 메뉴 리스트 반환 */
 export const OrderMenuList = async () => {
@@ -47,6 +49,26 @@ export const PaymentConfirm = async (
       console.log('결제승인 성공', response.data);
       return response;
     });
+  } catch (error) {
+    throw error;
+  }
+};
+
+/* 주문 저장 */
+export const OrderSave = async (
+  tossOrderId: string,
+  orderPrice: number,
+  registeredMenus: Array<{count: number; menuId: number}>,
+) => {
+  try {
+    const response = await BASE_API.post('/api/v1/order', {
+      tossOrderId: tossOrderId,
+      orderPrice: orderPrice,
+      registeredMenus: registeredMenus,
+    });
+    await AsyncStorage.setItem('orderId', response.data.id.toString());
+
+    return response.data.id;
   } catch (error) {
     throw error;
   }

@@ -24,8 +24,9 @@ import {
   ParamListBase,
   useNavigation,
 } from '@react-navigation/native';
-import {PaymentConfirm} from '@/apis/order/Order';
+import {OrderSave, PaymentConfirm} from '@/apis/order/Order';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {Signin} from '@/apis/auth/signin/Signin';
 
 const Webview = () => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
@@ -65,6 +66,7 @@ const Webview = () => {
 };
 
 function CheckoutPage() {
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
   const paymentWidgetControl = usePaymentWidget();
   const [paymentMethodWidgetControl, setPaymentMethodWidgetControl] =
     useState<PaymentMethodWidgetControl | null>(null);
@@ -79,9 +81,22 @@ function CheckoutPage() {
       const priceValue = orderPrice || '';
       setPrice(priceValue);
     };
-
     fetchOrderPrice();
   }, []);
+
+  const fetchRegisteredMenus = async () => {
+    try {
+      const registeredMenus = await AsyncStorage.getItem('registeredMenus');
+      if (registeredMenus) {
+        const parsedMenus = JSON.parse(registeredMenus);
+        if (Array.isArray(parsedMenus) && parsedMenus.length > 0) {
+          await OrderSave(orderId.toString(), parseInt(price), parsedMenus);
+          await AsyncStorage.setItem('OrderTrue', 'true');
+          navigation.navigate('Order');
+        }
+      }
+    } catch (error) {}
+  };
 
   return (
     <View style={{flex: 1}}>
@@ -141,6 +156,7 @@ function CheckoutPage() {
                     orderId.toString(),
                     parseInt(price),
                   );
+                  fetchRegisteredMenus();
                 }
               } catch (error) {
                 console.error('결제승인 실패', error);
