@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {
   NavigationContainer,
   NavigationProp,
   ParamListBase,
+  useFocusEffect,
   useNavigation,
   useRoute,
 } from '@react-navigation/native';
@@ -52,6 +53,12 @@ function getTabBarIcon(routeName: string, focused: boolean) {
       ) : (
         <OrderUnClickImage width={24} height={24} />
       );
+    case '주문현황':
+      return focused ? (
+        <OrderClickImage width={24} height={24} />
+      ) : (
+        <OrderUnClickImage width={24} height={24} />
+      );
     case '주문내역':
       return focused ? (
         <OrderListClickImage width={22} height={22} />
@@ -73,17 +80,19 @@ function BottomTabs() {
   const route = useRoute();
   const [hasActiveOrder, setHasActiveOrder] = useState(false);
 
-  useEffect(() => {
-    OrderDuplicate()
-      .then(response => {
-        setHasActiveOrder(true);
-        console.log('>>>>>>>>>현재 진행중인 주문 있음', response);
-      })
-      .catch(error => {
-        console.error('Error', error);
-        setHasActiveOrder(false);
-      });
-  }, []);
+  useFocusEffect(
+    useCallback(() => {
+      OrderDuplicate()
+        .then(response => {
+          setHasActiveOrder(true);
+          console.log('현재 진행중인 주문이 있음');
+        })
+        .catch(error => {
+          console.log('현재 진행중인 주문이 없음');
+          setHasActiveOrder(false);
+        });
+    }, []),
+  );
 
   return (
     <Tab.Navigator
@@ -97,15 +106,16 @@ function BottomTabs() {
         },
       })}>
       <Tab.Screen name="홈" component={Home} options={{unmountOnBlur: true}} />
-      {!hasActiveOrder ? (
+      {!hasActiveOrder && (
         <Tab.Screen
           name="주문"
           component={OrderPayment}
           options={{tabBarStyle: {display: 'none'}, unmountOnBlur: true}}
         />
-      ) : (
+      )}
+      {hasActiveOrder && (
         <Tab.Screen
-          name="주문"
+          name="주문현황"
           component={Order}
           options={{unmountOnBlur: true}}
         />
@@ -140,6 +150,7 @@ function App() {
             <Stack.Screen name="ChangePassword" component={ChangePassword} />
             <Stack.Screen name="BottomTabs" component={BottomTabs} />
             <Stack.Screen name="OrderPayment" component={OrderPayment} />
+            <Stack.Screen name="Order" component={Order} />
             <Stack.Screen name="Webview" component={Webview} />
           </Stack.Navigator>
         </NavigationContainer>
