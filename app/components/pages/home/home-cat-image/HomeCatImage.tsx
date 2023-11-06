@@ -36,6 +36,14 @@ const HomeCatImage = () => {
     handleRefresh();
   }, []);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleRefresh();
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <styles.Box>
       <Cheese1
