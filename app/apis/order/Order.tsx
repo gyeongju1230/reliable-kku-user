@@ -73,3 +73,12 @@ export const OrderSave = async (
     throw error;
   }
 };
+
+/* 주문 취소 */
+export const OrderCanceled = (orderId: number) =>
+  BASE_API.delete(`/api/v1/order/${orderId}`, {})
+    .then(response => response.data)
+    .catch(error => {
+      console.log('주문취소 실패: ', error.response.data);
+      throw error;
+    });

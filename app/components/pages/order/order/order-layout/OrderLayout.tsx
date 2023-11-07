@@ -4,7 +4,7 @@ import OrderReceiptContent from '@components/pages/order/order/order-content/ord
 import OrderCompleteContent from '@components/pages/order/order/order-content/order-complete-content/OrderCompleteContent';
 import OrderCompletePickupContent from '@components/pages/order/order/order-content/order-complete-content/order-complete-pickup-content/OrderCompletePickupContent';
 import OrderList from '@components/pages/order/order/order-list/OrderList';
-import {Modal, TouchableOpacity} from 'react-native';
+import {TouchableOpacity} from 'react-native';
 import CloseButton from '@assets/icons/common/CloseButton.svg';
 import {
   NavigationProp,
@@ -12,7 +12,7 @@ import {
   useNavigation,
 } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import EventSource, {EventSourceListener} from 'react-native-sse';
 
 interface SSEProps {
@@ -30,7 +30,6 @@ const OrderLayout = () => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
   const [orderTrue, setOrderTrue] = useState(false);
   const [orderId, setOrderId] = useState('');
-
   const [orderStatus, setOrderStatus] = useState<
     'WAIT' | 'COOKING' | 'PICKUP' | 'FINISH' | 'CANCELED' | 'NOT_TAKE'
   >('WAIT');
@@ -47,7 +46,6 @@ const OrderLayout = () => {
     });
 
     AsyncStorage.getItem('orderId').then(id => {
-      console.log('AsyncStorage orderId: ', id);
       if (id) {
         setOrderId(id);
       }
@@ -71,14 +69,11 @@ const OrderLayout = () => {
     if (es.current && orderId) {
       const listener: EventSourceListener = event => {
         if (event.type === 'open') {
-          console.log('Open SSE connection.');
         } else if (event.type === 'message') {
           let data: SSEProps;
 
           if (event.data != null) {
             data = JSON.parse(event.data);
-            console.log(data.orderStatus);
-            console.log(data.leftMinutes);
 
             setOrderStatus(data.orderStatus);
             setLeftMinutes(data.leftMinutes);
@@ -101,6 +96,12 @@ const OrderLayout = () => {
     }
   }, [orderId]);
 
+  useEffect(() => {
+    if (orderStatus === 'CANCELED' || orderStatus === 'NOT_TAKE') {
+      navigation.navigate('홈');
+    }
+  }, [orderStatus, navigation]);
+
   const renderContentBasedOnOrderStatus = () => {
     switch (orderStatus) {
       case 'WAIT':
@@ -111,10 +112,6 @@ const OrderLayout = () => {
         return <OrderCompleteContent />;
       case 'FINISH':
         return <OrderCompletePickupContent />;
-      case 'CANCELED':
-      case 'NOT_TAKE':
-        navigation.navigate('홈');
-        break;
       default:
         return null;
     }

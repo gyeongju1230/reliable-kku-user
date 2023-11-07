@@ -62,3 +62,62 @@ export const ButtonContent = styled.Text`
   font-size: ${Font.Size.XL};
   font-weight: 600;
 `;
+
+export const OrderCanceledModalContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  background: #0000004d;
+`;
+
+export const OrderCanceledModalBox = styled.View`
+  width: 260px;
+  height: 110px;
+  align-self: center;
+  border-radius: 6px;
+  background: #fff;
+`;
+
+export const CloseButtonBox = styled.View`
+  width: 30px;
+  height: 30px;
+  margin-left: 6px;
+`;
+
+export const OrderCancledModalContent = styled.Text`
+  color: #000;
+  text-align: center;
+  font-size: ${Font.Size.L};
+  font-weight: 600;
+`;
+
+export const OrderCancledModalButtonBox = styled.View`
+  width: 140px;
+  height: 26px;
+  align-self: center;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 15px;
+`;
+
+export const OrderCancledModalButtonYes = styled.View`
+  width: 58px;
+  height: 26px;
+  justify-content: center;
+  border-radius: 6px;
+  background: #ffca42;
+`;
+
+export const OrderCancledModalButtonNo = styled.View`
+  width: 58px;
+  height: 26px;
+  justify-content: center;
+  border-radius: 6px;
+  background: #d9d9d9;
+`;
+
+export const OrderCancledModalButtonContent = styled.Text`
+  text-align: center;
+  color: #000;
+  font-size: ${Font.Size.L};
+  font-weight: 500;
+`;
