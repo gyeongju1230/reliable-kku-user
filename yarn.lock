@@ -3347,6 +3347,7 @@ __metadata:
     react-native-mmkv-storage: ^0.9.1
     react-native-safe-area-context: ^4.7.3
     react-native-screens: ^3.26.0
+    react-native-sse: ^1.2.0
     react-native-status-bar-height: ^2.6.0
     react-native-svg: ^13.14.0
     react-native-svg-transformer: ^1.1.0
@@ -9084,6 +9085,13 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 18750fb15e80d2c2e4eea9992d1f07f72298e1f65b5c7614196c539f2191bed853d5c09cfaad33f1c8be0ae5d3f70e90458d1e842954e1090957dd42a71084f5
+  languageName: node
+  linkType: hard
+
+"react-native-sse@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "react-native-sse@npm:1.2.0"
+  checksum: 746283ee8b1c0963bfa7a4056b16333088af0b44e87249516bfb381a7349ae67967301219bb76aeb1e20601a55328e671bd0da02f597f126bed2464f7f578f1e
   languageName: node
   linkType: hard
 
