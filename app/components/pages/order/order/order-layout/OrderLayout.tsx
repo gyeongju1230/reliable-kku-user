@@ -62,18 +62,7 @@ const OrderLayout = () => {
           try {
             const response = await OrderDetailList(Number(id));
             setOrderDetailMenuList(response);
-            console.log('상세 메뉴 리스트 가져오기 성공: ', response);
-            console.log(
-              '상세 메뉴 리스트 가져오기 성공2: ',
-              orderDetailMenuList,
-            );
-          } catch (error) {
-            console.log('상세 메뉴 리스트 가져오기 실패: ', error);
-            console.log(
-              '상세 메뉴 리스트 가져오기 실패: ',
-              orderDetailMenuList,
-            );
-          }
+          } catch (error) {}
         };
 
         fetchOrderList();

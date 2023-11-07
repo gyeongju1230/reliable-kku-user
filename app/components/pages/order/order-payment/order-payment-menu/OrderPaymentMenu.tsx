@@ -126,9 +126,21 @@ const OrderPaymentMenu = ({
           {menuList.map(menu => (
             <styles.MenuContainer key={menu.menuId}>
               <styles.ImageBox>
-                <Image source={{uri: menu.imageUrl}} alt="menuImage" />
-                {!menu.isSale && isopen && <Soldout width={60} height={68} />}
-                {!isopen && <Soldout width={60} height={68} />}
+                <Image source={{uri: menu.imageUrl}} width={122} height={120} />
+                {!menu.isSale && isopen && (
+                  <Soldout
+                    width={60}
+                    height={68}
+                    style={{position: 'absolute'}}
+                  />
+                )}
+                {!isopen && (
+                  <Soldout
+                    width={60}
+                    height={68}
+                    style={{position: 'absolute'}}
+                  />
+                )}
               </styles.ImageBox>
               <styles.ContentContainer>
                 <styles.ContentBox>

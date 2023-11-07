@@ -17,7 +17,7 @@ export const MenuContainer = styled.View`
   border-bottom-color: rgba(0, 0, 0, 0.3);
 `;
 
-export const ImageBox = styled.Text`
+export const ImageBox = styled.View`
   width: 112px;
   height: 110px;
   border-radius: 12px;
