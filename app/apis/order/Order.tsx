@@ -74,6 +74,27 @@ export const OrderSave = async (
   }
 };
 
+interface OrderDetailList {
+  totalPrice: number;
+  username: string;
+  orderMenuList: {name: string; count: number}[];
+}
+
+/* 주문 상세정보 반환 */
+export const OrderDetailList = async (orderId: number) => {
+  try {
+    return BASE_API.get<OrderDetailList>(`/api/v1/order/${orderId}`)
+      .then(response => {
+        return response.data;
+      })
+      .catch(error => {
+        throw error;
+      });
+  } catch (error) {
+    throw error;
+  }
+};
+
 /* 주문 취소 */
 export const OrderCanceled = (orderId: number) =>
   BASE_API.delete(`/api/v1/order/${orderId}`, {})

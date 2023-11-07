@@ -14,6 +14,7 @@ import {
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useEffect, useRef, useState} from 'react';
 import EventSource, {EventSourceListener} from 'react-native-sse';
+import {OrderDetailList} from '@/apis/order/Order';
 
 interface SSEProps {
   orderStatus:
@@ -26,8 +27,16 @@ interface SSEProps {
   leftMinutes: number;
 }
 
+interface OrderDetailList {
+  totalPrice: number;
+  username: string;
+  orderMenuList: {name: string; count: number}[];
+}
+
 const OrderLayout = () => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
+  const [orderDetailMenuList, setOrderDetailMenuList] =
+    useState<OrderDetailList>();
   const [orderTrue, setOrderTrue] = useState(false);
   const [orderId, setOrderId] = useState('');
   const [orderStatus, setOrderStatus] = useState<
@@ -48,6 +57,26 @@ const OrderLayout = () => {
     AsyncStorage.getItem('orderId').then(id => {
       if (id) {
         setOrderId(id);
+
+        const fetchOrderList = async () => {
+          try {
+            const response = await OrderDetailList(Number(id));
+            setOrderDetailMenuList(response);
+            console.log('상세 메뉴 리스트 가져오기 성공: ', response);
+            console.log(
+              '상세 메뉴 리스트 가져오기 성공2: ',
+              orderDetailMenuList,
+            );
+          } catch (error) {
+            console.log('상세 메뉴 리스트 가져오기 실패: ', error);
+            console.log(
+              '상세 메뉴 리스트 가져오기 실패: ',
+              orderDetailMenuList,
+            );
+          }
+        };
+
+        fetchOrderList();
       }
     });
   }, []);
@@ -155,7 +184,21 @@ const OrderLayout = () => {
         </styles.CotentBox>
         <styles.OrderListBox>
           <styles.OrderListTop />
-          <OrderList />
+          <OrderList
+            orderMenuList={
+              orderDetailMenuList?.orderMenuList
+                ? orderDetailMenuList.orderMenuList
+                : []
+            }
+            totalPrice={
+              orderDetailMenuList?.totalPrice
+                ? orderDetailMenuList.totalPrice
+                : 0
+            }
+            username={
+              orderDetailMenuList?.username ? orderDetailMenuList.username : ''
+            }
+          />
         </styles.OrderListBox>
       </styles.Container>
     </styles.Box>
