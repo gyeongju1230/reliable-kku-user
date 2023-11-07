@@ -5,6 +5,7 @@ import {
   NavigationProp,
   ParamListBase,
   useFocusEffect,
+  useIsFocused,
   useNavigation,
   useRoute,
 } from '@react-navigation/native';
@@ -79,20 +80,31 @@ function getTabBarIcon(routeName: string, focused: boolean) {
 function BottomTabs() {
   const route = useRoute();
   const [hasActiveOrder, setHasActiveOrder] = useState(false);
+  const isFocused = useIsFocused();
 
-  useFocusEffect(
-    useCallback(() => {
-      OrderDuplicate()
-        .then(response => {
-          setHasActiveOrder(true);
-          console.log('현재 진행중인 주문이 있음');
-        })
-        .catch(error => {
-          console.log('현재 진행중인 주문이 없음');
-          setHasActiveOrder(false);
-        });
-    }, [OrderDuplicate]),
-  );
+  useEffect(() => {
+    OrderDuplicate()
+      .then(response => {
+        setHasActiveOrder(true);
+        console.log('현재 진행중인 주문이 있음');
+      })
+      .catch(error => {
+        console.log('현재 진행중인 주문이 없음');
+        setHasActiveOrder(false);
+      });
+  }, []);
+
+  useEffect(() => {
+    OrderDuplicate()
+      .then(response => {
+        setHasActiveOrder(true);
+        console.log('현재 진행중인 주문이 있음');
+      })
+      .catch(error => {
+        console.log('현재 진행중인 주문이 없음');
+        setHasActiveOrder(false);
+      });
+  }, [isFocused, route]);
 
   return (
     <Tab.Navigator

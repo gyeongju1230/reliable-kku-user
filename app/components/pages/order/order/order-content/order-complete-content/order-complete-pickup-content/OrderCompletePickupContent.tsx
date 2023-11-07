@@ -11,13 +11,21 @@ import Button from '@assets/images/order/Button.svg';
 import {
   NavigationProp,
   ParamListBase,
+  useIsFocused,
   useNavigation,
 } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const OrderCompletePickupContent = () => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
   const [moveLeftRight, setMoveLeftRight] = useState('-15deg');
   const [isPickupModal, setIsPickupModal] = useState(false);
+
+  const isFocused = useIsFocused(); // isFoucesd Define
+
+  useEffect(() => {
+    return () => {};
+  }, [isFocused]);
 
   const openPickupModal = () => {
     setIsPickupModal(true);
@@ -40,6 +48,18 @@ const OrderCompletePickupContent = () => {
 
     return () => clearTimeout(timer);
   }, [moveLeftRight]);
+
+  const handleOnPressCloseButton = () => {
+    AsyncStorage.removeItem('OrderId')
+      .then(() => {
+        console.log('OrderId 지우기 성공');
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
+    navigation.setOptions({unmountOnBlur: true});
+    navigation.navigate('홈');
+  };
 
   return (
     <styles.Box>
@@ -112,7 +132,7 @@ const OrderCompletePickupContent = () => {
               height={28}
               style={{top: '-9%', left: '20%'}}
             />
-            <TouchableOpacity onPress={() => navigation.navigate('홈')}>
+            <TouchableOpacity onPress={handleOnPressCloseButton}>
               <Button width={140} height={26} />
             </TouchableOpacity>
           </styles.PickupModalBox>
