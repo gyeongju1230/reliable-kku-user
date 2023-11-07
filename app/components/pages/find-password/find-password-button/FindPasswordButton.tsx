@@ -2,7 +2,7 @@ import * as styles from '@components/pages/find-password/find-password-button/Fi
 import {Modal, TouchableOpacity} from 'react-native';
 import MarginTop from '@components/common/MarginTop';
 import CloseButton from '@assets/icons/common/CloseButton.svg';
-import SignupSuccessLogo from '@assets/images/signup/SignupSuccessLogo.svg';
+import SignupSuccessLogo from '@assets/icons/common/SuccessLogo.svg';
 import React, {useState} from 'react';
 import {
   NavigationProp,

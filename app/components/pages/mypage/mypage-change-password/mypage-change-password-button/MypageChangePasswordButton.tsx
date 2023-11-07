@@ -2,7 +2,7 @@ import * as styles from '@components/pages/mypage/mypage-change-password/mypage-
 import {Modal, TouchableOpacity} from 'react-native';
 import MarginTop from '@components/common/MarginTop';
 import CloseButton from '@assets/icons/common/CloseButton.svg';
-import SignupSuccessLogo from '@assets/images/signup/SignupSuccessLogo.svg';
+import SignupSuccessLogo from '@assets/icons/common/SuccessLogo.svg';
 import React, {useEffect, useState} from 'react';
 import {
   NavigationProp,

@@ -36,7 +36,7 @@ const MypageModal = () => {
           <styles.Content>문의하기</styles.Content>
         </styles.InquiryBox>
       </TouchableOpacity>
-      <styles.LineBox></styles.LineBox>
+      <styles.LineBox />
       <TouchableOpacity onPress={() => navigation.navigate('TermsMypage')}>
         <styles.TermsBox>
           <TermsIcon

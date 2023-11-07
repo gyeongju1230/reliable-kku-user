@@ -2,7 +2,7 @@ import * as styles from '@components/pages/signup/signup-button/SignupButton.sty
 import {Modal, Text, TouchableOpacity, View} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import CloseButton from '@assets/icons/common/CloseButton.svg';
-import SignupSuccessLogo from '@assets/images/signup/SignupSuccessLogo.svg';
+import SignupSuccessLogo from '@assets/icons/common/SuccessLogo.svg';
 import MarginTop from '@components/common/MarginTop';
 import {
   NavigationProp,
