@@ -124,12 +124,10 @@ const OrderLayout = () => {
     AsyncStorage.removeItem('OrderTrue')
       .then(() => {
         setOrderTrue(false);
-        console.log('OrderTrue', orderTrue);
       })
       .catch(error => {
         console.error('Error:', error);
       });
-
     navigation.navigate('홈');
   };
 
