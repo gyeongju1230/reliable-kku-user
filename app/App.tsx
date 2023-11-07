@@ -91,7 +91,7 @@ function BottomTabs() {
           console.log('현재 진행중인 주문이 없음');
           setHasActiveOrder(false);
         });
-    }, []),
+    }, [OrderDuplicate]),
   );
 
   return (
