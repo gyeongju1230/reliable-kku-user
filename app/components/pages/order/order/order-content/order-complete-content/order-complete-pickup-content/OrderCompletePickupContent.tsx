@@ -21,7 +21,7 @@ const OrderCompletePickupContent = () => {
   const [moveLeftRight, setMoveLeftRight] = useState('-15deg');
   const [isPickupModal, setIsPickupModal] = useState(false);
 
-  const isFocused = useIsFocused(); // isFoucesd Define
+  const isFocused = useIsFocused();
 
   useEffect(() => {
     return () => {};
