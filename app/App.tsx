@@ -86,10 +86,8 @@ function BottomTabs() {
     OrderDuplicate()
       .then(response => {
         setHasActiveOrder(true);
-        console.log('현재 진행중인 주문이 있음');
       })
       .catch(error => {
-        console.log('현재 진행중인 주문이 없음');
         setHasActiveOrder(false);
       });
   }, []);
@@ -98,10 +96,8 @@ function BottomTabs() {
     OrderDuplicate()
       .then(response => {
         setHasActiveOrder(true);
-        console.log('현재 진행중인 주문이 있음');
       })
       .catch(error => {
-        console.log('현재 진행중인 주문이 없음');
         setHasActiveOrder(false);
       });
   }, [isFocused, route]);
