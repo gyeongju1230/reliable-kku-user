@@ -62,8 +62,7 @@ const OrderListLayout = () => {
                   <styles.OrderMenu>
                     <styles.OrderMenuContent>
                       {pastList.orderMenuList.map(
-                        orderMenu =>
-                          `${orderMenu.name}  ${orderMenu.count}개  `,
+                        orderMenu => `${orderMenu.name} ${orderMenu.count}개  `,
                       )}
                     </styles.OrderMenuContent>
                     <styles.Line />

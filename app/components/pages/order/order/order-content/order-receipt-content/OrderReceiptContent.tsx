@@ -1,13 +1,40 @@
 import * as styles from '@components/pages/order/order/order-content/order-receipt-content/OrderReceiptContent.style';
-import {TouchableOpacity} from 'react-native';
+import {Linking, Modal, TouchableOpacity, View} from 'react-native';
 import ReceiptContentTmage from '@assets/images/order/ReciptContentImage.svg';
 import RefreshButton from '@assets/images/order/Refresh.svg';
 import ReceiptBar from '@assets/images/order/ReceiptBar.svg';
 import OrderIcon from '@assets/images/order/OrderIcon.svg';
-import {useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
+import MarginTop from '@components/common/MarginTop';
+import CloseButton from '@assets/icons/common/CloseButton.svg';
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from '@react-navigation/native';
+import ExclamationIcon from '@assets/images/order/Exclamation.svg';
+import ProfilButton from '@assets/images/order/ProfilButton.svg';
 
-const OrderReceiptContent = () => {
+interface LeftMinutesProps {
+  leftMinutes: number;
+}
+
+const OrderReceiptContent = ({leftMinutes}: LeftMinutesProps) => {
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
   const [moveLeftRight, setMoveLeftRight] = useState('-15deg');
+  const [isDelayeModal, setIsDelayeModal] = useState(false);
+
+  const openDelayeModal = () => {
+    if (leftMinutes <= 0) {
+      setIsDelayeModal(true);
+    } else {
+      setIsDelayeModal(false);
+    }
+  };
+
+  useEffect(() => {
+    openDelayeModal();
+  }, [leftMinutes]);
 
   const move = () => {
     moveLeftRight === '15deg'
@@ -36,7 +63,9 @@ const OrderReceiptContent = () => {
         <styles.ButtonBox>
           <TouchableOpacity>
             <styles.Button>
-              <styles.ButtonContent>35분</styles.ButtonContent>
+              <styles.ButtonContent>
+                {leftMinutes <= 0 ? '0분' : `${leftMinutes}분`}
+              </styles.ButtonContent>
             </styles.Button>
             <RefreshButton
               width={39}
@@ -76,6 +105,35 @@ const OrderReceiptContent = () => {
           <styles.BarContent>픽업완료</styles.BarContent>
         </styles.BarContentBox>
       </styles.BarContainer>
+      <Modal visible={isDelayeModal} transparent={true} animationType="none">
+        <styles.DelayeModalContainer>
+          <styles.DelayeModalBox>
+            <MarginTop height={6} />
+            <TouchableOpacity onPress={() => navigation.navigate('홈')}>
+              <styles.CloseButtonBox>
+                <CloseButton width={20} height={20} />
+              </styles.CloseButtonBox>
+            </TouchableOpacity>
+            <styles.DelayeModalContentBoldBox>
+              <styles.DelayeModalContentBold>
+                주문이 지연되고 있습니다
+              </styles.DelayeModalContentBold>
+              <ExclamationIcon width={18} height={26} />
+            </styles.DelayeModalContentBoldBox>
+            <styles.DelayeModalContent>
+              문의사항은 인스타 dm으로 부탁드립니다.
+            </styles.DelayeModalContent>
+            <TouchableOpacity
+              onPress={() =>
+                Linking.openURL('https://www.instagram.com/ku_meal_kit/')
+              }>
+              <styles.DelayeModalButton>
+                <ProfilButton width={140} height={26} />
+              </styles.DelayeModalButton>
+            </TouchableOpacity>
+          </styles.DelayeModalBox>
+        </styles.DelayeModalContainer>
+      </Modal>
     </styles.Box>
   );
 };

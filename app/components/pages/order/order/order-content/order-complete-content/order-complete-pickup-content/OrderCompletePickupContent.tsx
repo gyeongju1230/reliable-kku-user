@@ -1,13 +1,31 @@
 import * as styles from '@components/pages/order/order/order-content/order-complete-content/order-complete-pickup-content/OrderCompletePickupContent.style';
-import {TouchableOpacity} from 'react-native';
+import {Modal, TouchableOpacity} from 'react-native';
 import RefreshButton from '@assets/images/order/Refresh.svg';
 import OrderIcon from '@assets/images/order/OrderIcon.svg';
 import CompletePickupContentImage from '@assets/images/order/CompletePickupContentImage.svg';
 import CompletePickupBar from '@assets/images/order/CompletePickupBar.svg';
 import {useEffect, useState} from 'react';
+import PickupModalIcon from '@assets/images/order/PickupModalIcon.svg';
+import SuccessIcon from '@assets/icons/common/SuccessLogo.svg';
+import Button from '@assets/images/order/Button.svg';
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from '@react-navigation/native';
 
 const OrderCompletePickupContent = () => {
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
   const [moveLeftRight, setMoveLeftRight] = useState('-15deg');
+  const [isPickupModal, setIsPickupModal] = useState(false);
+
+  const openPickupModal = () => {
+    setIsPickupModal(true);
+  };
+
+  useEffect(() => {
+    openPickupModal();
+  }, []);
 
   const move = () => {
     moveLeftRight === '15deg'
@@ -76,6 +94,30 @@ const OrderCompletePickupContent = () => {
           <styles.BarContent>픽업완료</styles.BarContent>
         </styles.BarContentBox>
       </styles.BarContainer>
+      <Modal visible={isPickupModal} transparent={true} animationType="none">
+        <styles.PickupModalContainer>
+          <styles.PickupModalBox>
+            <PickupModalIcon
+              width={106}
+              height={106}
+              style={{marginTop: '10.0418410041841%'}}
+            />
+
+            <styles.PickupModalContent>
+              픽업이 완료됐습니다!{'\n'}
+              맛있게 드세요
+            </styles.PickupModalContent>
+            <SuccessIcon
+              width={28}
+              height={28}
+              style={{top: '-9%', left: '20%'}}
+            />
+            <TouchableOpacity onPress={() => navigation.navigate('홈')}>
+              <Button width={140} height={26} />
+            </TouchableOpacity>
+          </styles.PickupModalBox>
+        </styles.PickupModalContainer>
+      </Modal>
     </styles.Box>
   );
 };

@@ -3,8 +3,6 @@ import {Font} from '@assets/fonts/Font';
 
 export const Box = styled.View`
   width: 296px;
-  //height: 211.33px;
-  //height: 86.2068966%;
   height: 80.9693487%;
   align-self: center;
 `;
@@ -82,4 +80,53 @@ export const BarContent = styled.Text`
   font-size: ${Font.Size.S};
   font-weight: 400;
   letter-spacing: 0.01px;
+`;
+
+export const DelayeModalContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  background: #0000004d;
+`;
+
+export const DelayeModalBox = styled.View`
+  width: 260px;
+  height: 110px;
+  align-self: center;
+  border-radius: 6px;
+  background: #fff;
+`;
+
+export const CloseButtonBox = styled.View`
+  width: 30px;
+  height: 30px;
+  margin-left: 6px;
+`;
+
+export const DelayeModalContentBoldBox = styled.View`
+  position: absolute;
+  margin-top: 21px;
+  flex-direction: row;
+  align-self: center;
+  align-items: center;
+`;
+
+export const DelayeModalContentBold = styled.Text`
+  color: #000;
+  text-align: center;
+  font-size: ${Font.Size.L};
+  font-weight: 600;
+`;
+
+export const DelayeModalContent = styled.Text`
+  margin-top: 8px;
+  color: rgba(0, 0, 0, 0.3);
+  text-align: center;
+  font-size: ${Font.Size.S};
+  font-weight: 400;
+  letter-spacing: 0.01px;
+`;
+
+export const DelayeModalButton = styled.View`
+  margin-top: 16px;
+  align-items: center;
 `;

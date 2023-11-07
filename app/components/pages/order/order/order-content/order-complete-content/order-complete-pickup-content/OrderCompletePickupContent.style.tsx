@@ -83,3 +83,27 @@ export const BarContent = styled.Text`
   font-weight: 400;
   letter-spacing: 0.01px;
 `;
+
+export const PickupModalContainer = styled.View`
+  flex: 1;
+  justify-content: center;
+  background: #0000004d;
+`;
+
+export const PickupModalBox = styled.View`
+  width: 260px;
+  height: 239px;
+  align-items: center;
+  box-shadow: 3px 3px 12px rgba(0, 0, 0, 0.25);
+  align-self: center;
+  border-radius: 6px;
+  background: #fff;
+`;
+
+export const PickupModalContent = styled.Text`
+  color: #000;
+  text-align: center;
+  font-size: ${Font.Size.L};
+  font-weight: 500;
+  letter-spacing: 0.014px;
+`;
