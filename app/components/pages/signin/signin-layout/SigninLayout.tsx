@@ -11,7 +11,7 @@ import {
   useNavigation,
 } from '@react-navigation/native';
 import {BASE_API} from '@/apis/common/CommonApi';
-import {Alert} from 'react-native';
+import {Alert, Keyboard, TouchableWithoutFeedback} from 'react-native';
 
 const SigninLayout = () => {
   const [isPhoneNumber, setIsPhoneNumber] = useState('');
@@ -51,20 +51,22 @@ const SigninLayout = () => {
   }, []);
 
   return (
-    <styles.Box>
-      <styles.SigninLogoTop />
-      <SigninLogo />
-      <styles.SigninInputTop />
-      <SigninInput
-        isPhoneNumber={isPhoneNumber}
-        setIsPhoneNumber={setIsPhoneNumber}
-        isPassword={isPassword}
-        setIsPassword={setIsPassword}
-      />
-      <SigninButton isPhoneNumber={isPhoneNumber} isPassword={isPassword} />
-      <styles.FindLinkBoxTop />
-      <FindLinkBox />
-    </styles.Box>
+    <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
+      <styles.Box>
+        <styles.SigninLogoTop />
+        <SigninLogo />
+        <styles.SigninInputTop />
+        <SigninInput
+          isPhoneNumber={isPhoneNumber}
+          setIsPhoneNumber={setIsPhoneNumber}
+          isPassword={isPassword}
+          setIsPassword={setIsPassword}
+        />
+        <SigninButton isPhoneNumber={isPhoneNumber} isPassword={isPassword} />
+        <styles.FindLinkBoxTop />
+        <FindLinkBox />
+      </styles.Box>
+    </TouchableWithoutFeedback>
   );
 };
 

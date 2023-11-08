@@ -32,8 +32,8 @@ export const GuideText = styled.Text`
 
 export const ModalContainer = styled.View`
   position: absolute;
-  width: 120px;
-  height: 53.166px;
+  width: 115px;
+  height: 43.166px;
   justify-content: center;
   border-radius: 6px;
   background: #00000099;
@@ -41,8 +41,8 @@ export const ModalContainer = styled.View`
 `;
 
 export const ModalContent = styled.Text`
-  width: 107px;
-  height: 40px;
+  width: 102px;
+  height: 30px;
   align-self: center;
   color: rgba(255, 255, 255, 0.6);
   text-align: justify;

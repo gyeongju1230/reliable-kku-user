@@ -42,7 +42,7 @@ export const CloseButtonBox = styled.View`
 `;
 
 export const ContentContainer = styled.View`
-  width: 206px;
+  width: 196px;
   height: 40px;
   flex-direction: row;
   align-self: center;

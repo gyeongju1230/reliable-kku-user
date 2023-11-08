@@ -1,12 +1,8 @@
-import React, {useCallback, useEffect, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {createStackNavigator} from '@react-navigation/stack';
 import {
   NavigationContainer,
-  NavigationProp,
-  ParamListBase,
-  useFocusEffect,
   useIsFocused,
-  useNavigation,
   useRoute,
 } from '@react-navigation/native';
 import {SafeAreaView, StatusBar, StyleSheet} from 'react-native';
@@ -14,7 +10,7 @@ import Signin from '@screens/Signin';
 import SignupTerms from '@screens/SignupTerms';
 import Terms from '@screens/terms/Terms';
 import TermsAlarm from '@screens/terms/TermsAlarm';
-import Signup from '@screens/Sginup';
+import Signup from '@screens/Signup';
 import FindPassword from '@screens/FindPassword';
 import Home from '@screens/Home';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
@@ -35,7 +31,6 @@ import MypageUnClickImage from '@assets/icons/bottom-navigation/MypageUnClick.sv
 import MypageClickImage from '@assets/icons/bottom-navigation/MypageClick.svg';
 import {RecoilRoot} from 'recoil';
 import {OrderDuplicate} from '@/apis/main/Main';
-import {StoresOpenClosed} from '@/apis/order/Order';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -147,7 +142,11 @@ function App() {
     <RecoilRoot>
       <SafeAreaView style={styles.container}>
         <NavigationContainer>
-          <Stack.Navigator screenOptions={{headerShown: false}}>
+          <Stack.Navigator
+            screenOptions={{
+              headerShown: false,
+              gestureEnabled: false,
+            }}>
             <Stack.Screen name="Signin" component={Signin} />
             <Stack.Screen name="SignupTerms" component={SignupTerms} />
             <Stack.Screen name="Terms" component={Terms} />

@@ -97,7 +97,7 @@ const SignupPhoneInput = ({
             disabled={!isPhoneNumberUnique}>
             <styles.Button
               style={isPhoneNumberUnique ? {backgroundColor: '#ffca42'} : null}>
-              <styles.ButtonContent numberOfLines={2}>
+              <styles.ButtonContent>
                 {isRequested ? '재전송' : '인증번호\n전송'}
               </styles.ButtonContent>
             </styles.Button>

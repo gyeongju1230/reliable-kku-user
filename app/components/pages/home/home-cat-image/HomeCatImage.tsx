@@ -89,7 +89,7 @@ const HomeCatImage = () => {
         height="20.77464789%"
         style={{
           position: 'absolute',
-          left: '48.09669211%',
+          left: '43.09669211%',
           top: '52.16901408%',
           transform: [{rotate: moveLeftRight}],
         }}
@@ -102,7 +102,6 @@ const HomeCatImage = () => {
             marginTop: '9%',
             left: '11%',
             zIndex: 2000,
-            transform: [{rotate: '360deg'}],
           }}>
           <RefreshImage width={16} height={16} />
         </TouchableOpacity>

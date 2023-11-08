@@ -92,24 +92,31 @@ export const CountContainer = styled.View`
 `;
 
 export const CountBox = styled.View`
-  width: 54px;
+  width: 80px;
   height: 19px;
+  justify-self: center;
   flex-direction: row;
 `;
 
 export const CountMinusImageBox = styled.View`
-  width: 7px;
-  height: 19px;
+  width: 12px;
+  height: 24px;
+  top: -2.5px;
+  left: 12px;
 `;
 
 export const CountPlusImageBox = styled.View`
-  width: 11px;
-  height: 19px;
+  width: 12px;
+  height: 24px;
+  top: -2.5px;
+  right: 12px;
 `;
 
 export const Count = styled.Text`
   width: 36px;
   height: 19px;
+  margin-left: 17px;
+  margin-right: 10px;
   text-align: center;
   color: #000;
   font-size: ${Font.Size.L};

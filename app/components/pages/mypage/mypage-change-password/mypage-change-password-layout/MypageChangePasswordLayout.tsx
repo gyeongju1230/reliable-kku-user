@@ -14,7 +14,6 @@ import CloseButton from '@assets/icons/common/CloseButton.svg';
 import MarginTop from '@components/common/MarginTop';
 import MypageChangePasswordInput from '@components/pages/mypage/mypage-change-password/mypage-change-password-input/MypageChangePasswordInput';
 import MypageChangePasswordButton from '@components/pages/mypage/mypage-change-password/mypage-change-password-button/MypageChangePasswordButton';
-import {MypageChangePasswordButtonTop} from '@components/pages/mypage/mypage-change-password/mypage-change-password-layout/MypageChangePasswordLayout.style';
 import {useState} from 'react';
 
 const bottomSpace = getBottomSpace();

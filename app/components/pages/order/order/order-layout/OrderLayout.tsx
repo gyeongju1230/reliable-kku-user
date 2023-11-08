@@ -105,6 +105,9 @@ const OrderLayout = () => {
           if (event.data != null) {
             data = JSON.parse(event.data);
 
+            console.log('====', data.orderStatus);
+            console.log('====', data.leftMinutes);
+
             setOrderStatus(data.orderStatus);
             setLeftMinutes(data.leftMinutes);
           }
@@ -166,8 +169,8 @@ const OrderLayout = () => {
       {orderTrue && (
         <TouchableOpacity onPress={handleOnPressCloseButton}>
           <CloseButton
-            width={30}
-            height={30}
+            width={35}
+            height={35}
             style={{
               marginTop: '-15%',
               marginLeft: '4%',

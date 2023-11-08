@@ -59,13 +59,12 @@ const FindPasswordLayout = () => {
             timer={timer}
             setTimer={setTimer}
           />
-          <MarginTop height={280} />
+          <MarginTop height={300} />
           <FindPasswordButton
             isPhoneNumber={isPhoneNumber}
             isCertificationNumber={isCertificationNumber}
             isCertificationSuccess={isCertificationSuccess}
           />
-          <MarginTop height={62} />
         </ScrollView>
       </TouchableWithoutFeedback>
     </styles.Box>
