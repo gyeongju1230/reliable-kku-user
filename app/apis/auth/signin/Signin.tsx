@@ -1,4 +1,5 @@
 import {BASE_API} from '@/apis/common/CommonApi';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const Signin = async (phoneNumber: string, password: string) => {
   try {
@@ -10,7 +11,9 @@ export const Signin = async (phoneNumber: string, password: string) => {
       },
       {},
     ).then(response => {
-      console.log('로그인 성공', response);
+      console.log('로그인 성공', response.headers.authorization);
+
+      AsyncStorage.setItem('accessToken', response.headers.authorization);
       return response;
     });
   } catch (error) {

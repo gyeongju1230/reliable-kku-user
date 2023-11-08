@@ -9,6 +9,8 @@ import {
 } from '@react-navigation/native';
 import CloseButton from '@assets/icons/common/CloseButton.svg';
 import {Logout, Withdraw} from '@/apis/Mypage/Mypage';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import MarginTop from '@components/common/MarginTop';
 
 interface MypageNameProps {
   realName: string;
@@ -50,6 +52,9 @@ const MypageName = ({realName}: MypageNameProps) => {
   const handleLogout = async () => {
     try {
       await Logout();
+      await AsyncStorage.setItem('isChecked', 'false');
+      await AsyncStorage.removeItem('accessToken');
+
       navigation.navigate('Signin');
       console.log('로그아웃 성공');
     } catch (error) {
@@ -60,6 +65,9 @@ const MypageName = ({realName}: MypageNameProps) => {
   const handleWithdraw = async () => {
     try {
       await Withdraw();
+      await AsyncStorage.setItem('isChecked', 'false');
+      await AsyncStorage.removeItem('accessToken');
+
       navigation.navigate('Signin');
       console.log('탈퇴 성공');
     } catch (error) {
@@ -109,9 +117,10 @@ const MypageName = ({realName}: MypageNameProps) => {
             backgroundColor: '#0000004d',
           }}>
           <styles.ModalBox>
+            <MarginTop height={6} />
             <TouchableOpacity onPress={closePasswordModal}>
               <styles.CloseButtonBox>
-                <CloseButton width={20} height={20} />
+                <CloseButton width={20} height={20} style={{}} />
               </styles.CloseButtonBox>
             </TouchableOpacity>
             <styles.ModalText>정말 로그아웃 하시겠습니까?</styles.ModalText>
@@ -139,6 +148,7 @@ const MypageName = ({realName}: MypageNameProps) => {
             backgroundColor: '#0000004d',
           }}>
           <styles.ModalBox>
+            <MarginTop height={6} />
             <TouchableOpacity onPress={closeSecessionModal}>
               <styles.CloseButtonBox>
                 <CloseButton width={20} height={20} />

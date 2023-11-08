@@ -3,9 +3,14 @@ import Cheese1 from '@assets/images/home/CheeseCat1.svg';
 import Chocolate1 from '@assets/images/home/ChocolateCat1.svg';
 import Redbean1 from '@assets/images/home/RedbeanCat1.svg';
 import {useEffect, useState} from 'react';
-import {TouchableOpacity} from 'react-native';
+import {Alert, TouchableOpacity} from 'react-native';
 import RefreshImage from '@assets/images/home/Refresh.svg';
 import {LeftTime} from '@/apis/main/Main';
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from '@react-navigation/native';
 
 const HomeCatImage = () => {
   const [moveLeftRight, setMoveLeftRight] = useState('-15deg');
@@ -29,7 +34,19 @@ const HomeCatImage = () => {
     try {
       const response = await LeftTime();
       setTime(response.leftMinutes);
-    } catch (error) {}
+    } catch (error) {
+      const navigation: NavigationProp<ParamListBase> = useNavigation();
+
+      Alert.alert('앗!', '로그인이 만료되었습니다.', [
+        {
+          text: '확인',
+          onPress: () => {
+            navigation.navigate('Signin');
+            console.log('로그인 페이지로 이동');
+          },
+        },
+      ]);
+    }
   };
 
   useEffect(() => {

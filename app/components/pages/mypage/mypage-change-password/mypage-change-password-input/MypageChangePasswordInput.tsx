@@ -1,9 +1,14 @@
 import * as styles from '@components/pages/mypage/mypage-change-password/mypage-change-password-input/MypageChangePasswordInput.style';
-import {TouchableOpacity} from 'react-native';
+import {Alert, TouchableOpacity} from 'react-native';
 import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
 import PasswordViewOn from '@assets/images/signup/PasswordViewOn.svg';
 import PasswordViewOff from '@assets/images/signup/PasswordViewOff.svg';
 import {VerifyCurrentPassword} from '@/apis/Mypage/Mypage';
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from '@react-navigation/native';
 
 interface MypageChangePasswordInputProps {
   password: string;
@@ -67,6 +72,18 @@ const MypageChangePasswordInput = ({
     } catch (error) {
       setCurrentPasswordError('비밀번호 확인 중 오류가 발생했습니다.');
       setCurrentPasswordSuccess('');
+
+      const navigation: NavigationProp<ParamListBase> = useNavigation();
+
+      Alert.alert('앗!', '로그인이 만료되었습니다.', [
+        {
+          text: '확인',
+          onPress: () => {
+            navigation.navigate('Signin');
+            console.log('로그인 페이지로 이동');
+          },
+        },
+      ]);
     }
   };
 

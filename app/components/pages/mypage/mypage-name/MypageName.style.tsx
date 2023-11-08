@@ -73,7 +73,7 @@ export const ModalBox = styled.View`
 export const CloseButtonBox = styled.View`
   width: 24px;
   height: 24px;
-  margin-left: 3px;
+  margin-left: 6px;
 `;
 
 export const ModalText = styled.Text`

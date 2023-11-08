@@ -7,6 +7,10 @@ interface OrderDetailList {
   orderMenuList: {name: string; count: number}[];
 }
 
+const NumberWithComma = (data: number) => {
+  return String(data).replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ',');
+};
+
 const OrderList = ({totalPrice, username, orderMenuList}: OrderDetailList) => {
   return (
     <styles.Box>
@@ -28,7 +32,7 @@ const OrderList = ({totalPrice, username, orderMenuList}: OrderDetailList) => {
       <styles.Top />
       <styles.PriceBox>
         <styles.PriceContent>총 금액</styles.PriceContent>
-        <styles.Price>{totalPrice}원</styles.Price>
+        <styles.Price>{NumberWithComma(totalPrice)}원</styles.Price>
       </styles.PriceBox>
     </styles.Box>
   );

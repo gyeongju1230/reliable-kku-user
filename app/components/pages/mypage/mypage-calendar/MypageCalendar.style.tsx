@@ -17,19 +17,16 @@ export const Text = styled.Text`
   letter-spacing: 0.02px;
 `;
 
-
 export const CalendarBox = styled.View`
   width: 100%;
   height: 40px;
   align-items: center;
 `;
 
-export const CalenderTextBox = styled.View<{ show: boolean }>`
+export const CalenderTextBox = styled.View`
   width: 28px;
   height: 28px;
   border-radius: 14px;
-  background-color: ${props => props.show ? "#FFCA42" : "" }  ;
   align-items: center;
   justify-content: center;
-  
-`
+`;

@@ -5,6 +5,12 @@ import MypageCalendar from '@components/pages/mypage/mypage-calendar/MypageCalen
 import MypageModal from '@components/pages/mypage/mypage-modal/MypageModal';
 import {useEffect, useState} from 'react';
 import {MypageMember} from '@/apis/Mypage/Mypage';
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from '@react-navigation/native';
+import {Alert} from 'react-native';
 
 const MypageLayout = () => {
   const [realName, setRealName] = useState('');
@@ -17,6 +23,17 @@ const MypageLayout = () => {
         setLevel(response.level);
       })
       .catch(error => {
+        const navigation: NavigationProp<ParamListBase> = useNavigation();
+
+        Alert.alert('앗!', '로그인이 만료되었습니다.', [
+          {
+            text: '확인',
+            onPress: () => {
+              navigation.navigate('Signin');
+              console.log('로그인 페이지로 이동');
+            },
+          },
+        ]);
         console.error('Error', error);
       });
   }, []);

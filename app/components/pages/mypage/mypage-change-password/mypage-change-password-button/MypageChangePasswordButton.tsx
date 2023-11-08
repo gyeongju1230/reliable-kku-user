@@ -1,5 +1,5 @@
 import * as styles from '@components/pages/mypage/mypage-change-password/mypage-change-password-button/MypageChangePasswordButton.style';
-import {Modal, TouchableOpacity} from 'react-native';
+import {Alert, Modal, TouchableOpacity} from 'react-native';
 import MarginTop from '@components/common/MarginTop';
 import CloseButton from '@assets/icons/common/CloseButton.svg';
 import SignupSuccessLogo from '@assets/icons/common/SuccessLogo.svg';
@@ -39,6 +39,17 @@ const MypageChangePasswordButton = ({
       toggleModal();
     } catch (error) {
       console.error('비밀번호 변경 실패', error);
+      const navigation: NavigationProp<ParamListBase> = useNavigation();
+
+      Alert.alert('앗!', '로그인이 만료되었습니다.', [
+        {
+          text: '확인',
+          onPress: () => {
+            navigation.navigate('Signin');
+            console.log('로그인 페이지로 이동');
+          },
+        },
+      ]);
     }
   };
 

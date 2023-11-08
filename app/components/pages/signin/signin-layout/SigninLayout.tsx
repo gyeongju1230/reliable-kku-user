@@ -11,6 +11,7 @@ import {
   useNavigation,
 } from '@react-navigation/native';
 import {BASE_API} from '@/apis/common/CommonApi';
+import {Alert} from 'react-native';
 
 const SigninLayout = () => {
   const [isPhoneNumber, setIsPhoneNumber] = useState('');
@@ -24,17 +25,21 @@ const SigninLayout = () => {
         const savedState = await AsyncStorage.getItem('isChecked');
         if (savedState !== null) {
           if (savedState === 'true') {
-            // BASE_API.get('/api/v1/token/valid')
-            //   .then(res => {
-            //     navigation.navigate('BottomTabs');
-            //   })
-            //   .catch(err => {
-            //     BASE_API.get('/api/v1/token/update')
-            //       .then(res => {
-            //         navigation.navigate('BottomTabs');
-            //       })
-            //       .catch(errs => {});
-            //   });
+            BASE_API.get('/api/v1/token/valid')
+              .then(res => {
+                navigation.navigate('BottomTabs');
+              })
+              .catch(err => {
+                Alert.alert('앗!', '로그인이 만료되었습니다.', [
+                  {
+                    text: '확인',
+                    onPress: () => {
+                      navigation.navigate('Signin');
+                      console.log('로그인 페이지로 이동');
+                    },
+                  },
+                ]);
+              });
           }
         }
       } catch (error) {

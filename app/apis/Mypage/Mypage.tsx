@@ -16,11 +16,7 @@ export const MypageMember = () =>
 export const Logout = () => {
   BASE_API.get(`/api/v1/my-pages/logout`)
     .then(response => response.data)
-
-    .catch(error => {
-      console.log('로그아웃 실패: ', error);
-      throw error;
-    });
+    .catch(error => {});
 };
 
 /* 회원탈퇴 */
@@ -28,10 +24,7 @@ export const Withdraw = () => {
   BASE_API.patch(`/api/v1/my-pages/withdraw`)
     .then(response => response.data)
 
-    .catch(error => {
-      console.log('탈퇴 실패: ', error);
-      throw error;
-    });
+    .catch(error => {});
 };
 
 /* 현재 비밀번호 확인 */

@@ -4,7 +4,7 @@ import OrderReceiptContent from '@components/pages/order/order/order-content/ord
 import OrderCompleteContent from '@components/pages/order/order/order-content/order-complete-content/OrderCompleteContent';
 import OrderCompletePickupContent from '@components/pages/order/order/order-content/order-complete-content/order-complete-pickup-content/OrderCompletePickupContent';
 import OrderList from '@components/pages/order/order/order-list/OrderList';
-import {TouchableOpacity} from 'react-native';
+import {Alert, TouchableOpacity} from 'react-native';
 import CloseButton from '@assets/icons/common/CloseButton.svg';
 import {
   NavigationProp,
@@ -27,7 +27,7 @@ interface SSEProps {
   leftMinutes: number;
 }
 
-interface OrderDetailList {
+interface OrderDetailListProps {
   totalPrice: number;
   username: string;
   orderMenuList: {name: string; count: number}[];
@@ -36,7 +36,7 @@ interface OrderDetailList {
 const OrderLayout = () => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
   const [orderDetailMenuList, setOrderDetailMenuList] =
-    useState<OrderDetailList>();
+    useState<OrderDetailListProps>();
   const [orderTrue, setOrderTrue] = useState(false);
   const [orderId, setOrderId] = useState('');
   const [orderStatus, setOrderStatus] = useState<
@@ -62,7 +62,19 @@ const OrderLayout = () => {
           try {
             const response = await OrderDetailList(Number(id));
             setOrderDetailMenuList(response);
-          } catch (error) {}
+          } catch (error) {
+            const navigation: NavigationProp<ParamListBase> = useNavigation();
+
+            Alert.alert('앗!', '로그인이 만료되었습니다.', [
+              {
+                text: '확인',
+                onPress: () => {
+                  navigation.navigate('Signin');
+                  console.log('로그인 페이지로 이동');
+                },
+              },
+            ]);
+          }
         };
 
         fetchOrderList();
@@ -115,7 +127,7 @@ const OrderLayout = () => {
   }, [orderId]);
 
   useEffect(() => {
-    if (orderStatus === 'CANCELED' || orderStatus === 'NOT_TAKE') {
+    if (orderStatus === 'NOT_TAKE') {
       navigation.navigate('홈');
     }
   }, [orderStatus, navigation]);
@@ -130,6 +142,8 @@ const OrderLayout = () => {
         return <OrderCompleteContent />;
       case 'FINISH':
         return <OrderCompletePickupContent />;
+      case 'CANCELED':
+        return <OrderWaitContent />;
       default:
         return null;
     }

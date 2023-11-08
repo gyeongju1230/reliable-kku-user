@@ -1,6 +1,6 @@
 import * as styles from '@components/pages/order/order-payment/order-payment-layout/OrderPaymentLayout.style';
 import BackButtonImage from '@assets/images/order/BackButton.svg';
-import {TouchableOpacity} from 'react-native';
+import {Alert, TouchableOpacity} from 'react-native';
 import {
   NavigationProp,
   ParamListBase,
@@ -36,7 +36,19 @@ const OrderPaymentLayout = () => {
       try {
         const response = await OrderMenuList();
         setMenuList(response);
-      } catch (error) {}
+      } catch (error) {
+        const navigation: NavigationProp<ParamListBase> = useNavigation();
+
+        Alert.alert('앗!', '로그인이 만료되었습니다.', [
+          {
+            text: '확인',
+            onPress: () => {
+              navigation.navigate('Signin');
+              console.log('로그인 페이지로 이동');
+            },
+          },
+        ]);
+      }
     };
 
     StoresOpenClosed()
@@ -44,6 +56,17 @@ const OrderPaymentLayout = () => {
         setIsopen(response.isOpened);
       })
       .catch(error => {
+        const navigation: NavigationProp<ParamListBase> = useNavigation();
+
+        Alert.alert('앗!', '로그인이 만료되었습니다.', [
+          {
+            text: '확인',
+            onPress: () => {
+              navigation.navigate('Signin');
+              console.log('로그인 페이지로 이동');
+            },
+          },
+        ]);
         console.error('Error', error);
       });
 

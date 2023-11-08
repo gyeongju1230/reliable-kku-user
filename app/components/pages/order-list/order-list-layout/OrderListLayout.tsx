@@ -1,8 +1,13 @@
 import * as styles from '@components/pages/order-list/order-list-layout/OrderListLayout.style';
-import {ScrollView} from 'react-native';
+import {Alert, ScrollView} from 'react-native';
 import {getBottomSpace} from 'react-native-iphone-x-helper';
 import {useEffect, useState} from 'react';
 import {OrderPastList} from '@/apis/order/orderlist/OrderList';
+import {
+  NavigationProp,
+  ParamListBase,
+  useNavigation,
+} from '@react-navigation/native';
 
 const bottomSpace = getBottomSpace();
 
@@ -27,7 +32,19 @@ const OrderListLayout = () => {
       try {
         const response = await OrderPastList();
         setOrderPastList(response);
-      } catch (error) {}
+      } catch (error) {
+        const navigation: NavigationProp<ParamListBase> = useNavigation();
+
+        Alert.alert('앗!', '로그인이 만료되었습니다.', [
+          {
+            text: '확인',
+            onPress: () => {
+              navigation.navigate('Signin');
+              console.log('로그인 페이지로 이동');
+            },
+          },
+        ]);
+      }
     };
 
     fetchOrderPastList();
