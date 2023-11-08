@@ -121,3 +121,10 @@ export const OrderCancledModalButtonContent = styled.Text`
   font-size: ${Font.Size.L};
   font-weight: 500;
 `;
+
+export const OrderCanceledSuccessModalBox = styled.View`
+  margin-top: 3%;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+`;
