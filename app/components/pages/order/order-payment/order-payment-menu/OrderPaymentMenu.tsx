@@ -35,11 +35,12 @@ const OrderPaymentMenu = ({
   setOrderCount,
 }: OrderPaymentMenuProps) => {
   const [quantity, setQuantity] = useState<{[key: number]: number}>({});
+  const [isMaxCount, setIsMaxCount] = useState(false);
 
   const clearAsyncStorage = async () => {
     try {
       await AsyncStorage.removeItem('registeredMenus');
-      console.log('AsyncStorage의 registeredMenus 값을 지움');
+      console.log('AsyncStorage 의 registeredMenus 값을 지움');
     } catch (error) {}
   };
   useEffect(() => {
@@ -77,6 +78,7 @@ const OrderPaymentMenu = ({
 
       total += price;
       count += orderedQuantity;
+      setIsMaxCount(count > 29);
     });
 
     const filteredQuantity = Object.entries(quantity)
@@ -109,7 +111,7 @@ const OrderPaymentMenu = ({
       [menuId]: (prev[menuId] || 0) + 1,
     }));
   };
-  console.log('isOpened>>>>>', isopen);
+
   const decreaseQuantity = (menuId: number) => {
     if (quantity[menuId] > 0) {
       setQuantity(prev => ({
@@ -165,6 +167,7 @@ const OrderPaymentMenu = ({
                       <TouchableOpacity
                         onPress={() => increaseQuantity(menu.menuId)}
                         disabled={
+                          isMaxCount ||
                           !menu.isSale ||
                           !isopen ||
                           quantity[menu.menuId] === 30
