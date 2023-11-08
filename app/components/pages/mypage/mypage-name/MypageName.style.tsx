@@ -47,7 +47,7 @@ export const ModalContainer = styled.View`
 `;
 
 export const ModalContentBox = styled.View`
-  width: 53.248px;
+  width: 63.248px;
   height: 22.05px;
   align-self: center;
   border-bottom-width: 0.5px;

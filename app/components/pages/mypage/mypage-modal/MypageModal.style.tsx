@@ -11,15 +11,15 @@ export const Box = styled.View`
 `;
 
 export const InquiryBox = styled.View`
-  width: 28px;
+  width: 32px;
   height: 26px;
-  margin-right: 23px;
+  margin-right: 19px;
 `;
 
 export const TermsBox = styled.View`
-  width: 28px;
+  width: 32px;
   height: 26px;
-  margin-left: 22.5px;
+  margin-left: 18.5px;
 `;
 
 export const LineBox = styled.View`

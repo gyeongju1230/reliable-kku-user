@@ -9,8 +9,8 @@ export const Box = styled.View`
 `;
 
 export const CheckContainer = styled.View`
-  width: 214px;
-  height: 24px;
+  width: 233px;
+  height: 30px;
   flex-direction: row;
   align-items: center;
   align-self: start;
@@ -46,7 +46,7 @@ export const ContentBox = styled.View`
 `;
 
 export const ContentBoxTop = styled.View`
-  height: 40.6122449%;
+  height: 32%;
 `;
 
 export const Content = styled.Text`

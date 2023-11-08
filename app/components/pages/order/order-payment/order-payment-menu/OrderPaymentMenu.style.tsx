@@ -60,7 +60,7 @@ export const PriceContainer = styled.View`
 
 export const PriceBox = styled.View`
   width: 83px;
-  height: 24px;
+  height: 40px;
   flex-direction: row;
   align-self: center;
 `;
