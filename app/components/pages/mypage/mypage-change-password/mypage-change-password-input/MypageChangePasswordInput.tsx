@@ -1,6 +1,6 @@
 import * as styles from '@components/pages/mypage/mypage-change-password/mypage-change-password-input/MypageChangePasswordInput.style';
 import {Alert, TouchableOpacity} from 'react-native';
-import React, {Dispatch, SetStateAction, useEffect, useState} from 'react';
+import React, {Dispatch, SetStateAction, useState} from 'react';
 import PasswordViewOn from '@assets/images/signup/PasswordViewOn.svg';
 import PasswordViewOff from '@assets/images/signup/PasswordViewOff.svg';
 import {VerifyCurrentPassword} from '@/apis/Mypage/Mypage';
@@ -30,6 +30,7 @@ const MypageChangePasswordInput = ({
   setPassSuccess,
   setVerifySuccess,
 }: MypageChangePasswordInputProps) => {
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
   const [currentPassword, setCurrentPassword] = useState('');
   const [verifyPassword, setVerifyPassword] = useState('');
   const [showCurrentPassword, setShowCurrentPassword] = useState(false);
@@ -73,8 +74,6 @@ const MypageChangePasswordInput = ({
       setCurrentPasswordError('비밀번호 확인 중 오류가 발생했습니다.');
       setCurrentPasswordSuccess('');
 
-      const navigation: NavigationProp<ParamListBase> = useNavigation();
-
       Alert.alert('앗!', '로그인이 만료되었습니다.', [
         {
           text: '확인',
@@ -89,6 +88,7 @@ const MypageChangePasswordInput = ({
 
   const handlePasswordChange = (text: string) => {
     setPassword(text);
+
     const isValid = isPasswordValid(text);
     setPasswordMessage(
       isValid
@@ -170,8 +170,12 @@ const MypageChangePasswordInput = ({
             editable={currentPasswordSuccess === '비밀번호가 일치합니다.'}
           />
         </styles.PasswordInputContainer>
-        {passwordMessage === '사용가능한 비밀번호입니다.' ||
-        passwordMessage === '사용하실 수 없는 비밀번호입니다.' ? (
+        {password.length === 0 ? (
+          <styles.PasswordCheck>
+            8-20자 이내 영문(대,소문자), 숫자, 특수문자를 조합하셔서 작성해
+            주세요.
+          </styles.PasswordCheck>
+        ) : (
           <>
             {passwordMessage === '사용가능한 비밀번호입니다.' ? (
               <styles.SuccessMessageText>
@@ -183,11 +187,6 @@ const MypageChangePasswordInput = ({
               </styles.ErrorMessageText>
             )}
           </>
-        ) : (
-          <styles.PasswordCheck>
-            8-20자 이내 영문(대,소문자), 숫자, 특수문자를 조합하셔서 작성해
-            주세요.
-          </styles.PasswordCheck>
         )}
       </styles.PasswordBox>
       <styles.PasswordBox>

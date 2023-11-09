@@ -11,7 +11,6 @@ import OrderPaymentPriceButtonLayout from '@components/pages/order/order-payment
 import OrderPaymentCheckBox from '@components/pages/order/order-payment/order-payment-checkbox/OrderPaymentCheckBox';
 import {useEffect, useState} from 'react';
 import {OrderMenuList, StoresOpenClosed} from '@/apis/order/Order';
-import {MypageMember} from '@/apis/Mypage/Mypage';
 
 interface Menu {
   menuId: number;
@@ -37,8 +36,6 @@ const OrderPaymentLayout = () => {
         const response = await OrderMenuList();
         setMenuList(response);
       } catch (error) {
-        const navigation: NavigationProp<ParamListBase> = useNavigation();
-
         Alert.alert('앗!', '로그인이 만료되었습니다.', [
           {
             text: '확인',
@@ -56,8 +53,6 @@ const OrderPaymentLayout = () => {
         setIsopen(response.isOpened);
       })
       .catch(error => {
-        const navigation: NavigationProp<ParamListBase> = useNavigation();
-
         Alert.alert('앗!', '로그인이 만료되었습니다.', [
           {
             text: '확인',

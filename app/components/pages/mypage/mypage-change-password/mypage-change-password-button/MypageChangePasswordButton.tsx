@@ -39,7 +39,6 @@ const MypageChangePasswordButton = ({
       toggleModal();
     } catch (error) {
       console.error('비밀번호 변경 실패', error);
-      const navigation: NavigationProp<ParamListBase> = useNavigation();
 
       Alert.alert('앗!', '로그인이 만료되었습니다.', [
         {

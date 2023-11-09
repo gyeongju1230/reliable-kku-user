@@ -16,7 +16,6 @@ import {
   PaymentWidgetProvider,
   usePaymentWidget,
 } from '@tosspayments/widget-sdk-react-native';
-import Config from 'react-native-config';
 import uuid from 'react-native-uuid';
 import BackButtonImage from '@assets/images/order/BackButton.svg';
 import {
@@ -26,15 +25,10 @@ import {
 } from '@react-navigation/native';
 import {OrderSave, PaymentConfirm} from '@/apis/order/Order';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import {Signin} from '@/apis/auth/signin/Signin';
 
 const Webview = () => {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 
-  const windowWidth = Dimensions.get('window').width;
-  const windowHeight = Dimensions.get('window').height;
-
-  const CLIENTKEY = Config.CLIENT_KEY ? Config.CLIENT_KEY : '';
   const newUUIDv4 = uuid.v4().toString();
 
   return (
@@ -57,7 +51,9 @@ const Webview = () => {
         contentContainerStyle={{
           flexGrow: 1,
         }}>
-        <PaymentWidgetProvider clientKey={CLIENTKEY} customerKey={newUUIDv4}>
+        <PaymentWidgetProvider
+          clientKey={'test_ck_XZYkKL4Mrj1b7daZxaYRV0zJwlEW'}
+          customerKey={newUUIDv4}>
           <CheckoutPage />
         </PaymentWidgetProvider>
       </ScrollView>
@@ -68,7 +64,7 @@ const Webview = () => {
 function CheckoutPage() {
   const navigation: NavigationProp<ParamListBase> = useNavigation();
   const paymentWidgetControl = usePaymentWidget();
-  const [paymentMethodWidgetControl, setPaymentMethodWidgetControl] =
+  const [_, setPaymentMethodWidgetControl] =
     useState<PaymentMethodWidgetControl | null>(null);
   const [agreementWidgetControl, setAgreementWidgetControl] =
     useState<AgreementWidgetControl | null>(null);
@@ -96,8 +92,6 @@ function CheckoutPage() {
         }
       }
     } catch (error) {
-      const navigation: NavigationProp<ParamListBase> = useNavigation();
-
       Alert.alert('앗!', '로그인이 만료되었습니다.', [
         {
           text: '확인',
@@ -176,8 +170,6 @@ function CheckoutPage() {
                 console.log('paymentKey: ', paymentKey);
                 console.log('orderId: ', orderId);
                 console.log('price: ', price);
-                const navigation: NavigationProp<ParamListBase> =
-                  useNavigation();
 
                 Alert.alert('앗!', '로그인이 만료되었습니다.', [
                   {

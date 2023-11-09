@@ -63,8 +63,6 @@ const OrderLayout = () => {
             const response = await OrderDetailList(Number(id));
             setOrderDetailMenuList(response);
           } catch (error) {
-            const navigation: NavigationProp<ParamListBase> = useNavigation();
-
             Alert.alert('앗!', '로그인이 만료되었습니다.', [
               {
                 text: '확인',
@@ -88,7 +86,7 @@ const OrderLayout = () => {
         `https://dev.deunku.com/api/v1/order/sse/connect?orderId=${orderId}`,
         {
           withCredentials: true,
-          pollingInterval: 3000,
+          pollingInterval: 1000,
           timeout: 0,
         },
       );
