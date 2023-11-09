@@ -2,12 +2,6 @@
 
 import axios from 'axios';
 import {Alert} from 'react-native';
-import {
-  NavigationProp,
-  ParamListBase,
-  useNavigation,
-} from '@react-navigation/native';
-import Signin from '@screens/Signin';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const BASE_API = axios.create({

@@ -141,6 +141,7 @@ function App() {
   return (
     <RecoilRoot>
       <SafeAreaView style={styles.container}>
+        <StatusBar barStyle="dark-content" />
         <NavigationContainer>
           <Stack.Navigator
             screenOptions={{
@@ -170,6 +171,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: StatusBar.currentHeight,
+    backgroundColor: '#fff',
   },
 });
 export default App;
