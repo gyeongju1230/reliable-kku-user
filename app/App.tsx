@@ -31,6 +31,7 @@ import MypageUnClickImage from '@assets/icons/bottom-navigation/MypageUnClick.sv
 import MypageClickImage from '@assets/icons/bottom-navigation/MypageClick.svg';
 import {RecoilRoot} from 'recoil';
 import {OrderDuplicate} from '@/apis/main/Main';
+import messaging from '@react-native-firebase/messaging';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -138,6 +139,11 @@ function BottomTabs() {
 }
 
 function App() {
+  useEffect(() => {
+    return messaging().onMessage(async remoteMessage => {
+      console.log(remoteMessage);
+    });
+  }, []);
   return (
     <RecoilRoot>
       <SafeAreaView style={styles.container}>

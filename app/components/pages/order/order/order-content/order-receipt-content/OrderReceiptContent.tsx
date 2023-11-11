@@ -109,7 +109,7 @@ const OrderReceiptContent = ({leftMinutes}: LeftMinutesProps) => {
         <styles.DelayeModalContainer>
           <styles.DelayeModalBox>
             <MarginTop height={6} />
-            <TouchableOpacity onPress={() => navigation.navigate('홈')}>
+            <TouchableOpacity onPress={() => setIsDelayeModal(false)}>
               <styles.CloseButtonBox>
                 <CloseButton width={20} height={20} />
               </styles.CloseButtonBox>
