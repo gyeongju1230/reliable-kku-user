@@ -48,5 +48,5 @@ export const OrderPaymentCheckBoxTop = styled.View`
 `;
 
 export const PaymentPriceButtonLayoutTop = styled.View`
-  height: 2.4647887%;
+  height: 1.4647887%;
 `;

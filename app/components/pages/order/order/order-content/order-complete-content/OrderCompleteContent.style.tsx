@@ -30,7 +30,7 @@ export const ContentTitle = styled.Text`
 `;
 
 export const Content = styled.Text`
-  width: 250px;
+  width: 260px;
   margin-top: 9px;
   color: #000;
   font-size: ${Font.Size.L};

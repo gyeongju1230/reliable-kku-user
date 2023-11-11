@@ -55,7 +55,7 @@ const OrderCompleteContent = () => {
         width="49.7972973%"
         height="73.7552643%"
         style={{
-          top: '-12.0885818%',
+          top: '-9%',
           left: '30.9459459%',
           transform: [{rotate: '-17.471deg'}],
         }}

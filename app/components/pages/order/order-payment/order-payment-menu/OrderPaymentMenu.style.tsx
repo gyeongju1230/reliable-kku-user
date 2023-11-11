@@ -72,7 +72,7 @@ export const Price = styled.Text`
 `;
 
 export const PriceContent = styled.Text`
-  height: 16px;
+  height: 19px;
   margin-top: 4.82px;
   margin-left: 5px;
   color: #000;

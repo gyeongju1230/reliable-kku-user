@@ -8,7 +8,6 @@ export const ButtonContainer = styled.View`
   height: 44px;
   align-self: center;
   justify-content: center;
-  flex-direction: column;
   border-radius: 6px;
 `;
 

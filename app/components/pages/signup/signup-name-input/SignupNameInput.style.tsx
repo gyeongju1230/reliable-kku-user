@@ -11,7 +11,7 @@ export const Box = styled.View`
 
 export const Content = styled.Text`
   width: 330px;
-  height: 19px;
+  height: 22px;
   margin-bottom: 8px;
   color: #000;
   font-size: ${Font.Size.XL};

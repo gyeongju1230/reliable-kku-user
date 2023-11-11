@@ -16,7 +16,7 @@ export const NameBox = styled.View`
 
 export const Name = styled.Text`
   width: 318px;
-  height: 28.5px;
+  height: 29px;
   color: #000;
   font-size: ${Font.Size.XXXL};
   font-weight: 700;
@@ -25,7 +25,7 @@ export const Name = styled.Text`
 
 export const NameContent = styled.Text`
   width: 148px;
-  height: 28.5px;
+  height: 30px;
   color: #000;
   font-size: ${Font.Size.XXXL};
   font-weight: 700;

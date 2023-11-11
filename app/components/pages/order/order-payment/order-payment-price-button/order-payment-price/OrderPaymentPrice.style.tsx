@@ -3,14 +3,14 @@ import {Font} from '@assets/fonts/Font';
 
 export const Box = styled.View`
   width: 324px;
-  height: 19px;
+  height: 23px;
   flex-direction: row;
   align-self: center;
 `;
 
 export const CountBox = styled.View`
   width: 96px;
-  height: 19px;
+  height: 21px;
   flex-direction: row;
 `;
 
@@ -32,14 +32,14 @@ export const Count = styled.Text`
 export const PriceBox = styled.View`
   position: absolute;
   width: 180px;
-  height: 19px;
+  height: 21px;
   right: 0;
   flex-direction: row;
 `;
 
 export const PriceContent = styled.Text`
   width: 95px;
-  height: 19px;
+  height: 21px;
   color: #000;
   text-align: center;
   font-size: ${Font.Size.XL};

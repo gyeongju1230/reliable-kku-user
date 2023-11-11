@@ -44,7 +44,7 @@ export const PasswordInput = styled.TextInput.attrs({
 
 export const PasswordCheck = styled.Text`
   width: 330px;
-  height: 12px;
+  height: 14px;
   margin-top: 7px;
   color: rgba(0, 0, 0, 0.3);
   font-size: ${Font.Size.S};
@@ -54,7 +54,7 @@ export const PasswordCheck = styled.Text`
 
 export const SuccessMessageText = styled.Text`
   width: 330px;
-  height: 12px;
+  height: 14px;
   margin-top: 7px;
   color: #2f57e5;
   font-size: ${Font.Size.S};
@@ -64,7 +64,7 @@ export const SuccessMessageText = styled.Text`
 
 export const ErrorMessageText = styled.Text`
   width: 330px;
-  height: 12px;
+  height: 14px;
   margin-top: 7px;
   color: #f00;
   font-size: ${Font.Size.S};

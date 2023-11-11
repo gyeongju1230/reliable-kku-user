@@ -10,7 +10,7 @@ export const LevelBox = styled.View`
 
 export const Level = styled.Text`
   width: 261px;
-  height: 19px;
+  height: 21px;
   margin-left: 6px;
   color: #000;
   font-size: ${Font.Size.XL};
@@ -19,7 +19,7 @@ export const Level = styled.Text`
 
 export const GuideBox = styled.View`
   width: 49px;
-  height: 10px;
+  height: 11px;
   flex-direction: row;
 `;
 
@@ -42,7 +42,7 @@ export const ModalContainer = styled.View`
 
 export const ModalContent = styled.Text`
   width: 102px;
-  height: 30px;
+  height: 32px;
   align-self: center;
   color: rgba(255, 255, 255, 0.6);
   text-align: justify;
