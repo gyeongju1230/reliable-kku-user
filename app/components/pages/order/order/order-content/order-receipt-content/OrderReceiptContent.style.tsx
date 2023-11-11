@@ -20,7 +20,7 @@ export const ContentBox = styled.View`
 `;
 
 export const ContentTitle = styled.Text`
-  width: 120px;
+  width: 140px;
   color: #000;
   font-size: ${Font.Size.XXL};
   font-weight: 600;

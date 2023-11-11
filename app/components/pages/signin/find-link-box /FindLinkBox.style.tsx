@@ -5,8 +5,8 @@ export const Box = styled.View`
 `;
 
 export const FindLinkContainer = styled.View`
-  width: 150px;
-  height: 16px;
+  width: 155px;
+  height: 22px;
   flex-direction: row;
   justify-content: space-between;
 `;

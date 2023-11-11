@@ -33,7 +33,7 @@ export const OrderListBox = styled.View`
 
 export const OrderContentBox = styled.View`
   width: 299px;
-  height: 19px;
+  height: 21px;
   margin-top: 14px;
   flex-direction: row;
 `;

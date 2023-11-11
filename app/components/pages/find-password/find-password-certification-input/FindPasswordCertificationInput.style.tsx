@@ -38,6 +38,8 @@ export const CertificationInputBox = styled.View`
 export const CertificationInput = styled.TextInput`
   width: 152px;
   height: 32px;
+  padding-top: 8px;
+  padding-bottom: 8px;
 `;
 
 export const Timer = styled.Text`

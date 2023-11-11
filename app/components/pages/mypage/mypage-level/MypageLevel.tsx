@@ -23,7 +23,7 @@ const MypageLevel = ({level}: MypageLevelProps) => {
         onPress={openModal}
         style={{position: 'absolute', bottom: '0%', right: '0%'}}>
         <styles.GuideBox>
-          <GuideIcon width={9} height={9} />
+          <GuideIcon width={10} height={10} />
           <styles.GuideText>붕레벨이란?</styles.GuideText>
         </styles.GuideBox>
       </TouchableOpacity>

@@ -84,7 +84,7 @@ export const Container = styled.View`
 
 export const OrderPrice = styled.Text`
   width: 228px;
-  height: 24px;
+  height: 25px;
 
   color: #000;
   font-size: ${Font.Size.XXL};
@@ -105,7 +105,7 @@ export const OrderTime = styled.Text`
 
 export const OrderMenu = styled.View`
   width: 286px;
-  height: 12px;
+  height: 14px;
   flex-direction: row;
   align-items: center;
   margin-top: 11px;
@@ -113,7 +113,7 @@ export const OrderMenu = styled.View`
 
 export const OrderMenuContent = styled.Text`
   width: auto;
-  height: 12px;
+  height: 14px;
   color: rgba(0, 0, 0, 0.6);
   font-size: ${Font.Size.S};
   font-weight: 400;

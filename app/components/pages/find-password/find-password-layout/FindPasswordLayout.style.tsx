@@ -22,7 +22,7 @@ export const TitleBox = styled.View`
 
 export const TitleContent = styled.Text`
   width: 120px;
-  height: 24px;
+  height: 28px;
   color: #000;
   font-size: ${Font.Size.XXL};
   font-weight: 600;

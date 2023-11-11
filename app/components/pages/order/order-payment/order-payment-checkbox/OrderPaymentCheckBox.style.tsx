@@ -41,7 +41,7 @@ export const CheckBox = styled.View`
 
 export const ContentBox = styled.View`
   width: 240px;
-  height: 10px;
+  height: 12px;
   align-self: center;
 `;
 
