@@ -26,7 +26,9 @@ const OrderPaymentCheckBox = ({setCheck}: OrderPaymentCheckBoxProps) => {
             음식을 수령할 수 없습니다.
           </styles.CheckContentLine>
         </styles.CheckContent>
-        <TouchableOpacity onPress={toggleCheckBox}>
+        <TouchableOpacity
+          onPress={toggleCheckBox}
+          hitSlop={{top: 20, bottom: 20}}>
           <styles.CheckBox>
             {isChecked ? (
               <CheckBoxImage width={20} height={20} />

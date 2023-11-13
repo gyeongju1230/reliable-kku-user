@@ -74,10 +74,8 @@ const OrderWaitContent = () => {
         closeOrderCanceledModal();
         openOrderCanceledSuccessModal();
       })
-      .catch(error => {
+      .catch(_ => {
         console.error('주문 취소 실패: ');
-        const navigation: NavigationProp<ParamListBase> = useNavigation();
-
         Alert.alert('앗!', '로그인이 만료되었습니다.', [
           {
             text: '확인',
@@ -102,7 +100,9 @@ const OrderWaitContent = () => {
             주문이 확인되기 전까지는 취소가 가능합니다.
           </styles.Content>
         </styles.ContentBox>
-        <TouchableOpacity onPress={openOrderCanceledModal}>
+        <TouchableOpacity
+          onPress={openOrderCanceledModal}
+          hitSlop={{top: 20, bottom: 20}}>
           <styles.Button>
             <styles.ButtonContent>취소</styles.ButtonContent>
           </styles.Button>
@@ -125,7 +125,9 @@ const OrderWaitContent = () => {
         <styles.OrderCanceledModalContainer>
           <styles.OrderCanceledModalBox>
             <MarginTop height={6} />
-            <TouchableOpacity onPress={closeOrderCanceledModal}>
+            <TouchableOpacity
+              onPress={closeOrderCanceledModal}
+              hitSlop={{top: 20, bottom: 20}}>
               <styles.CloseButtonBox>
                 <CloseButton width={20} height={20} />
               </styles.CloseButtonBox>
@@ -134,14 +136,18 @@ const OrderWaitContent = () => {
               주문을 취소하시겠습니까?
             </styles.OrderCancledModalContent>
             <styles.OrderCancledModalButtonBox>
-              <TouchableOpacity onPress={handleOrderCanceled}>
+              <TouchableOpacity
+                onPress={handleOrderCanceled}
+                hitSlop={{top: 20, bottom: 20}}>
                 <styles.OrderCancledModalButtonYes>
                   <styles.OrderCancledModalButtonContent>
                     예
                   </styles.OrderCancledModalButtonContent>
                 </styles.OrderCancledModalButtonYes>
               </TouchableOpacity>
-              <TouchableOpacity onPress={closeOrderCanceledModal}>
+              <TouchableOpacity
+                onPress={closeOrderCanceledModal}
+                hitSlop={{top: 20, bottom: 20}}>
                 <styles.OrderCancledModalButtonNo>
                   <styles.OrderCancledModalButtonContent>
                     아니오

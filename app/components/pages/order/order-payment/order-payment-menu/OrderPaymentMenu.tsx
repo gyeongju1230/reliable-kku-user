@@ -157,7 +157,7 @@ const OrderPaymentMenu = ({
                   <styles.CountContainer>
                     <styles.CountBox>
                       <TouchableOpacity
-                        style={{width: '5.4%', height: '1.9%'}}
+                        hitSlop={{top: 20, bottom: 20}}
                         onPress={() => decreaseQuantity(menu.menuId)}
                         disabled={!menu.isSale || !isopen}>
                         <styles.CountMinusImageBox>
@@ -166,7 +166,7 @@ const OrderPaymentMenu = ({
                       </TouchableOpacity>
                       <styles.Count>{quantity[menu.menuId] || 0}</styles.Count>
                       <TouchableOpacity
-                        style={{width: '5.4%', height: '1.9%'}}
+                        hitSlop={{top: 20, bottom: 20}}
                         onPress={() => increaseQuantity(menu.menuId)}
                         disabled={
                           isMaxCount ||

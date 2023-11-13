@@ -32,7 +32,9 @@ const MypageChangePasswordLayout = () => {
           contentContainerStyle={{paddingBottom: bottomSpace}}
           showsVerticalScrollIndicator={false}>
           <styles.CloseButtonBoxTop />
-          <TouchableOpacity onPress={() => navigation.navigate('My붕')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('My붕')}
+            hitSlop={{top: 20, bottom: 20}}>
             <styles.CloseButtonBox>
               <CloseButton width={30} height={30} />
             </styles.CloseButtonBox>

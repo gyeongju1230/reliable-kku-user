@@ -34,7 +34,7 @@ const OrderCompleteContent = () => {
           </styles.Content>
         </styles.ContentBox>
         <styles.ButtonBox>
-          <TouchableOpacity>
+          <TouchableOpacity hitSlop={{top: 20, bottom: 20}}>
             <styles.Button>
               <styles.ButtonContent>픽업</styles.ButtonContent>
             </styles.Button>

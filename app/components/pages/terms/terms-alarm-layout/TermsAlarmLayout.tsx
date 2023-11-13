@@ -26,7 +26,9 @@ const TermsAlarmLayout = () => {
           contentContainerStyle={{paddingBottom: bottomSpace}}
           showsVerticalScrollIndicator={false}>
           <MarginTop height={62} />
-          <TouchableOpacity onPress={() => navigation.navigate('SignupTerms')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('SignupTerms')}
+            hitSlop={{top: 20, bottom: 20}}>
             <styles.CloseButtonBox>
               <CloseButton width={30} height={30} />
             </styles.CloseButtonBox>

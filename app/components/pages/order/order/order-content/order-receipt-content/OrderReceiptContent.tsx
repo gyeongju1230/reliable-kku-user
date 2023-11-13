@@ -61,7 +61,7 @@ const OrderReceiptContent = ({leftMinutes}: LeftMinutesProps) => {
           </styles.Content>
         </styles.ContentBox>
         <styles.ButtonBox>
-          <TouchableOpacity>
+          <TouchableOpacity hitSlop={{top: 20, bottom: 20}}>
             <styles.Button>
               <styles.ButtonContent>
                 {leftMinutes <= 0 ? '0분' : `${leftMinutes}분`}
@@ -109,6 +109,9 @@ const OrderReceiptContent = ({leftMinutes}: LeftMinutesProps) => {
         <styles.DelayeModalContainer>
           <styles.DelayeModalBox>
             <MarginTop height={6} />
+            <TouchableOpacity
+              onPress={() => navigation.navigate('홈')}
+              hitSlop={{top: 20, bottom: 20}}>
             <TouchableOpacity onPress={() => setIsDelayeModal(false)}>
               <styles.CloseButtonBox>
                 <CloseButton width={20} height={20} />
@@ -124,6 +127,7 @@ const OrderReceiptContent = ({leftMinutes}: LeftMinutesProps) => {
               문의사항은 인스타 dm으로 부탁드립니다.
             </styles.DelayeModalContent>
             <TouchableOpacity
+              hitSlop={{top: 20, bottom: 20}}
               onPress={() =>
                 Linking.openURL('https://www.instagram.com/ku_meal_kit/')
               }>

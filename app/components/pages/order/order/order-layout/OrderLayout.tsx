@@ -86,7 +86,7 @@ const OrderLayout = () => {
         `https://dev.deunku.com/api/v1/order/sse/connect?orderId=${orderId}`,
         {
           withCredentials: true,
-          pollingInterval: 1000,
+          pollingInterval: 500,
           timeout: 0,
         },
       );
@@ -165,7 +165,9 @@ const OrderLayout = () => {
     <styles.Box>
       <styles.Top />
       {orderTrue && (
-        <TouchableOpacity onPress={handleOnPressCloseButton}>
+        <TouchableOpacity
+          onPress={handleOnPressCloseButton}
+          hitSlop={{top: 20, bottom: 20}}>
           <CloseButton
             width={35}
             height={35}

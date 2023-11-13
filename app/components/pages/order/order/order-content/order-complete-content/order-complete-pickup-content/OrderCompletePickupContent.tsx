@@ -132,7 +132,9 @@ const OrderCompletePickupContent = () => {
               height={28}
               style={{top: '-9%', left: '20%'}}
             />
-            <TouchableOpacity onPress={handleOnPressCloseButton}>
+            <TouchableOpacity
+              onPress={handleOnPressCloseButton}
+              hitSlop={{top: 20, bottom: 20}}>
               <Button width={140} height={26} />
             </TouchableOpacity>
           </styles.PickupModalBox>

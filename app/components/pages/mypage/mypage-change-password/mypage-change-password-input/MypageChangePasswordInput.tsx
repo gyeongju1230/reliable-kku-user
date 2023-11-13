@@ -123,7 +123,9 @@ const MypageChangePasswordInput = ({
       <styles.PasswordBox>
         <styles.PasswordContent>현재 비밀번호</styles.PasswordContent>
         <styles.PasswordInputContainer>
-          <TouchableOpacity onPress={toggleCurrentPassword}>
+          <TouchableOpacity
+            onPress={toggleCurrentPassword}
+            hitSlop={{top: 20, bottom: 20}}>
             {showCurrentPassword ? (
               <PasswordViewOn width={20} height={20} />
             ) : (
@@ -155,7 +157,9 @@ const MypageChangePasswordInput = ({
       <styles.PasswordBox>
         <styles.PasswordContent>새 비밀번호</styles.PasswordContent>
         <styles.PasswordInputContainer>
-          <TouchableOpacity onPress={togglePassword}>
+          <TouchableOpacity
+            onPress={togglePassword}
+            hitSlop={{top: 20, bottom: 20}}>
             {showPassword ? (
               <PasswordViewOn width={20} height={20} />
             ) : (
@@ -192,7 +196,9 @@ const MypageChangePasswordInput = ({
       <styles.PasswordBox>
         <styles.PasswordContent>새 비밀번호 확인</styles.PasswordContent>
         <styles.PasswordInputContainer>
-          <TouchableOpacity onPress={togglePasswordVisibility}>
+          <TouchableOpacity
+            onPress={togglePasswordVisibility}
+            hitSlop={{top: 20, bottom: 20}}>
             {showVerifyPassword ? (
               <PasswordViewOn width={20} height={20} />
             ) : (

@@ -13,6 +13,7 @@ import {
 import {Alert} from 'react-native';
 
 const MypageLayout = () => {
+  const navigation: NavigationProp<ParamListBase> = useNavigation();
   const [realName, setRealName] = useState('');
   const [level, setLevel] = useState('');
 
@@ -23,8 +24,6 @@ const MypageLayout = () => {
         setLevel(response.level);
       })
       .catch(error => {
-        const navigation: NavigationProp<ParamListBase> = useNavigation();
-
         Alert.alert('앗!', '로그인이 만료되었습니다.', [
           {
             text: '확인',
@@ -36,7 +35,7 @@ const MypageLayout = () => {
         ]);
         console.error('Error', error);
       });
-  }, []);
+  }, [navigation]);
 
   return (
     <styles.Box>

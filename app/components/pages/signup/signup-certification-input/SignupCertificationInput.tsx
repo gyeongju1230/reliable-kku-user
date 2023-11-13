@@ -73,6 +73,7 @@ const SignupCertificationInput = ({
           )}
         </styles.CertificationInputBox>
         <TouchableOpacity
+          hitSlop={{top: 20, bottom: 20}}
           onPress={
             isCertificationNumber.length === 6 ? handleCertification : undefined
           }

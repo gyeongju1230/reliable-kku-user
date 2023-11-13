@@ -33,7 +33,9 @@ const FindPasswordLayout = () => {
           contentContainerStyle={{paddingBottom: bottomSpace}}
           showsVerticalScrollIndicator={false}>
           <styles.CloseButtonBoxTop />
-          <TouchableOpacity onPress={() => navigation.navigate('Signin')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Signin')}
+            hitSlop={{top: 20, bottom: 20}}>
             <styles.CloseButtonBox>
               <CloseButton width={30} height={30} />
             </styles.CloseButtonBox>

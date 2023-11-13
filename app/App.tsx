@@ -31,6 +31,7 @@ import MypageUnClickImage from '@assets/icons/bottom-navigation/MypageUnClick.sv
 import MypageClickImage from '@assets/icons/bottom-navigation/MypageClick.svg';
 import {RecoilRoot} from 'recoil';
 import {OrderDuplicate} from '@/apis/main/Main';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import messaging from '@react-native-firebase/messaging';
 
 const Stack = createStackNavigator();
@@ -80,20 +81,28 @@ function BottomTabs() {
 
   useEffect(() => {
     OrderDuplicate()
-      .then(response => {
+      .then(_ => {
         setHasActiveOrder(true);
       })
-      .catch(error => {
+      .catch(async _ => {
         setHasActiveOrder(false);
+
+        try {
+          await AsyncStorage.removeItem('orderId');
+          console.log('remove orderId 성공: ');
+        } catch (removeError) {
+          console.error('Error:', removeError);
+          console.log('remove orderId 실패: ');
+        }
       });
   }, []);
 
   useEffect(() => {
     OrderDuplicate()
-      .then(response => {
+      .then(_ => {
         setHasActiveOrder(true);
       })
-      .catch(error => {
+      .catch(_ => {
         setHasActiveOrder(false);
       });
   }, [isFocused, route]);

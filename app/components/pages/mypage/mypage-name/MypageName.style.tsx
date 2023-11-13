@@ -9,7 +9,7 @@ export const NameContainer = styled.View`
 `;
 
 export const NameBox = styled.View`
-  width: 318px;
+  width: 261px;
   height: 57px;
   flex-direction: column;
 `;

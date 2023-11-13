@@ -46,6 +46,7 @@ const FindPasswordPhoneInput = ({
         />
         <styles.ButtonBox>
           <TouchableOpacity
+            hitSlop={{top: 20, bottom: 20}}
             onPress={
               isPhoneNumber.length === 11 ? handleFindPassword : undefined
             }

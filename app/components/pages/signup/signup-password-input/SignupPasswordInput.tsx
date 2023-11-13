@@ -67,7 +67,9 @@ const SignupPasswordInput = ({
       <styles.PasswordBox>
         <styles.PasswordContent>비밀번호</styles.PasswordContent>
         <styles.PasswordInputContainer>
-          <TouchableOpacity onPress={togglePassword}>
+          <TouchableOpacity
+            onPress={togglePassword}
+            hitSlop={{top: 20, bottom: 20}}>
             {showPassword ? (
               <PasswordViewOn width={20} height={20} />
             ) : (
@@ -104,7 +106,9 @@ const SignupPasswordInput = ({
       <styles.PasswordBox>
         <styles.PasswordContent>비밀번호 확인</styles.PasswordContent>
         <styles.PasswordInputContainer>
-          <TouchableOpacity onPress={togglePasswordVisibility}>
+          <TouchableOpacity
+            onPress={togglePasswordVisibility}
+            hitSlop={{top: 20, bottom: 20}}>
             {showVerifyPassword ? (
               <PasswordViewOn width={20} height={20} />
             ) : (

@@ -60,7 +60,9 @@ const SigninButton = ({isPhoneNumber, isPassword}: SigninButtonProps) => {
     <View>
       <styles.Box>
         <styles.CheckContainer>
-          <TouchableOpacity onPress={toggleCheck}>
+          <TouchableOpacity
+            onPress={toggleCheck}
+            hitSlop={{top: 20, bottom: 20}}>
             {isChecked ? (
               <Check width={16} height={16} />
             ) : (

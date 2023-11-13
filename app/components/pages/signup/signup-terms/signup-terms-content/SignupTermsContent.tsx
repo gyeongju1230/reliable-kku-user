@@ -58,7 +58,9 @@ const SignupTermsContent = () => {
     <styles.Box>
       <styles.AllTermsBox>
         <styles.AllTermsContentBox>
-          <TouchableOpacity onPress={updateAllCheck}>
+          <TouchableOpacity
+            onPress={updateAllCheck}
+            hitSlop={{top: 20, bottom: 20}}>
             {isTermsAllChecked ? (
               <Check width={20} height={20} />
             ) : (
@@ -70,7 +72,9 @@ const SignupTermsContent = () => {
       </styles.AllTermsBox>
       <styles.TermsBox>
         <styles.TermsContentBox>
-          <TouchableOpacity onPress={updateTermsCheck}>
+          <TouchableOpacity
+            onPress={updateTermsCheck}
+            hitSlop={{top: 20, bottom: 20}}>
             {isTermsChecked ? (
               <TermsCheck width={15} height={11} />
             ) : (
@@ -78,12 +82,16 @@ const SignupTermsContent = () => {
             )}
           </TouchableOpacity>
           <styles.TermsContent>(필수) 이용약관 동의</styles.TermsContent>
-          <TouchableOpacity onPress={() => navigation.navigate('Terms')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('Terms')}
+            hitSlop={{top: 20, bottom: 20}}>
             <MoreButton width={20} height={20} />
           </TouchableOpacity>
         </styles.TermsContentBox>
         <styles.TermsContentBox>
-          <TouchableOpacity onPress={updateTermsAlarmCheck}>
+          <TouchableOpacity
+            onPress={updateTermsAlarmCheck}
+            hitSlop={{top: 20, bottom: 20}}>
             {isTermsAlarmChecked ? (
               <TermsCheck width={15} height={11} />
             ) : (
@@ -91,7 +99,9 @@ const SignupTermsContent = () => {
             )}
           </TouchableOpacity>
           <styles.TermsContent>(필수) 정보 알림 수신 동의</styles.TermsContent>
-          <TouchableOpacity onPress={() => navigation.navigate('TermsAlarm')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('TermsAlarm')}
+            hitSlop={{top: 20, bottom: 20}}>
             <MoreButton width={20} height={20} />
           </TouchableOpacity>
         </styles.TermsContentBox>

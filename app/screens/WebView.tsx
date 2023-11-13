@@ -37,7 +37,8 @@ const Webview = () => {
         <View style={styles.TitleBox}>
           <TouchableOpacity
             style={{zIndex: 100}}
-            onPress={() => navigation.goBack()}>
+            onPress={() => navigation.goBack()}
+            hitSlop={{top: 20, bottom: 20}}>
             <View style={styles.BackButtonBox}>
               <BackButtonImage width={30} height={30} />
             </View>

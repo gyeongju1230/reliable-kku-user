@@ -26,7 +26,9 @@ const MypageModal = () => {
 
   return (
     <styles.Box>
-      <TouchableOpacity onPress={openInquiryModal}>
+      <TouchableOpacity
+        onPress={openInquiryModal}
+        hitSlop={{top: 20, bottom: 20}}>
         <styles.InquiryBox>
           <InquiryIcon
             width={16}
@@ -37,7 +39,9 @@ const MypageModal = () => {
         </styles.InquiryBox>
       </TouchableOpacity>
       <styles.LineBox />
-      <TouchableOpacity onPress={() => navigation.navigate('TermsMypage')}>
+      <TouchableOpacity
+        onPress={() => navigation.navigate('TermsMypage')}
+        hitSlop={{top: 20, bottom: 20}}>
         <styles.TermsBox>
           <TermsIcon
             width={16}
@@ -51,7 +55,9 @@ const MypageModal = () => {
         <styles.InquiryModalContainer>
           <styles.InquiryModalLayout>
             <MarginTop height={6} />
-            <TouchableOpacity onPress={closeInquiryModal}>
+            <TouchableOpacity
+              onPress={closeInquiryModal}
+              hitSlop={{top: 20, bottom: 20}}>
               <styles.CloseButtonBox>
                 <CloseButton width={20} height={20} />
               </styles.CloseButtonBox>

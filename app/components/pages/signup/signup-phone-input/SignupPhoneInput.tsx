@@ -77,6 +77,7 @@ const SignupPhoneInput = ({
         />
         <styles.ButtonBox>
           <TouchableOpacity
+            hitSlop={{top: 20, bottom: 20}}
             onPress={
               isPhoneNumber.length === 11
                 ? handlePhoneNumberDuplicate
@@ -93,6 +94,7 @@ const SignupPhoneInput = ({
             </styles.Button>
           </TouchableOpacity>
           <TouchableOpacity
+            hitSlop={{top: 20, bottom: 20}}
             onPress={handleCertificationSend}
             disabled={!isPhoneNumberUnique}>
             <styles.Button

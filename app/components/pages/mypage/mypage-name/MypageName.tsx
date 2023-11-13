@@ -11,6 +11,7 @@ import CloseButton from '@assets/icons/common/CloseButton.svg';
 import {Logout, Withdraw} from '@/apis/Mypage/Mypage';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import MarginTop from '@components/common/MarginTop';
+import Logo from '@assets/images/mypage/NameLogo.svg';
 
 interface MypageNameProps {
   realName: string;
@@ -77,11 +78,12 @@ const MypageName = ({realName}: MypageNameProps) => {
 
   return (
     <styles.NameContainer>
+      <Logo width={57} height={57} />
       <styles.NameBox>
         <styles.Name>{realName}님,</styles.Name>
         <styles.NameContent>안녕하세요!</styles.NameContent>
       </styles.NameBox>
-      <TouchableOpacity onPress={openModal}>
+      <TouchableOpacity onPress={openModal} hitSlop={{top: 20, bottom: 20}}>
         <MoreButton width={24} height={24} style={{marginLeft: '2.4%'}} />
       </TouchableOpacity>
       <Modal

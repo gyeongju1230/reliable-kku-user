@@ -115,7 +115,7 @@ export const CountPlusImageBox = styled.View`
 export const Count = styled.Text`
   width: 36px;
   height: 19px;
-  margin-left: 17px;
+  margin-left: 12px;
   margin-right: 10px;
   text-align: center;
   color: #000;

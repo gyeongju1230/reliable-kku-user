@@ -72,7 +72,9 @@ const OrderPaymentLayout = () => {
     <styles.Box>
       <styles.TitleContainer>
         <styles.TitleBox>
-          <TouchableOpacity onPress={() => navigation.navigate('홈')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('홈')}
+            hitSlop={{top: 20, bottom: 20}}>
             <styles.BackButtonBox>
               <BackButtonImage width={30} height={30} />
             </styles.BackButtonBox>

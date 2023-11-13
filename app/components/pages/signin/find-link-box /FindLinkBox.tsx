@@ -12,11 +12,15 @@ const FindLinkBox = () => {
   return (
     <styles.Box>
       <styles.FindLinkContainer>
-        <TouchableOpacity onPress={() => navigation.navigate('FindPassword')}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('FindPassword')}
+          hitSlop={{top: 20, bottom: 20}}>
           <styles.FindText>비밀번호 찾기</styles.FindText>
         </TouchableOpacity>
         <styles.Line>|</styles.Line>
-        <TouchableOpacity onPress={() => navigation.navigate('SignupTerms')}>
+        <TouchableOpacity
+          onPress={() => navigation.navigate('SignupTerms')}
+          hitSlop={{top: 20, bottom: 20}}>
           <styles.SignupText>회원가입</styles.SignupText>
         </TouchableOpacity>
       </styles.FindLinkContainer>
