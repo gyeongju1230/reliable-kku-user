@@ -85,15 +85,12 @@ const OrderLayout = () => {
       es.current = new EventSource(
         `https://dev.deunku.com/api/v1/order/sse/connect?orderId=${orderId}`,
         {
-          withCredentials: true,
-          pollingInterval: 500,
+          pollingInterval: 1000,
           timeout: 0,
         },
       );
     }
-  }, [orderId]);
 
-  useEffect(() => {
     if (es.current && orderId) {
       const listener: EventSourceListener = event => {
         if (event.type === 'open') {
