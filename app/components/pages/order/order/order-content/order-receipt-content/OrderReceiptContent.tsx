@@ -1,10 +1,10 @@
+import React, {useEffect, useState} from 'react';
+import {Linking, Modal, TouchableOpacity} from 'react-native';
 import * as styles from '@components/pages/order/order/order-content/order-receipt-content/OrderReceiptContent.style';
-import {Linking, Modal, TouchableOpacity, View} from 'react-native';
 import ReceiptContentTmage from '@assets/images/order/ReciptContentImage.svg';
 import RefreshButton from '@assets/images/order/Refresh.svg';
 import ReceiptBar from '@assets/images/order/ReceiptBar.svg';
 import OrderIcon from '@assets/images/order/OrderIcon.svg';
-import React, {useEffect, useState} from 'react';
 import MarginTop from '@components/common/MarginTop';
 import CloseButton from '@assets/icons/common/CloseButton.svg';
 import {
@@ -25,11 +25,7 @@ const OrderReceiptContent = ({leftMinutes}: LeftMinutesProps) => {
   const [isDelayeModal, setIsDelayeModal] = useState(false);
 
   const openDelayeModal = () => {
-    if (leftMinutes <= 0) {
-      setIsDelayeModal(true);
-    } else {
-      setIsDelayeModal(false);
-    }
+    setIsDelayeModal(leftMinutes <= 0);
   };
 
   useEffect(() => {
@@ -37,9 +33,7 @@ const OrderReceiptContent = ({leftMinutes}: LeftMinutesProps) => {
   }, [leftMinutes]);
 
   const move = () => {
-    moveLeftRight === '15deg'
-      ? setMoveLeftRight('-15deg')
-      : setMoveLeftRight('15deg');
+    setMoveLeftRight(moveLeftRight === '15deg' ? '-15deg' : '15deg');
   };
 
   useEffect(() => {
@@ -66,16 +60,16 @@ const OrderReceiptContent = ({leftMinutes}: LeftMinutesProps) => {
               <styles.ButtonContent>
                 {leftMinutes <= 0 ? '0분' : `${leftMinutes}분`}
               </styles.ButtonContent>
+              <RefreshButton
+                width={39}
+                height={39}
+                style={{
+                  position: 'absolute',
+                  top: '58.6956522%',
+                  left: '57%',
+                }}
+              />
             </styles.Button>
-            <RefreshButton
-              width={39}
-              height={39}
-              style={{
-                position: 'absolute',
-                top: '58.6956522%',
-                left: '57%',
-              }}
-            />
           </TouchableOpacity>
         </styles.ButtonBox>
       </styles.ContentContainer>
@@ -112,7 +106,6 @@ const OrderReceiptContent = ({leftMinutes}: LeftMinutesProps) => {
             <TouchableOpacity
               onPress={() => navigation.navigate('홈')}
               hitSlop={{top: 20, bottom: 20}}>
-            <TouchableOpacity onPress={() => setIsDelayeModal(false)}>
               <styles.CloseButtonBox>
                 <CloseButton width={20} height={20} />
               </styles.CloseButtonBox>

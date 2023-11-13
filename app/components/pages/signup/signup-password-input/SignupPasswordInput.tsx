@@ -83,8 +83,12 @@ const SignupPasswordInput = ({
             onChangeText={handlePasswordChange}
           />
         </styles.PasswordInputContainer>
-        {passwordMessage === '사용가능한 비밀번호입니다.' ||
-        passwordMessage === '사용하실 수 없는 비밀번호입니다.' ? (
+        {password.length === 0 ? (
+          <styles.PasswordCheck>
+            8-20자 이내 영문(대,소문자), 숫자, 특수문자를 조합하셔서 작성해
+            주세요.
+          </styles.PasswordCheck>
+        ) : (
           <>
             {passwordMessage === '사용가능한 비밀번호입니다.' ? (
               <styles.SuccessMessageText>
@@ -96,11 +100,6 @@ const SignupPasswordInput = ({
               </styles.ErrorMessageText>
             )}
           </>
-        ) : (
-          <styles.PasswordCheck>
-            8-20자 이내 영문(대,소문자), 숫자, 특수문자를 조합하셔서 작성해
-            주세요.
-          </styles.PasswordCheck>
         )}
       </styles.PasswordBox>
       <styles.PasswordBox>
