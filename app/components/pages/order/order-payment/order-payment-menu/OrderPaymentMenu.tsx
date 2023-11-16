@@ -82,7 +82,7 @@ const OrderPaymentMenu = ({
     });
 
     const filteredQuantity = Object.entries(quantity)
-      .filter(([key, value]) => value > 0)
+      .filter(([, value]) => value > 0)
       .reduce<{menuId: number; count: number}[]>((acc, [key, value]) => {
         acc.push({menuId: parseInt(key), count: value} as {
           menuId: number;

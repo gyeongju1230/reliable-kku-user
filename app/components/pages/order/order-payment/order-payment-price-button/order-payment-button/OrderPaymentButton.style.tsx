@@ -7,7 +7,6 @@ export const Box = styled.View`
   align-self: center;
   justify-content: center;
   border-radius: 6px;
-  background: #ffca42;
 `;
 
 export const Content = styled.Text`

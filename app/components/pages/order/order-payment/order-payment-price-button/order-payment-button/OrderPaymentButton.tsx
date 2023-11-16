@@ -28,7 +28,10 @@ const OrderPaymentButton = ({
 
   return (
     <TouchableOpacity onPress={handlePress} disabled={isDisabled}>
-      <styles.Box>
+      <styles.Box
+        style={{
+          backgroundColor: isDisabled ? '#E0E0E0' : '#FFCA42',
+        }}>
         <styles.Content>주문하기</styles.Content>
       </styles.Box>
     </TouchableOpacity>
