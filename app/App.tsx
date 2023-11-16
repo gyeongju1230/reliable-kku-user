@@ -81,7 +81,7 @@ function BottomTabs() {
 
   useEffect(() => {
     OrderDuplicate()
-      .then(_ => {
+      .then(res => {
         setHasActiveOrder(true);
       })
       .catch(async _ => {
@@ -99,7 +99,7 @@ function BottomTabs() {
 
   useEffect(() => {
     OrderDuplicate()
-      .then(_ => {
+      .then(res => {
         setHasActiveOrder(true);
       })
       .catch(_ => {

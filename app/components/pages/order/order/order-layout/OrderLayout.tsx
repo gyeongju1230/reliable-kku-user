@@ -15,6 +15,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useEffect, useRef, useState} from 'react';
 import EventSource, {EventSourceListener} from 'react-native-sse';
 import {OrderDetailList} from '@/apis/order/Order';
+import OrderLoadingContent from '@components/pages/order/order/order-content/order-loading-content/OrderLoadingContent';
 
 interface SSEProps {
   orderStatus:
@@ -23,7 +24,8 @@ interface SSEProps {
     | 'PICKUP'
     | 'FINISH'
     | 'CANCELED'
-    | 'NOT_TAKE';
+    | 'NOT_TAKE'
+    | 'LOADING';
   leftMinutes: number;
 }
 
@@ -40,8 +42,14 @@ const OrderLayout = () => {
   const [orderTrue, setOrderTrue] = useState(false);
   const [orderId, setOrderId] = useState('');
   const [orderStatus, setOrderStatus] = useState<
-    'WAIT' | 'COOKING' | 'PICKUP' | 'FINISH' | 'CANCELED' | 'NOT_TAKE'
-  >('WAIT');
+    | 'WAIT'
+    | 'COOKING'
+    | 'PICKUP'
+    | 'FINISH'
+    | 'CANCELED'
+    | 'NOT_TAKE'
+    | 'LOADING'
+  >('LOADING');
   const [leftMinutes, setLeftMinutes] = useState<number>(0);
   const es = useRef<EventSource | null>(null);
 
@@ -55,6 +63,7 @@ const OrderLayout = () => {
     });
 
     AsyncStorage.getItem('orderId').then(id => {
+      console.log('orderId', id);
       if (id) {
         setOrderId(id);
 
@@ -81,11 +90,13 @@ const OrderLayout = () => {
   }, []);
 
   useEffect(() => {
+    console.log('orderID 들어오내ㅑㅇ?????????', orderId);
+
     if (orderId) {
       es.current = new EventSource(
         `https://dev.deunku.com/api/v1/order/sse/connect?orderId=${orderId}`,
         {
-          pollingInterval: 1000,
+          pollingInterval: 3000,
           timeout: 0,
         },
       );
@@ -94,7 +105,11 @@ const OrderLayout = () => {
     if (es.current && orderId) {
       const listener: EventSourceListener = event => {
         if (event.type === 'open') {
+          console.log('OPEN');
         } else if (event.type === 'message') {
+          setOrderStatus('WAIT');
+          console.log('message');
+
           let data: SSEProps;
 
           if (event.data != null) {
@@ -142,6 +157,8 @@ const OrderLayout = () => {
         return <OrderCompletePickupContent />;
       case 'CANCELED':
         return <OrderWaitContent />;
+      // case 'LOADING':
+      //   return <OrderLoadingContent />;
       default:
         return null;
     }
@@ -158,7 +175,9 @@ const OrderLayout = () => {
     navigation.navigate('홈');
   };
 
-  return (
+  return orderStatus === 'LOADING' ? (
+    <OrderLoadingContent />
+  ) : (
     <styles.Box>
       <styles.Top />
       {orderTrue && (

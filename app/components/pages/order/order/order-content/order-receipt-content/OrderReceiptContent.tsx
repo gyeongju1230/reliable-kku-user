@@ -28,6 +28,10 @@ const OrderReceiptContent = ({leftMinutes}: LeftMinutesProps) => {
     setIsDelayeModal(leftMinutes <= 0);
   };
 
+  const closeDelayeModal = () => {
+    setIsDelayeModal(false);
+  };
+
   useEffect(() => {
     openDelayeModal();
   }, [leftMinutes]);
@@ -104,7 +108,7 @@ const OrderReceiptContent = ({leftMinutes}: LeftMinutesProps) => {
           <styles.DelayeModalBox>
             <MarginTop height={6} />
             <TouchableOpacity
-              onPress={() => navigation.navigate('홈')}
+              onPress={closeDelayeModal}
               hitSlop={{top: 20, bottom: 20}}>
               <styles.CloseButtonBox>
                 <CloseButton width={20} height={20} />
