@@ -1,7 +1,8 @@
 import * as styles from '@components/pages/mypage/mypage-modal/MypageModal.style';
 import InquiryIcon from '@assets/images/mypage/Inquiry.svg';
 import TermsIcon from '@assets/images/mypage/Terms.svg';
-import {Linking, Modal, ScrollView, TouchableOpacity} from 'react-native';
+import BusinessIcon from '@assets/images/mypage/Business.svg';
+import {Linking, Modal, Text, TouchableOpacity} from 'react-native';
 import React, {useState} from 'react';
 import MarginTop from '@components/common/MarginTop';
 import CloseButton from '@assets/icons/common/CloseButton.svg';
@@ -14,6 +15,7 @@ import {
 
 const MypageModal = () => {
   const [isInquiryModal, setIsInquiryModal] = useState(false);
+  const [isModal, setIsModal] = useState(false);
   const navigation: NavigationProp<ParamListBase> = useNavigation();
 
   const openInquiryModal = () => {
@@ -22,6 +24,14 @@ const MypageModal = () => {
 
   const closeInquiryModal = () => {
     setIsInquiryModal(false);
+  };
+
+  const openModal = () => {
+    setIsModal(!isModal);
+  };
+
+  const closeModal = () => {
+    setIsModal(false);
   };
 
   return (
@@ -38,7 +48,7 @@ const MypageModal = () => {
           <styles.Content>문의하기</styles.Content>
         </styles.InquiryBox>
       </TouchableOpacity>
-      <styles.LineBox />
+      <styles.LineBox1 />
       <TouchableOpacity
         onPress={() => navigation.navigate('TermsMypage')}
         hitSlop={{top: 20, bottom: 20}}>
@@ -50,6 +60,17 @@ const MypageModal = () => {
           />
           <styles.Content>이용약관</styles.Content>
         </styles.TermsBox>
+      </TouchableOpacity>
+      <styles.LineBox2 />
+      <TouchableOpacity onPress={openModal} hitSlop={{top: 20, bottom: 20}}>
+        <styles.BusinessBox>
+          <BusinessIcon
+            width={16}
+            height={16}
+            style={{alignSelf: 'center', marginBottom: '10%'}}
+          />
+          <styles.Content>사업자정보</styles.Content>
+        </styles.BusinessBox>
       </TouchableOpacity>
       <Modal visible={isInquiryModal} transparent={true} animationType="none">
         <styles.InquiryModalContainer>
@@ -80,6 +101,42 @@ const MypageModal = () => {
             </TouchableOpacity>
           </styles.InquiryModalLayout>
         </styles.InquiryModalContainer>
+      </Modal>
+
+      <Modal visible={isModal} transparent={true} animationType="none">
+        <styles.ModalContainer>
+          <styles.ModalLayout>
+            <MarginTop height={6} />
+            <TouchableOpacity
+              onPress={closeModal}
+              hitSlop={{top: 20, bottom: 20}}>
+              <styles.CloseModalButtonBox>
+                <CloseButton width={20} height={20} />
+              </styles.CloseModalButtonBox>
+            </TouchableOpacity>
+            <styles.ModalContentBold>
+              든든하KU | 황보예준
+            </styles.ModalContentBold>
+            <styles.ModalContent>
+              사업자등록번호{' '}
+              <Text style={{backgroundColor: '#FBEAA6', fontWeight: '400'}}>
+                701-41-00862
+              </Text>
+            </styles.ModalContent>
+            <styles.ModalContent>
+              사업장주소{' '}
+              <Text style={{backgroundColor: '#FBEAA6', fontWeight: '400'}}>
+                충청북도 충주시 충열 5길 27, 1층
+              </Text>
+            </styles.ModalContent>
+            <styles.ModalContent>
+              휴대폰번호{' '}
+              <Text style={{backgroundColor: '#FBEAA6', fontWeight: '400'}}>
+                010-5738-5458
+              </Text>
+            </styles.ModalContent>
+          </styles.ModalLayout>
+        </styles.ModalContainer>
       </Modal>
     </styles.Box>
   );
