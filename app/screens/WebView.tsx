@@ -53,7 +53,7 @@ const Webview = () => {
           flexGrow: 1,
         }}>
         <PaymentWidgetProvider
-          clientKey={'test_ck_XZYkKL4Mrj1b7daZxaYRV0zJwlEW'}
+          clientKey={'live_gck_Poxy1XQL8RPgAnxawJ49V7nO5Wml'}
           customerKey={newUUIDv4}>
           <CheckoutPage />
         </PaymentWidgetProvider>

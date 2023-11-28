@@ -94,7 +94,7 @@ const OrderLayout = () => {
 
     if (orderId) {
       es.current = new EventSource(
-        `https://dev.deunku.com/api/v1/order/sse/connect?orderId=${orderId}`,
+        `https://prod.deunku.com/api/v1/order/sse/connect?orderId=${orderId}`,
         {
           pollingInterval: 3000,
           timeout: 0,

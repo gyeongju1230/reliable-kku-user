@@ -5,13 +5,13 @@ import {Alert} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export const BASE_API = axios.create({
-  baseURL: 'https://dev.deunku.com',
+  baseURL: 'https://prod.deunku.com',
   responseType: 'json',
   withCredentials: true,
 });
 
 export const API = axios.create({
-  baseURL: 'https://dev.deunku.com',
+  baseURL: 'https://prod.deunku.com',
   responseType: 'json',
   withCredentials: true,
 });
@@ -55,7 +55,7 @@ BASE_API.interceptors.response.use(
 
     const {
       headers: {authorization},
-    } = await axios.get('https://dev.deunku.com/api/v1/token/update', {
+    } = await axios.get('https://prod.deunku.com/api/v1/token/update', {
       withCredentials: true,
     });
     await AsyncStorage.setItem('accessToken', authorization);
@@ -83,7 +83,7 @@ BASE_API.interceptors.response.use(
 //     /** 2 */
 //     if (status === 403) {
 //       await axios
-//         .get('https://dev.deunku.com/api/v1/token/update', {
+//         .get('https://prod.deunku.com/api/v1/token/update', {
 //           withCredentials: true,
 //         })
 //         .then(res => {
@@ -102,13 +102,13 @@ BASE_API.interceptors.response.use(
 //       return axios(err.config);
 //       // return Promise.reject(err);
 //       // axios
-//       //   .get('https://dev.deunku.com/api/v1/token/valid', {})
+//       //   .get('https://prod.deunku.com/api/v1/token/valid', {})
 //       //   .then(() => {
 //       //     config.sent = true;
 //       //   })
 //       //   .catch(() => {
 //       //     axios
-//       //       .get('https://dev.deunku.com/api/v1/token/update')
+//       //       .get('https://prod.deunku.com/api/v1/token/update')
 //       //       .then(() => {
 //       //         config.sent = true;
 //       //       })
