@@ -56,7 +56,10 @@ const MypageModal = () => {
           <TermsIcon
             width={16}
             height={16}
-            style={{alignSelf: 'center', marginBottom: '10%'}}
+            style={{
+              alignSelf: 'center',
+              marginBottom: '10%',
+            }}
           />
           <styles.Content>이용약관</styles.Content>
         </styles.TermsBox>
@@ -119,21 +122,16 @@ const MypageModal = () => {
             </styles.ModalContentBold>
             <styles.ModalContent>
               사업자등록번호{' '}
-              <Text style={{backgroundColor: '#FBEAA6', fontWeight: '400'}}>
-                701-41-00862
-              </Text>
+              <Text style={{fontWeight: '600'}}>701-41-00862</Text>
             </styles.ModalContent>
             <styles.ModalContent>
               사업장주소{' '}
-              <Text style={{backgroundColor: '#FBEAA6', fontWeight: '400'}}>
+              <Text style={{fontWeight: '600'}}>
                 충청북도 충주시 충열 5길 27, 1층
               </Text>
             </styles.ModalContent>
             <styles.ModalContent>
-              휴대폰번호{' '}
-              <Text style={{backgroundColor: '#FBEAA6', fontWeight: '400'}}>
-                010-5738-5458
-              </Text>
+              휴대폰번호 <Text style={{fontWeight: '600'}}>010-5738-5458</Text>
             </styles.ModalContent>
           </styles.ModalLayout>
         </styles.ModalContainer>

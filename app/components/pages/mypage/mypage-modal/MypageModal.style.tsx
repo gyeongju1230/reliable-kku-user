@@ -19,8 +19,8 @@ export const InquiryBox = styled.View`
 export const TermsBox = styled.View`
   width: 32px;
   height: 26px;
-  margin-left: 18.5px;
-  margin-right: 18.5px;
+  margin-left: 19.5px;
+  margin-right: 17.5px;
 `;
 
 export const BusinessBox = styled.View`
@@ -50,6 +50,7 @@ export const LineBox2 = styled.View`
 `;
 
 export const Content = styled.Text`
+  text-align: center;
   color: rgba(0, 0, 0, 0.3);
   font-size: ${Font.Size.XS};
   font-weight: 500;

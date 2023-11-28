@@ -3,6 +3,7 @@ import {Font} from '@assets/fonts/Font';
 
 export const Box = styled.View`
   width: 84.7328244%;
+  height: 60%;
   align-self: center;
   border-radius: 6px;
   overflow: hidden;
@@ -19,7 +20,6 @@ export const Text = styled.Text`
 
 export const CalendarBox = styled.View`
   width: 100%;
-  height: 40px;
   align-items: center;
 `;
 

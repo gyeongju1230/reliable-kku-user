@@ -505,6 +505,18 @@ const TermsMypageContent = () => {
         </styles.ContentBox>
         <MarginTop height={18} />
       </styles.ContentContainer>
+      <MarginTop height={18} />
+      <styles.ContentContainer>
+        <styles.TitleContainer>
+          <styles.ImageBox>
+            <Check width={11} height={18} />
+          </styles.ImageBox>
+          <styles.TitleBox>
+            <styles.Title>위 약관은 2023.11.29 부터 시행합니다.</styles.Title>
+          </styles.TitleBox>
+        </styles.TitleContainer>
+        <MarginTop height={18} />
+      </styles.ContentContainer>
     </styles.Box>
   );
 };

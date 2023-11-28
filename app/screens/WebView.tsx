@@ -106,7 +106,7 @@ function CheckoutPage() {
   };
 
   return (
-    <View style={{flex: 1}}>
+    <View style={{flex: 1, backgroundColor: '#fff'}}>
       <PaymentMethodWidget
         selector="payment-methods"
         onLoadEnd={() => {
