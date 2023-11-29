@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import CodePush from 'react-native-code-push';
 import {createStackNavigator} from '@react-navigation/stack';
 import {
   NavigationContainer,
@@ -189,4 +190,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
-export default App;
+
+const codePushOptions = {
+  checkFrequency: CodePush.CheckFrequency.ON_APP_START,
+  updateDialog: {
+    title: '...',
+    optionalUpdateMessage: '...',
+    optionalInstallButtonLabel: '업데이트',
+    optionalIgnoreButtonLabel: '아니요.',
+  },
+  installMode: CodePush.InstallMode.IMMEDIATE,
+};
+export default CodePush(codePushOptions)(App);
