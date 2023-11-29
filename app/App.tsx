@@ -194,8 +194,8 @@ const styles = StyleSheet.create({
 const codePushOptions = {
   checkFrequency: CodePush.CheckFrequency.ON_APP_START,
   updateDialog: {
-    title: '...',
-    optionalUpdateMessage: '...',
+    title: '새로운 업데이트가 있습니다.',
+    optionalUpdateMessage: '지금 업데이트 하시겠습니까?',
     optionalInstallButtonLabel: '업데이트',
     optionalIgnoreButtonLabel: '아니요.',
   },
