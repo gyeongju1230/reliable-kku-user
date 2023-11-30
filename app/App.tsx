@@ -34,7 +34,7 @@ import {RecoilRoot} from 'recoil';
 import {OrderDuplicate} from '@/apis/main/Main';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import messaging from '@react-native-firebase/messaging';
-import CompleteContentImage from '@assets/images/order/CompleteContentImage.svg';
+import Logo from '@assets/images/signin/SigninLogo.svg';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -158,21 +158,6 @@ function App() {
 
   const [hasUpdate, setHasUpdate] = useState(false);
   const [syncProgress, setSyncProgress] = useState<DownloadProgress>();
-  const [moveLeftRight, setMoveLeftRight] = useState('-15deg');
-
-  const move = () => {
-    moveLeftRight === '15deg'
-      ? setMoveLeftRight('-15deg')
-      : setMoveLeftRight('15deg');
-  };
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      move();
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [moveLeftRight]);
 
   useEffect(() => {
     const checkCodePush = async () => {
@@ -200,23 +185,21 @@ function App() {
     checkCodePush();
   }, []);
 
-  if (!hasUpdate) {
+  if (hasUpdate) {
     return (
       <SafeAreaView style={styles.container}>
         <View
           style={{
+            top: '30%',
             alignItems: 'center',
             alignSelf: 'center',
-            backgroundColor: 'red',
           }}>
-          <CompleteContentImage
-            width={140.64}
-            height={140.64}
+          <Logo width={177} height={171} />
+          <Text
             style={{
-              transform: [{rotate: '-17.471deg'}],
-            }}
-          />
-          <Text style={{alignItems: 'center', justifyContent: 'center'}}>
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
             안정적인 서비스 사용을 위해 내부 업데이트를 진행합니다.
           </Text>
           <Text style={{alignItems: 'center', justifyContent: 'center'}}>
