@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import {Font} from '@assets/fonts/Font';
 
 export const Box = styled.View`
-  width: 238px;
+  width: 100%;
   height: 6.7511737%;
   flex-direction: column;
   align-self: center;
@@ -13,7 +13,7 @@ export const CheckContainer = styled.View`
   height: 30px;
   flex-direction: row;
   align-items: center;
-  align-self: start;
+  align-self: center;
 `;
 
 export const CheckContent = styled.Text`
@@ -46,7 +46,7 @@ export const ContentBox = styled.View`
 `;
 
 export const ContentBoxTop = styled.View`
-  height: 32%;
+  height: 10%;
 `;
 
 export const Content = styled.Text`

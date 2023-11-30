@@ -39,7 +39,7 @@ const SignupLayout = () => {
         <ScrollView
           contentContainerStyle={{paddingBottom: bottomSpace}}
           showsVerticalScrollIndicator={false}>
-          <MarginTop height={62} />
+          <MarginTop height={42} />
           <TouchableOpacity
             onPress={() => navigation.navigate('Signin')}
             hitSlop={{top: 20, bottom: 20}}>
@@ -75,19 +75,18 @@ const SignupLayout = () => {
             setPasswordSuccess={setPasswordSuccess}
             setPasswordVerifySuccess={setPasswordVerifySuccess}
           />
-          <MarginTop height={100} />
-          <SignupButton
-            isName={isName}
-            isPhoneNumber={isPhoneNumber}
-            password={password}
-            passwordSuccess={passwordSuccess}
-            passwordVerifySuccess={passwordVerifySuccess}
-            isCertificationSuccess={isCertificationSuccess}
-            isCertificationCheckSuccess={isCertificationCheckSuccess}
-          />
-          <MarginTop height={62} />
+          <MarginTop height={10} />
         </ScrollView>
       </TouchableWithoutFeedback>
+      <SignupButton
+        isName={isName}
+        isPhoneNumber={isPhoneNumber}
+        password={password}
+        passwordSuccess={passwordSuccess}
+        passwordVerifySuccess={passwordVerifySuccess}
+        isCertificationSuccess={isCertificationSuccess}
+        isCertificationCheckSuccess={isCertificationCheckSuccess}
+      />
     </styles.Box>
   );
 };

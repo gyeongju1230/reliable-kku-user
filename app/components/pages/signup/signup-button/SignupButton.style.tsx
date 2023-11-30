@@ -10,6 +10,7 @@ export const ButtonContainer = styled.View`
   justify-content: center;
   flex-direction: column;
   border-radius: 6px;
+  margin-bottom: 10px;
 `;
 
 export const ButtonContent = styled.Text`
