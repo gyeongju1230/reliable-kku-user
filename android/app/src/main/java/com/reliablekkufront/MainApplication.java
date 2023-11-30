@@ -15,6 +15,11 @@ import java.util.List;
 import com.wix.reactnativenotifications.RNNotificationsPackage;
 import com.microsoft.codepush.react.CodePush;
 
+import android.view.WindowManager;
+import android.content.res.Configuration;
+import android.content.Context;
+import android.util.DisplayMetrics;
+
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -63,12 +68,28 @@ public class MainApplication extends Application implements ReactApplication {
     @Override
     public void onCreate() {
         super.onCreate();
+        adjustFontScale(getResources().getConfiguration());
+
         SoLoader.init(this, /* native exopackage */ false);
         if (BuildConfig.IS_NEW_ARCHITECTURE_ENABLED) {
             // If you opted-in for the New Architecture, we load the native entry point for this app.
             DefaultNewArchitectureEntryPoint.load();
         }
         ReactNativeFlipper.initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
+    }
+
+
+ public void adjustFontScale(Configuration configuration){
+
+    configuration.fontScale = (float) 1.0;
+
+    DisplayMetrics metrics = getResources().getDisplayMetrics();
+
+    WindowManager wm = (WindowManager) getSystemService(WINDOW_SERVICE);
+
+    wm.getDefaultDisplay().getMetrics(metrics);
+    metrics.scaledDensity = configuration.fontScale * metrics.density;
+    getBaseContext().getResources().updateConfiguration(configuration, metrics);
     }
 
 

@@ -83,7 +83,7 @@ function BottomTabs() {
 
   useEffect(() => {
     OrderDuplicate()
-      .then(res => {
+      .then(() => {
         setHasActiveOrder(true);
       })
       .catch(async _ => {
@@ -101,7 +101,7 @@ function BottomTabs() {
 
   useEffect(() => {
     OrderDuplicate()
-      .then(res => {
+      .then(() => {
         setHasActiveOrder(true);
       })
       .catch(_ => {
@@ -150,22 +150,21 @@ function BottomTabs() {
 }
 
 function App() {
+  const [hasUpdate, setHasUpdate] = useState(false);
+  const [syncProgress, setSyncProgress] = useState<DownloadProgress>();
+
   useEffect(() => {
     return messaging().onMessage(async remoteMessage => {
       console.log(remoteMessage);
     });
   }, []);
 
-  const [hasUpdate, setHasUpdate] = useState(false);
-  const [syncProgress, setSyncProgress] = useState<DownloadProgress>();
-
   useEffect(() => {
     const checkCodePush = async () => {
       CodePush.checkForUpdate()
         .then(update => {
-          if (!update) {
-            setHasUpdate(false);
-          } else {
+          console.log('update: ', update);
+          if (update && update.isMandatory) {
             update
               .download((progress: DownloadProgress) =>
                 setSyncProgress(progress),
@@ -175,15 +174,20 @@ function App() {
                   .install(CodePush.InstallMode.IMMEDIATE)
                   .then(() => CodePush.restartApp()),
               );
+            return;
           }
+
+          setHasUpdate(false);
+          return;
         })
-        .catch(() => {
+        .catch(error => {
+          console.log('error', error);
           setHasUpdate(false);
         });
     };
 
     checkCodePush();
-  }, []);
+  }, [hasUpdate, syncProgress]);
 
   if (hasUpdate) {
     return (
@@ -247,7 +251,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
   },
 });
-
+//
 // const codePushOptions = {
 //   checkFrequency: CodePush.CheckFrequency.ON_APP_START,
 //   updateDialog: {
@@ -258,6 +262,5 @@ const styles = StyleSheet.create({
 //   },
 //   installMode: CodePush.InstallMode.IMMEDIATE,
 // };
-// export default CodePush(codePushOptions)(App);
 
-export default App;
+export default CodePush(App);
