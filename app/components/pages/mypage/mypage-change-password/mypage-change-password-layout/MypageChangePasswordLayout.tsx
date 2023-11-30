@@ -52,14 +52,14 @@ const MypageChangePasswordLayout = () => {
             setVerifySuccess={setVerifySuccess}
           />
           <styles.MypageChangePasswordButtonTop />
-          <MypageChangePasswordButton
-            password={password}
-            currentSuccess={currentSuccess}
-            passSuccess={passSuccess}
-            verifySuccess={verifySuccess}
-          />
         </ScrollView>
       </TouchableWithoutFeedback>
+      <MypageChangePasswordButton
+        password={password}
+        currentSuccess={currentSuccess}
+        passSuccess={passSuccess}
+        verifySuccess={verifySuccess}
+      />
     </styles.Box>
   );
 };

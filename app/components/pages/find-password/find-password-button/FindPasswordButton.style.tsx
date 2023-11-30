@@ -9,6 +9,7 @@ export const ButtonContainer = styled.View`
   align-self: center;
   justify-content: center;
   border-radius: 6px;
+  margin-bottom: 10px;
 `;
 
 export const ButtonContent = styled.Text`

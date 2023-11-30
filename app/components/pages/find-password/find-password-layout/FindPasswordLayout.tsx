@@ -62,13 +62,13 @@ const FindPasswordLayout = () => {
             setTimer={setTimer}
           />
           <MarginTop height={300} />
-          <FindPasswordButton
-            isPhoneNumber={isPhoneNumber}
-            isCertificationNumber={isCertificationNumber}
-            isCertificationSuccess={isCertificationSuccess}
-          />
         </ScrollView>
       </TouchableWithoutFeedback>
+      <FindPasswordButton
+        isPhoneNumber={isPhoneNumber}
+        isCertificationNumber={isCertificationNumber}
+        isCertificationSuccess={isCertificationSuccess}
+      />
     </styles.Box>
   );
 };
