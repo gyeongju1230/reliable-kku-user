@@ -164,7 +164,8 @@ function App() {
       CodePush.checkForUpdate()
         .then(update => {
           console.log('update: ', update);
-          if (update && update.isMandatory) {
+          if (update) {
+            setHasUpdate(true);
             update
               .download((progress: DownloadProgress) =>
                 setSyncProgress(progress),
@@ -187,7 +188,7 @@ function App() {
     };
 
     checkCodePush();
-  }, [hasUpdate, syncProgress]);
+  }, []);
 
   if (hasUpdate) {
     return (
