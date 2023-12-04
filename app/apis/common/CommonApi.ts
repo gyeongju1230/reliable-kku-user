@@ -33,7 +33,7 @@ export const handleTokenExpirationError = () => {
 BASE_API.interceptors.request.use(async config => {
   const accessToken = await AsyncStorage.getItem('accessToken');
 
-  if (accessToken) {
+  if (accessToken != null && accessToken !== '' && accessToken !== undefined) {
     config.headers.Authorization = accessToken;
   }
 
@@ -50,7 +50,7 @@ BASE_API.interceptors.response.use(
 
     console.log('error ', err);
 
-    if (status !== 401 || status !== 500) {
+    if (status !== 401) {
       return Promise.reject(err);
     }
 
