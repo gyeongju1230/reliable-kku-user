@@ -47,23 +47,31 @@ BASE_API.interceptors.response.use(
       config,
       response: {status},
     } = err;
-    const originalRequest = config;
 
-    if (status !== 403) {
+    console.log('error ', err);
+
+    if (status !== 401 || status !== 500) {
       return Promise.reject(err);
     }
 
-    const {
-      headers: {authorization},
-    } = await axios.get('https://prod.deunku.com/api/v1/token/update', {
-      withCredentials: true,
-    });
-    await AsyncStorage.setItem('accessToken', authorization);
+    await axios
+      .get('https://prod.deunku.com/api/v1/token/update', {
+        withCredentials: true,
+      })
+      .then(res => {
+        AsyncStorage.setItem('accessToken', res.headers.authorization);
 
-    if (typeof authorization === 'string') {
-      config.headers.Authorization = authorization;
-      return axios(config);
-    }
+        console.log('res.headers.Authorization', res.headers.authorization);
+
+        if (typeof res.headers.Authorization === 'string') {
+          config.headers.Authorization = res.headers.Authorization;
+          return axios(config);
+        }
+      })
+      .catch(() => {
+        return Promise.reject(err);
+      });
+
     return Promise.reject(err);
   },
 );

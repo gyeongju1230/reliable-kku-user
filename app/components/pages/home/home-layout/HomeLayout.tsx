@@ -12,13 +12,10 @@ const Main = require('@assets/images/home/MainImage.png');
 
 const HomeLayout = () => {
   useEffect(() => {
-    OrderDuplicate()
-      .then(res => {
-        AsyncStorage.setItem('orderId', String(res));
-      })
-      .then(() => {
-        requestUserPermission();
-      });
+    OrderDuplicate().then(res => {
+      AsyncStorage.setItem('orderId', String(res));
+    });
+    requestUserPermission();
   }, []);
 
   const requestUserPermission = async () => {

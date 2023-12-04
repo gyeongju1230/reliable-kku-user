@@ -24,6 +24,7 @@ messaging().onNotificationOpenedApp(remoteMessage => {
 
 Text.defaultProps = Text.defaultProps || {};
 Text.defaultProps.allowFontScaling = false;
+Text.defaultProps.color = '#000';
 
 TextInput.defaultProps = TextInput.defaultProps || {};
 TextInput.defaultProps.autoCorrect = false;

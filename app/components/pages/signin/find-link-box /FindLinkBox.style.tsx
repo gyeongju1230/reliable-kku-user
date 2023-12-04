@@ -11,13 +11,19 @@ export const FindLinkContainer = styled.View`
   justify-content: space-between;
 `;
 
-export const Line = styled.Text``;
+export const Line = styled.Text`
+  color: #000;
+`;
 
 export const FindText = styled.Text`
+  color: #000;
+
   width: 88px;
 `;
 
 export const SignupText = styled.Text`
+  color: #000;
+
   width: 60px;
   text-align: right;
 `;
