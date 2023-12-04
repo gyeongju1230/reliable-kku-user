@@ -12,6 +12,7 @@ import {
 } from '@react-navigation/native';
 import {BASE_API} from '@/apis/common/CommonApi';
 import {Alert, Keyboard, TouchableWithoutFeedback} from 'react-native';
+import axios from 'axios/index';
 
 const SigninLayout = () => {
   const [isPhoneNumber, setIsPhoneNumber] = useState('');
@@ -25,8 +26,13 @@ const SigninLayout = () => {
         const savedState = await AsyncStorage.getItem('isChecked');
         if (savedState !== null) {
           if (savedState === 'true') {
-            BASE_API.get('/api/v1/token/valid')
+            BASE_API.get('/api/v1/token/update')
               .then(res => {
+                AsyncStorage.setItem('accessToken', res.headers.authorization);
+                console.log(
+                  'res.headers.Authorization',
+                  res.headers.authorization,
+                );
                 navigation.navigate('BottomTabs');
               })
               .catch(err => {
