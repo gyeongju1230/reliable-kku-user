@@ -1,79 +1,57 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# 든붕이
 
-# Getting Started
 
->**Note**: Make sure you have completed the [React Native - Environment Setup](https://reactnative.dev/docs/environment-setup) instructions till "Creating a new application" step, before proceeding.
+### 프로젝트 소개
 
-## Step 1: Start the Metro Server
+<img src="./app/assets/images/readme/Deunbung.png" alt="project-image" height="250">
 
-First, you will need to start **Metro**, the JavaScript _bundler_ that ships _with_ React Native.
+> 든붕이는 건국대학교 글로컬캠퍼스 창업 카페 ‘든든하쿠’에서 사용중인 붕어빵 미리 주문 애플리케이션으로,  
+> 붕어빵을 미리 주문/결제하여 긴 대기 시간을 절약할 수 있어요!
 
-To start Metro, run the following command from the _root_ of your React Native project:
+### 진행 기간 👩🏻‍💻
 
-```bash
-# using npm
-npm start
+- **2023.09.19 - 2023.11.29**
 
-# OR using Yarn
-yarn start
-```
+### 기술 스택
 
-## Step 2: Start your Application
+- ![React Native](https://img.shields.io/badge/React%20Native-61DAFB?style=flat&logo=React&logoColor=white)
+  ![typescript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
+  ![SSE](https://img.shields.io/badge/SSE-FFEB99?style=flat&logo=&logoColor=white)
+  ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=Axios&logoColor=white)
+  ![Styled-component](https://img.shields.io/badge/styled%20components-DB7093?style=flat&logo=styledcomponents&logoColor=white)
 
-Let Metro Bundler run in its _own_ terminal. Open a _new_ terminal from the _root_ of your React Native project. Run the following command to start your _Android_ or _iOS_ app:
+### 구현한 기능
 
-### For Android
+<img src="./app/assets/images/readme/gif/Deunbung_Screen.gif" alt="project-gif" height="500" style="border-radius: 30px; display: inline-block; overflow: hidden;">
 
-```bash
-# using npm
-npm run android
+**든붕이**는 긴 대기 시간과 협소한 대기 공간으로 불편한 경험을 하셨던 분들을 위해 제작되었습니다.   
+든붕이를 통해 미리 주문하고 소중한 시간을 절약하세요!   
 
-# OR using Yarn
-yarn android
-```
+① 주문 및 결제 간편화   
+∙ 든붕이를 통해 붕어빵을 주문하고 간편하게 결제할 수 있습니다.   
+∙ 가게에 방문해 결제하거나 번거로운 현금 결제 과정을 거치지 않고도 손쉽게 주문을 완료할 수 있습니다.
 
-### For iOS
+② 예상 소요 시간/대기 시간 확인   
+∙ 든붕이를 통해 현재 예상 소요 시간과 주문한 붕어빵의 대기 시간을 확인할 수 있습니다.   
+∙ 이를 통해 언제 주문할지를 결정하는 데 도움을 받을 수 있습니다.   
 
-```bash
-# using npm
-npm run ios
+③ 주문 상태 확인   
+∙ 주문한 붕어빵의 상태를 실시간으로 확인할 수 있습니다.   
+∙ 주문이 대기중인지, 시간이 얼마나 남았는지, 완료되었는지를 어플을 통해 확인할 수 있어, 대기 시간을 최소화할 수 있습니다.   
 
-# OR using Yarn
-yarn ios
-```
+### URL
 
-If everything is set up _correctly_, you should see your new app running in your _Android Emulator_ or _iOS Simulator_ shortly provided you have set up your emulator/simulator correctly.
+- [🔗 App Store 로 이동하기](https://apps.apple.com/kr/app/%EB%93%A0%EB%B6%95%EC%9D%B4/id6471925416)
+- [🔗Google Play 로 이동하기](https://play.google.com/store/apps/details?id=com.reliablekkufront&pcampaignid=web_share)
 
-This is one way to run your app — you can also run it directly from within Android Studio and Xcode respectively.
+### 프로젝트 후기 🙇🏻‍♀️
 
-## Step 3: Modifying your App
-
-Now that you have successfully run the app, let's modify it.
-
-1. Open `App.tsx` in your text editor of choice and edit some lines.
-2. For **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Developer Menu** (<kbd>Ctrl</kbd> + <kbd>M</kbd> (on Window and Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (on macOS)) to see your changes!
-
-   For **iOS**: Hit <kbd>Cmd ⌘</kbd> + <kbd>R</kbd> in your iOS Simulator to reload the app and see your changes!
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [Introduction to React Native](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you can't get this to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+- 실시간 데이터 처리의 복잡성
+    - `SSE` 를 통해 실시간 주문 상태를 업데이트하면서 비동기 데이터 처리의 복잡성을 경험했습니다.
+    - 서버와의 지속적인 연결을 유지하고, 이벤트 스트림을 안정적으로 관리하는 것이 중요하다는 것을 깨달았습니다.
+- 결제 시스템 통합의 복잡성
+    - 토스페이먼츠를 통해 결제 시스템을 통합하면서, 결제 과정의 보안성과 사용자 편의성을 모두 충족시키는 것이 얼마나 중요한지 배웠습니다.
+    - 또한, 다양한 결제 실패 시나리오에 대한 대비책을 마련하는 것이 필요하다는 걸 느꼈습니다.
+- 사용자 경험 향상
+    - 앱 출시 후 직접 운영까지 하면서 사용자로부터 피드백을 받고, 이를 바로 수정하고 반영하면서 사용자 경험(UX)을 최적화하는 방법에 대해 많은 것을 배웠습니다.
+    - 사용자 인터페이스를 개선하고, 앱의 응답 속도를 최적화하는 등 다양한 부분에서 사용자의 요구를 반영함으로써, 사용자 만족도를 높이는 것이 중요하다는 것을 실감했습니다.
