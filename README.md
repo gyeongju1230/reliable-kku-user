@@ -16,7 +16,6 @@
 
 - ![React Native](https://img.shields.io/badge/React%20Native-61DAFB?style=flat&logo=React&logoColor=white)
   ![typescript](https://img.shields.io/badge/TypeScript-3178C6?style=flat&logo=typescript&logoColor=white)
-  ![SSE](https://img.shields.io/badge/SSE-FFEB99?style=flat&logo=&logoColor=white)
   ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=Axios&logoColor=white)
   ![Styled-component](https://img.shields.io/badge/styled%20components-DB7093?style=flat&logo=styledcomponents&logoColor=white)
 
@@ -45,8 +44,8 @@
 - [🔗Google Play 로 이동하기](https://play.google.com/store/apps/details?id=com.reliablekkufront&pcampaignid=web_share)
 
 ### 결과 및 성과 📝
-- 든붕이 사용자 App 출시 후 대략 200명의 신규 가입자 수 달성하였습니다.
-- 든붕이를 사용하며 주문 대기시간을 5분에서 10분가량 단축하여, 학우들이 수업 전 바쁜 시간대에 주문 할 때 줄을 서고 대기하는 불편함을 해소할 수 있었습니다.
+- 든붕이 사용자 App 출시 후 대략 **200명의 신규 가입자 수** 달성하였습니다.
+- 든붕이를 사용하며 **주문 대기시간을 5분에서 10분가량 단축하여**, 학우들이 수업 전 바쁜 시간대에 주문 할 때 **줄을 서고 대기하는 불편함을 해소**할 수 있었습니다.
 
 ### 프로젝트 후기 🙇🏻‍♀️
 
